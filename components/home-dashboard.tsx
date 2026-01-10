@@ -20,10 +20,21 @@ import {
 } from 'lucide-react'
 
 export function HomeDashboard() {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-purple-600 to-pink-500 text-white">
+      <section id="hero" className="relative overflow-hidden bg-gradient-to-br from-primary via-purple-600 to-pink-500 text-white">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[length:32px_32px]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
           <div className="text-center">
@@ -38,12 +49,22 @@ export function HomeDashboard() {
               A comprehensive 6-month strategy to grow from 80 to 300+ paying users
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" variant="secondary" className="gap-2">
+              <Button
+                size="lg"
+                variant="secondary"
+                className="gap-2"
+                onClick={() => scrollToSection('metrics')}
+              >
                 <Target className="w-5 h-5" />
                 View Strategy
                 <ArrowRight className="w-4 h-4" />
               </Button>
-              <Button size="lg" variant="outline" className="bg-white/10 border-white/30 hover:bg-white/20">
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-white/10 border-white/30 hover:bg-white/20"
+                onClick={() => scrollToSection('research')}
+              >
                 <BarChart3 className="w-5 h-5 mr-2" />
                 Explore Research
               </Button>
@@ -160,7 +181,7 @@ export function HomeDashboard() {
         </section>
 
         {/* Key Metrics Dashboard */}
-        <section>
+        <section id="metrics">
           <div className="flex items-center justify-between mb-8">
             <div>
               <h2 className="text-3xl font-bold mb-2">Key Metrics & Targets</h2>
@@ -431,7 +452,7 @@ export function HomeDashboard() {
         </section>
 
         {/* Key Findings from Research */}
-        <section>
+        <section id="research">
           <h2 className="text-3xl font-bold mb-8">Key Research Findings</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card>
@@ -553,11 +574,21 @@ export function HomeDashboard() {
                 Explore the complete GTM strategy, research artifacts, and execution plans
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Button size="lg" variant="secondary" className="gap-2">
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="gap-2"
+                  onClick={() => scrollToSection('metrics')}
+                >
                   <Target className="w-5 h-5" />
                   View Full Strategy
                 </Button>
-                <Button size="lg" variant="outline" className="bg-white/10 border-white/30 hover:bg-white/20">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-white/10 border-white/30 hover:bg-white/20"
+                  onClick={() => scrollToSection('research')}
+                >
                   <BarChart3 className="w-5 h-5 mr-2" />
                   Browse Research
                 </Button>
@@ -588,6 +619,28 @@ export function HomeDashboard() {
           </div>
         </div>
       </footer>
+
+      {/* Back to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className="fixed bottom-8 right-8 p-4 rounded-full bg-gradient-to-br from-primary to-pink-500 text-white shadow-lg hover:shadow-xl transition-all hover:scale-110"
+        aria-label="Back to top"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={2}
+          stroke="currentColor"
+          className="w-6 h-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4.5 15.75l7.5-7.5 7.5 7.5"
+          />
+        </svg>
+      </button>
     </>
   )
 }

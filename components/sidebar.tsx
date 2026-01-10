@@ -27,41 +27,6 @@ const navigation = [
     href: '/',
     icon: Home,
   },
-  {
-    name: 'GTM Strategy',
-    href: '/gtm',
-    icon: Target,
-    children: [
-      { name: '1. Target Audience', href: '/gtm/target-audience' },
-      { name: '2. Conversion Funnel', href: '/gtm/conversion-funnel' },
-      { name: '3. Channel Strategy', href: '/gtm/channel-strategy' },
-      { name: '4. Lead Generation', href: '/gtm/lead-generation' },
-      { name: '5. Budget & ROI', href: '/gtm/budget-roi' },
-      { name: '6. Timeline & KPIs', href: '/gtm/timeline-kpis' },
-      { name: '7. Master Plan', href: '/gtm/master-plan' },
-    ],
-  },
-  {
-    name: 'Research',
-    href: '/research',
-    icon: Search,
-    children: [
-      { name: 'Market Research', href: '/research/market-research' },
-      { name: 'Competitor Analysis', href: '/research/competitors' },
-      { name: 'Alfinder Deep Dive', href: '/research/alfinder' },
-      { name: 'Partnerships', href: '/research/partnerships' },
-    ],
-  },
-  {
-    name: 'Visualizations',
-    href: '/visualizations',
-    icon: PieChart,
-  },
-  {
-    name: 'Resources',
-    href: '/resources',
-    icon: BookOpen,
-  },
 ]
 
 export function Sidebar() {

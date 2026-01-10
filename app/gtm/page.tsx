@@ -344,17 +344,17 @@ const renderSlideContent = (slideId: string) => {
           </div>
 
           {/* Primary Success Metric */}
-          <Card className="border-0 shadow-lg bg-gradient-to-br from-[#065D7E] to-[#0a7aa0]">
+          <Card className="border-0 shadow-lg bg-gradient-to-br from-[#F0FBFB] via-[#e0f5f5] to-[#F0FBFB] border border-[#11D4D8]/20">
             <CardContent className="p-8">
-              <p className="text-white/80 text-sm font-semibold mb-4 tracking-wider uppercase">Primary Success Metric</p>
+              <p className="text-[#065D7E] text-sm font-semibold mb-4 tracking-wider uppercase">Primary Success Metric</p>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-white font-bold text-2xl mb-2">Paying Users</p>
-                  <p className="text-white/70">From 0 to 140-150 in 6 months</p>
+                  <p className="text-gray-900 font-bold text-2xl mb-2">Paying Users</p>
+                  <p className="text-gray-600">From 0 to 140-150 in 6 months</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-6xl font-bold text-white">140-150</p>
-                  <p className="text-white/70 text-sm mt-1">conservative target</p>
+                  <p className="text-6xl font-bold text-[#065D7E]">140-150</p>
+                  <p className="text-gray-600 text-sm mt-1">conservative target</p>
                 </div>
               </div>
             </CardContent>
@@ -789,10 +789,10 @@ const renderSlideContent = (slideId: string) => {
           </div>
 
           {/* Core Tagline */}
-          <Card className="border-0 shadow-lg bg-gradient-to-br from-[#065D7E] to-[#0a7aa0]">
+          <Card className="border-0 shadow-lg bg-gradient-to-br from-[#F0FBFB] via-[#e0f5f5] to-[#F0FBFB] border border-[#11D4D8]/20">
             <CardContent className="p-10 text-center">
-              <Target className="w-14 h-14 text-white/90 mx-auto mb-5" />
-              <p className="text-2xl md:text-3xl font-bold text-white leading-relaxed">
+              <Target className="w-14 h-14 text-[#065D7E] mx-auto mb-5" />
+              <p className="text-2xl md:text-3xl font-bold text-[#065D7E] leading-relaxed">
                 "Stop losing sales when customers search in dialect"
               </p>
             </CardContent>
@@ -1794,11 +1794,11 @@ const renderSlideContent = (slideId: string) => {
             <p className="text-gray-500 text-lg">Ready to execute the GTM strategy</p>
           </div>
 
-          <Card className="border-0 shadow-md bg-gradient-to-br from-[#065D7E] to-[#11D4D8] text-white">
+          <Card className="border-0 shadow-md bg-gradient-to-br from-[#F0FBFB] via-[#e0f5f5] to-[#F0FBFB] border border-[#11D4D8]/20">
             <CardContent className="p-8 text-center">
-              <p className="text-white/80 text-sm font-semibold mb-3 tracking-wider uppercase">Investment Requested</p>
-              <p className="text-5xl font-bold mb-2">$20,000</p>
-              <p className="text-white/80">6-month GTM execution budget</p>
+              <p className="text-[#065D7E] text-sm font-semibold mb-3 tracking-wider uppercase">Investment Requested</p>
+              <p className="text-5xl font-bold mb-2 text-gray-900">$20,000</p>
+              <p className="text-gray-600">6-month GTM execution budget</p>
             </CardContent>
           </Card>
 

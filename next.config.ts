@@ -2,7 +2,13 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: [],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'alfinder.ai',
+        pathname: '/dist/img/**',
+      },
+    ],
   },
   experimental: {
     optimizePackageImports: ['lucide-react'],

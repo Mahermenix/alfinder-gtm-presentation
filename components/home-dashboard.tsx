@@ -15,7 +15,6 @@ import {
   CheckCircle2,
   Zap,
   Globe,
-  ShoppingCart,
   Sparkles,
 } from 'lucide-react'
 
@@ -33,36 +32,54 @@ export function HomeDashboard() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section id="hero" className="relative overflow-hidden bg-gradient-to-br from-primary via-purple-600 to-pink-500 text-white">
-        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[length:32px_32px]" />
+      {/* Hero Section - Futuristic Design */}
+      <section id="hero" className="relative overflow-hidden">
+        {/* Animated background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#065D7E] via-[#0a7aa0] to-[#11D4D8]" />
+
+        {/* Decorative patterns */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzktNC00LTRzLTQgMS43OS00IDQgMS43OSA0IDQgNCA0LTEuNzkgNC00em0wLTMwYzAtMi4yMS0xLjc5LTQtNC00cy00IDEuNzktNCA0IDEuNzkgNCA0IDQgNC0xLjc5IDQtNDR6Ii8+PC9nPjwvZz48L3N2Zz4=')] [length:60px_60px]" />
+        </div>
+
+        {/* Floating orbs */}
+        <div className="absolute top-20 left-10 w-64 h-64 bg-[#11D4D8]/20 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#065D7E]/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
           <div className="text-center">
-            <Badge className="mb-6 bg-white/20 text-white border-white/30 text-sm px-4 py-1.5">
+            {/* Badge */}
+            <Badge className="mb-8 bg-white/20 text-white border-white/30 text-sm px-5 py-2 backdrop-blur-sm animate-fade-in">
               <Sparkles className="w-4 h-4 mr-2 inline" />
-              Executive Presentation
+              Executive Presentation 2026
             </Badge>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Alfinder Go-to-Market Strategy
+
+            {/* Main heading */}
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
+              Alfinder
+              <span className="block mt-2 text-[#11D4D8]">Go-to-Market Strategy</span>
             </h1>
-            <p className="text-xl sm:text-2xl text-white/90 max-w-3xl mx-auto mb-8">
-              A comprehensive 6-month strategy to grow from 80 to 300+ paying users
+
+            {/* Subtitle */}
+            <p className="text-xl sm:text-2xl text-white/90 max-w-3xl mx-auto mb-10 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              AI-powered search that understands Arabic dialects. A comprehensive 6-month strategy to scale from 80 to 300+ paying users.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap justify-center gap-4 animate-fade-in" style={{ animationDelay: '0.3s' }}>
               <Button
                 size="lg"
-                variant="secondary"
-                className="gap-2"
+                className="gap-2 bg-white text-[#065D7E] hover:bg-[#F0FBFB] shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 px-8 py-6 text-lg"
                 onClick={() => scrollToSection('metrics')}
               >
                 <Target className="w-5 h-5" />
                 View Strategy
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-5 h-5" />
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="bg-white/10 border-white/30 hover:bg-white/20"
+                className="bg-white/10 border-2 border-white/30 text-white hover:bg-white/20 hover:border-white/50 backdrop-blur-sm shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 px-8 py-6 text-lg"
                 onClick={() => scrollToSection('research')}
               >
                 <BarChart3 className="w-5 h-5 mr-2" />
@@ -72,106 +89,115 @@ export function HomeDashboard() {
           </div>
         </div>
 
-        {/* Wave decoration */}
+        {/* Wave decoration - Alfinder branded */}
         <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#f8fafc" />
+          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
+            <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#F0FBFB" />
           </svg>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-        {/* Executive Summary */}
-        <section>
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-4">Executive Summary</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+        {/* Executive Summary - Clean Design */}
+        <section className="animate-fade-in">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-[#11D4D8]/10 text-[#065D7E] border-[#11D4D8]/20 text-xs px-4 py-1.5">
+              OVERVIEW
+            </Badge>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#065D7E] mb-4">Executive Summary</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               AI-powered search that understands Arabic dialects, targeting Saudi & Gulf e-commerce merchants
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="border-l-4 border-l-purple-500">
+            <Card className="glass-card hover-lift border-l-4 border-l-[#065D7E]">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Target className="w-5 h-5 text-purple-500" />
+                <CardTitle className="flex items-center gap-2 text-[#065D7E]">
+                  <div className="p-2 rounded-lg bg-[#065D7E]/10">
+                    <Target className="w-5 h-5 text-[#065D7E]" />
+                  </div>
                   Target Market
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-sm">
+                <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>Saudi & Gulf e-commerce merchants</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>Salla/Zid platform users</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>1K-10K monthly visitors</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>Arabic search pain points</span>
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="border-l-4 border-l-pink-500">
+            <Card className="glass-card hover-lift border-l-4 border-l-[#11D4D8]">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Zap className="w-5 h-5 text-pink-500" />
+                <CardTitle className="flex items-center gap-2 text-[#065D7E]">
+                  <div className="p-2 rounded-lg bg-[#11D4D8]/10">
+                    <Zap className="w-5 h-5 text-[#11D4D8]" />
+                  </div>
                   Value Proposition
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-sm">
+                <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>Understands Arabic dialects (not just MSA)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>One-click 5-minute setup</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>AI-powered continuous learning</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>Reduce lost sales by 20%</span>
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="border-l-4 border-l-blue-500">
+            <Card className="glass-card hover-lift border-l-4 border-l-[#065D7E]">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Globe className="w-5 h-5 text-blue-500" />
+                <CardTitle className="flex items-center gap-2 text-[#065D7E]">
+                  <div className="p-2 rounded-lg bg-[#065D7E]/10">
+                    <Globe className="w-5 h-5 text-[#065D7E]" />
+                  </div>
                   Market Opportunity
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-sm">
+                <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>TAM: 11.7M global merchants</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>SAM: 1.2M MENA merchants</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>Currently: 80 active users</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>Target: 300 users in 6 months</span>
                   </li>
                 </ul>
@@ -180,14 +206,17 @@ export function HomeDashboard() {
           </div>
         </section>
 
-        {/* Key Metrics Dashboard */}
-        <section id="metrics">
-          <div className="flex items-center justify-between mb-8">
+        {/* Key Metrics Dashboard - Alfinder Branded */}
+        <section id="metrics" className="animate-fade-in">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-12">
             <div>
-              <h2 className="text-3xl font-bold mb-2">Key Metrics & Targets</h2>
-              <p className="text-muted-foreground">6-month performance projections</p>
+              <Badge className="mb-3 bg-[#11D4D8]/10 text-[#065D7E] border-[#11D4D8]/20 text-xs px-4 py-1.5">
+                METRICS
+              </Badge>
+              <h2 className="text-3xl sm:text-4xl font-bold text-[#065D7E] mb-2">Key Targets</h2>
+              <p className="text-gray-500">6-month performance projections</p>
             </div>
-            <Badge variant="gradient" className="text-sm px-4 py-2">
+            <Badge className="text-sm px-5 py-2.5 bg-gradient-to-r from-[#065D7E] to-[#11D4D8] text-white border-0 shadow-lg">
               $20K Budget
             </Badge>
           </div>
@@ -226,180 +255,212 @@ export function HomeDashboard() {
           </div>
         </section>
 
-        {/* Unit Economics */}
-        <section>
-          <h2 className="text-3xl font-bold mb-8">Unit Economics</h2>
+        {/* Unit Economics - Clean Cards */}
+        <section className="animate-fade-in">
+          <div className="mb-12">
+            <Badge className="mb-3 bg-[#11D4D8]/10 text-[#065D7E] border-[#11D4D8]/20 text-xs px-4 py-1.5">
+              ECONOMICS
+            </Badge>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#065D7E]">Unit Economics</h2>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card>
+            <Card className="glass-card hover-lift">
               <CardHeader className="pb-3">
-                <CardDescription>Monthly Revenue</CardDescription>
-                <CardTitle className="text-2xl">$102</CardTitle>
+                <CardDescription className="text-gray-500">Monthly Revenue</CardDescription>
+                <CardTitle className="text-2xl text-[#065D7E]">$102</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground">383 SAR/month per user</p>
+                <p className="text-sm text-gray-500">383 SAR/month per user</p>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="glass-card hover-lift">
               <CardHeader className="pb-3">
-                <CardDescription>Customer Lifetime</CardDescription>
-                <CardTitle className="text-2xl">12 months</CardTitle>
+                <CardDescription className="text-gray-500">Customer Lifetime</CardDescription>
+                <CardTitle className="text-2xl text-[#065D7E]">12 months</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground">Based on 5% monthly churn</p>
+                <p className="text-sm text-gray-500">Based on 5% monthly churn</p>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="glass-card hover-lift">
               <CardHeader className="pb-3">
-                <CardDescription>Lifetime Value</CardDescription>
-                <CardTitle className="text-2xl">$1,224</CardTitle>
+                <CardDescription className="text-gray-500">Lifetime Value</CardDescription>
+                <CardTitle className="text-2xl text-[#065D7E]">$1,224</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground">383 SAR × 12 months</p>
+                <p className="text-sm text-gray-500">383 SAR × 12 months</p>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="glass-card hover-lift">
               <CardHeader className="pb-3">
-                <CardDescription>Payback Period</CardDescription>
-                <CardTitle className="text-2xl">3.2 months</CardTitle>
+                <CardDescription className="text-gray-500">Payback Period</CardDescription>
+                <CardTitle className="text-2xl text-[#065D7E]">3.2 months</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground">Time to recover CAC</p>
+                <p className="text-sm text-gray-500">Time to recover CAC</p>
               </CardContent>
             </Card>
           </div>
         </section>
 
-        {/* Conversion Funnel */}
-        <section>
+        {/* Conversion Funnel - Branded Colors */}
+        <section className="animate-fade-in">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <FunnelChart
               stages={[
                 {
                   label: 'Trial Signups',
                   value: 100,
-                  color: '#6366f1',
+                  color: '#065D7E',
                   description: 'Merchant installs Alfinder',
                 },
                 {
                   label: 'Aha Moment',
                   value: 80,
-                  color: '#8b5cf6',
+                  color: '#11D4D8',
                   description: 'Experiences dialect search success',
                 },
                 {
                   label: 'Day 7 Payment Prompt',
                   value: 25,
-                  color: '#a855f7',
+                  color: '#0a7aa0',
                   description: 'Reaches payment decision point',
                 },
                 {
                   label: 'Paying Customers',
                   value: 21,
-                  color: '#ec4899',
+                  color: '#044256',
                   description: '21% net conversion (95% retention)',
                 },
               ]}
             />
 
             <div className="space-y-6">
-              <Card className="border-l-4 border-l-green-500">
+              {/* Channel Strategy Card */}
+              <Card className="glass-card border-l-4 border-l-[#11D4D8]">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <ShoppingCart className="w-5 h-5 text-green-500" />
+                  <CardTitle className="flex items-center gap-2 text-[#065D7E]">
+                    <div className="p-2 rounded-lg bg-[#11D4D8]/10">
+                      <BarChart3 className="w-5 h-5 text-[#11D4D8]" />
+                    </div>
                     Channel Strategy
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-sm font-medium">Google Search Ads</span>
-                      <span className="text-sm text-muted-foreground">60%</span>
+                    <div className="flex justify-between mb-2">
+                      <span className="text-sm font-medium text-gray-700">Google Search Ads</span>
+                      <span className="text-sm text-[#11D4D8] font-semibold">60%</span>
                     </div>
-                    <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                      <div className="h-full bg-gradient-to-r from-blue-500 to-blue-600 w-[60%]" />
+                    <div className="h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-[#065D7E] to-[#11D4D8] w-[60%] rounded-full shadow-lg shadow-[#11D4D8]/30" />
                     </div>
                   </div>
                   <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-sm font-medium">Instagram Ads</span>
-                      <span className="text-sm text-muted-foreground">40%</span>
+                    <div className="flex justify-between mb-2">
+                      <span className="text-sm font-medium text-gray-700">Instagram Ads</span>
+                      <span className="text-sm text-[#11D4D8] font-semibold">40%</span>
                     </div>
-                    <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                      <div className="h-full bg-gradient-to-r from-pink-500 to-pink-600 w-[40%]" />
+                    <div className="h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-[#11D4D8] to-[#065D7E] w-[40%] rounded-full shadow-lg shadow-[#11D4D8]/30" />
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="border-l-4 border-l-purple-500">
+              {/* Organic Channels Card */}
+              <Card className="glass-card">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Zap className="w-5 h-5 text-purple-500" />
+                  <CardTitle className="flex items-center gap-2 text-[#065D7E]">
+                    <div className="p-2 rounded-lg bg-[#065D7E]/10">
+                      <Zap className="w-5 h-5 text-[#065D7E]" />
+                    </div>
                     Organic Channels
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm">Salla App Store</span>
-                    <Badge variant="secondary">40%</Badge>
+                  <div className="flex items-center justify-between p-2 rounded-lg hover:bg-[#F0FBFB] transition-colors">
+                    <span className="text-sm text-gray-700">Salla App Store</span>
+                    <Badge className="bg-[#11D4D8]/10 text-[#11D4D8] border-[#11D4D8]/20">40%</Badge>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm">Community + Email</span>
-                    <Badge variant="secondary">25%</Badge>
+                  <div className="flex items-center justify-between p-2 rounded-lg hover:bg-[#F0FBFB] transition-colors">
+                    <span className="text-sm text-gray-700">Community + Email</span>
+                    <Badge className="bg-[#11D4D8]/10 text-[#11D4D8] border-[#11D4D8]/20">25%</Badge>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm">Instagram Organic</span>
-                    <Badge variant="secondary">15%</Badge>
+                  <div className="flex items-center justify-between p-2 rounded-lg hover:bg-[#F0FBFB] transition-colors">
+                    <span className="text-sm text-gray-700">Instagram Organic</span>
+                    <Badge className="bg-[#11D4D8]/10 text-[#11D4D8] border-[#11D4D8]/20">15%</Badge>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm">LinkedIn Organic</span>
-                    <Badge variant="secondary">10%</Badge>
+                  <div className="flex items-center justify-between p-2 rounded-lg hover:bg-[#F0FBFB] transition-colors">
+                    <span className="text-sm text-gray-700">LinkedIn Organic</span>
+                    <Badge className="bg-[#11D4D8]/10 text-[#11D4D8] border-[#11D4D8]/20">10%</Badge>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-primary/5 via-purple-500/5 to-pink-500/5">
+              {/* Reinvestment Model */}
+              <Card className="bg-gradient-to-br from-[#065D7E]/5 to-[#11D4D8]/5 border border-[#11D4D8]/20">
                 <CardContent className="p-6">
-                  <p className="text-sm font-medium mb-2">💡 Reinvestment Model</p>
-                  <p className="text-sm text-muted-foreground">
-                    Every paying user adds $80 back to acquisition budget, creating a self-funding growth loop.
-                  </p>
+                  <div className="flex items-start gap-3">
+                    <div className="p-2 rounded-lg bg-[#11D4D8]/20">
+                      <Sparkles className="w-5 h-5 text-[#11D4D8]" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-[#065D7E] mb-1">Reinvestment Model</p>
+                      <p className="text-sm text-gray-600">
+                        Every paying user adds $80 back to acquisition budget, creating a self-funding growth loop.
+                      </p>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </div>
           </div>
         </section>
 
-        {/* 6-Month Timeline */}
-        <section>
-          <h2 className="text-3xl font-bold mb-8">6-Month Roadmap</h2>
-          <Card>
-            <CardContent className="p-6">
-              <div className="space-y-4">
+        {/* 6-Month Timeline - Modern Design */}
+        <section className="animate-fade-in">
+          <div className="mb-12">
+            <Badge className="mb-3 bg-[#11D4D8]/10 text-[#065D7E] border-[#11D4D8]/20 text-xs px-4 py-1.5">
+              ROADMAP
+            </Badge>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#065D7E]">6-Month Roadmap</h2>
+          </div>
+
+          <Card className="glass-card">
+            <CardContent className="p-8">
+              <div className="space-y-6">
                 {[
-                  { month: 'Month 1', users: '0 (foundation)', focus: 'Launch all channels', milestone: 'GTM Launch Complete' },
-                  { month: 'Month 2', users: '10-20', focus: 'First paying users', milestone: 'Reinvestment Loop Active' },
-                  { month: 'Month 3', users: '35-50', focus: 'Validation phase', milestone: 'Break-Even Achieved' },
-                  { month: 'Month 4', users: '60-80', focus: 'Scaling winners', milestone: 'Cash Flow Positive' },
-                  { month: 'Month 5', users: '90-115', focus: 'Aggressive growth', milestone: 'Conservative Target Close' },
-                  { month: 'Month 6', users: '140-150 / 300', focus: 'Final push', milestone: 'Target Achieved' },
+                  { month: 'Month 1', users: '0 (foundation)', focus: 'Launch all channels', milestone: 'GTM Launch Complete', color: 'from-[#065D7E] to-[#11D4D8]' },
+                  { month: 'Month 2', users: '10-20', focus: 'First paying users', milestone: 'Reinvestment Loop Active', color: 'from-[#11D4D8] to-[#0a7aa0]' },
+                  { month: 'Month 3', users: '35-50', focus: 'Validation phase', milestone: 'Break-Even Achieved', color: 'from-[#065D7E] to-[#11D4D8]' },
+                  { month: 'Month 4', users: '60-80', focus: 'Scaling winners', milestone: 'Cash Flow Positive', color: 'from-[#11D4D8] to-[#0a7aa0]' },
+                  { month: 'Month 5', users: '90-115', focus: 'Aggressive growth', milestone: 'Conservative Target Close', color: 'from-[#065D7E] to-[#11D4D8]' },
+                  { month: 'Month 6', users: '140-150 / 300', focus: 'Final push', milestone: 'Target Achieved', color: 'from-[#11D4D8] to-[#065D7E]' },
                 ].map((item, index) => (
-                  <div key={item.month} className="relative pl-8 pb-4 last:pb-0">
-                    <div className="absolute left-0 top-0 w-6 h-6 rounded-full bg-gradient-to-br from-primary to-pink-500 flex items-center justify-center text-white text-xs font-bold">
+                  <div key={item.month} className="relative pl-10 pb-6 last:pb-0">
+                    {/* Timeline indicator */}
+                    <div className={`absolute left-0 top-1 w-10 h-10 rounded-xl bg-gradient-to-br shadow-lg flex items-center justify-center text-white text-sm font-bold ${item.color}`}>
                       {index + 1}
                     </div>
-                    <div className="absolute left-3 top-6 bottom-0 w-0.5 bg-gray-200 last:hidden" />
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+
+                    {/* Timeline line */}
+                    <div className="absolute left-5 top-11 bottom-0 w-0.5 bg-gradient-to-b from-[#11D4D8] to-[#065D7E] last:hidden opacity-30" />
+
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                       <div>
-                        <p className="font-semibold">{item.month}</p>
-                        <p className="text-sm text-muted-foreground">{item.focus}</p>
+                        <p className="font-bold text-[#065D7E] text-lg">{item.month}</p>
+                        <p className="text-sm text-gray-500">{item.focus}</p>
                       </div>
                       <div className="text-right">
-                        <p className="font-bold text-primary">{item.users} users</p>
-                        <p className="text-sm text-muted-foreground">{item.milestone}</p>
+                        <p className="font-bold text-[#11D4D8]">{item.users} users</p>
+                        <Badge variant="outline" className="text-xs border-[#11D4D8]/30 text-[#065D7E]">
+                          {item.milestone}
+                        </Badge>
                       </div>
                     </div>
                   </div>
@@ -409,154 +470,171 @@ export function HomeDashboard() {
           </Card>
         </section>
 
-        {/* Budget Allocation */}
-        <section>
-          <h2 className="text-3xl font-bold mb-8">Budget Allocation</h2>
+        {/* Budget Allocation - Branded Gradient Cards */}
+        <section className="animate-fade-in">
+          <div className="mb-12">
+            <Badge className="mb-3 bg-[#11D4D8]/10 text-[#065D7E] border-[#11D4D8]/20 text-xs px-4 py-1.5">
+              BUDGET
+            </Badge>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#065D7E]">Budget Allocation</h2>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-            <Card className="bg-gradient-to-br from-blue-500 to-blue-600 text-white">
+            <Card className="bg-gradient-to-br from-[#065D7E] to-[#0a7aa0] text-white border-0 shadow-xl shadow-[#065D7E]/30 hover-lift">
               <CardContent className="p-6">
-                <p className="text-blue-100 text-sm mb-1">Paid Media</p>
-                <p className="text-3xl font-bold">$8,000</p>
-                <p className="text-blue-100 text-sm mt-2">40% of budget</p>
+                <p className="text-white/70 text-sm mb-2">Paid Media</p>
+                <p className="text-3xl font-bold mb-1">$8,000</p>
+                <p className="text-white/70 text-sm">40% of budget</p>
               </CardContent>
             </Card>
-            <Card className="bg-gradient-to-br from-purple-500 to-purple-600 text-white">
+
+            <Card className="bg-gradient-to-br from-[#11D4D8] to-[#0a7aa0] text-white border-0 shadow-xl shadow-[#11D4D8]/30 hover-lift">
               <CardContent className="p-6">
-                <p className="text-purple-100 text-sm mb-1">Content Production</p>
-                <p className="text-3xl font-bold">$4,000</p>
-                <p className="text-purple-100 text-sm mt-2">20% of budget</p>
+                <p className="text-white/70 text-sm mb-2">Content Production</p>
+                <p className="text-3xl font-bold mb-1">$4,000</p>
+                <p className="text-white/70 text-sm">20% of budget</p>
               </CardContent>
             </Card>
-            <Card className="bg-gradient-to-br from-pink-500 to-pink-600 text-white">
+
+            <Card className="bg-gradient-to-br from-[#065D7E] to-[#11D4D8] text-white border-0 shadow-xl shadow-[#11D4D8]/30 hover-lift">
               <CardContent className="p-6">
-                <p className="text-pink-100 text-sm mb-1">Freelancers</p>
-                <p className="text-3xl font-bold">$5,000</p>
-                <p className="text-pink-100 text-sm mt-2">25% of budget</p>
+                <p className="text-white/70 text-sm mb-2">Freelancers</p>
+                <p className="text-3xl font-bold mb-1">$5,000</p>
+                <p className="text-white/70 text-sm">25% of budget</p>
               </CardContent>
             </Card>
-            <Card className="bg-gradient-to-br from-orange-500 to-orange-600 text-white">
+
+            <Card className="bg-gradient-to-br from-[#11D4D8] to-[#065D7E] text-white border-0 shadow-xl shadow-[#11D4D8]/30 hover-lift">
               <CardContent className="p-6">
-                <p className="text-orange-100 text-sm mb-1">Tools & Software</p>
-                <p className="text-3xl font-bold">$2,000</p>
-                <p className="text-orange-100 text-sm mt-2">10% of budget</p>
+                <p className="text-white/70 text-sm mb-2">Tools & Software</p>
+                <p className="text-3xl font-bold mb-1">$2,000</p>
+                <p className="text-white/70 text-sm">10% of budget</p>
               </CardContent>
             </Card>
-            <Card className="bg-gradient-to-br from-green-500 to-green-600 text-white">
+
+            <Card className="bg-gradient-to-br from-[#0a7aa0] to-[#065D7E] text-white border-0 shadow-xl shadow-[#065D7E]/30 hover-lift">
               <CardContent className="p-6">
-                <p className="text-green-100 text-sm mb-1">Retention</p>
-                <p className="text-3xl font-bold">$1,000</p>
-                <p className="text-green-100 text-sm mt-2">5% of budget</p>
+                <p className="text-white/70 text-sm mb-2">Retention</p>
+                <p className="text-3xl font-bold mb-1">$1,000</p>
+                <p className="text-white/70 text-sm">5% of budget</p>
               </CardContent>
             </Card>
           </div>
         </section>
 
-        {/* Key Findings from Research */}
-        <section id="research">
-          <h2 className="text-3xl font-bold mb-8">Key Research Findings</h2>
+        {/* Key Research Findings - Clean Layout */}
+        <section id="research" className="animate-fade-in">
+          <div className="mb-12">
+            <Badge className="mb-3 bg-[#11D4D8]/10 text-[#065D7E] border-[#11D4D8]/20 text-xs px-4 py-1.5">
+              RESEARCH
+            </Badge>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#065D7E] mb-4">Key Research Findings</h2>
+            <p className="text-gray-500 max-w-2xl">Comprehensive analysis from 70+ research documents</p>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card>
+            <Card className="glass-card hover-lift border-t-4 border-t-[#065D7E]">
               <CardHeader>
-                <CardTitle>Market Research</CardTitle>
+                <CardTitle className="text-[#065D7E]">Market Research</CardTitle>
                 <CardDescription>14 comprehensive studies</CardDescription>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-sm">
+                <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>MENA region shows strong growth potential</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>Arabic search gap is underserved market</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>E-commerce adoption accelerating in Gulf</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>AI/ML adoption among merchants growing</span>
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="glass-card hover-lift border-t-4 border-t-[#11D4D8]">
               <CardHeader>
-                <CardTitle>Competitive Analysis</CardTitle>
+                <CardTitle className="text-[#065D7E]">Competitive Analysis</CardTitle>
                 <CardDescription>13 competitors analyzed</CardDescription>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-sm">
+                <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>Algolia dominates but not Arabic-focused</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>Lableb is main Arabic competitor</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>Dialect understanding is key differentiator</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>One-click setup is competitive advantage</span>
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="glass-card hover-lift border-t-4 border-t-[#065D7E]">
               <CardHeader>
-                <CardTitle>Alfinder Analysis</CardTitle>
+                <CardTitle className="text-[#065D7E]">Alfinder Analysis</CardTitle>
                 <CardDescription>18 deep-dive studies</CardDescription>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-sm">
+                <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>80 real active users (strong foundation)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>30% churn rate needs attention</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>Arabic dialect accuracy is excellent</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>Zero prior marketing (greenfield)</span>
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="glass-card hover-lift border-t-4 border-t-[#11D4D8]">
               <CardHeader>
-                <CardTitle>Partnership Opportunities</CardTitle>
+                <CardTitle className="text-[#065D7E]">Partnership Opportunities</CardTitle>
                 <CardDescription>10 strategic partners identified</CardDescription>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-sm">
+                <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>Salla strategic partnership priority</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>Zid/Amazon cross-border opportunity</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>Tabby/Tamara payment gateways</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
                     <span>Digital agency program potential</span>
                   </li>
                 </ul>
@@ -565,19 +643,23 @@ export function HomeDashboard() {
           </div>
         </section>
 
-        {/* Call to Action */}
-        <section className="text-center py-12">
-          <Card className="bg-gradient-to-br from-primary via-purple-600 to-pink-500 text-white border-0">
-            <CardContent className="p-12">
-              <h2 className="text-3xl font-bold mb-4">Ready to Dive Deeper?</h2>
+        {/* Call to Action - Futuristic Gradient */}
+        <section className="text-center py-16 animate-fade-in">
+          <Card className="bg-gradient-to-br from-[#065D7E] via-[#11D4D8] to-[#065D7E] text-white border-0 shadow-2xl shadow-[#11D4D8]/30 overflow-hidden relative">
+            {/* Animated background pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjIiIGZpbGw9IiNmZmZmZmYiLz48L2c+PC9zdmc+')] [length:40px_40px]" />
+            </div>
+
+            <CardContent className="p-12 relative">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4">Ready to Dive Deeper?</h2>
               <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
                 Explore the complete GTM strategy, research artifacts, and execution plans
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button
                   size="lg"
-                  variant="secondary"
-                  className="gap-2"
+                  className="gap-2 bg-white text-[#065D7E] hover:bg-[#F0FBFB] shadow-xl hover:scale-105 transition-all duration-300 px-8 py-6 text-lg"
                   onClick={() => scrollToSection('metrics')}
                 >
                   <Target className="w-5 h-5" />
@@ -586,7 +668,7 @@ export function HomeDashboard() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="bg-white/10 border-white/30 hover:bg-white/20"
+                  className="bg-white/10 border-2 border-white/30 text-white hover:bg-white/20 hover:border-white/50 backdrop-blur-sm shadow-lg hover:scale-105 transition-all duration-300 px-8 py-6 text-lg"
                   onClick={() => scrollToSection('research')}
                 >
                   <BarChart3 className="w-5 h-5 mr-2" />
@@ -598,21 +680,21 @@ export function HomeDashboard() {
         </section>
       </div>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-200 bg-white mt-12">
+      {/* Footer - Clean Design */}
+      <footer className="border-t border-[#11D4D8]/10 bg-white/50 backdrop-blur-sm mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-gray-500">
               © 2026 Alfinder GTM Strategy. Built with comprehensive research and analysis.
             </p>
-            <div className="flex items-center gap-4">
-              <Badge variant="outline" className="text-xs">
+            <div className="flex items-center gap-3">
+              <Badge variant="outline" className="text-xs border-[#11D4D8]/20 text-[#065D7E]">
                 7 GTM Stories
               </Badge>
-              <Badge variant="outline" className="text-xs">
+              <Badge variant="outline" className="text-xs border-[#11D4D8]/20 text-[#065D7E]">
                 70+ Research Files
               </Badge>
-              <Badge variant="outline" className="text-xs">
+              <Badge variant="outline" className="text-xs border-[#11D4D8]/20 text-[#065D7E]">
                 $20K Budget
               </Badge>
             </div>
@@ -620,17 +702,17 @@ export function HomeDashboard() {
         </div>
       </footer>
 
-      {/* Back to Top Button */}
+      {/* Back to Top Button - Futuristic */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 p-4 rounded-full bg-gradient-to-br from-primary to-pink-500 text-white shadow-lg hover:shadow-xl transition-all hover:scale-110"
+        className="fixed bottom-8 right-8 p-4 rounded-2xl bg-gradient-to-br from-[#065D7E] to-[#11D4D8] text-white shadow-xl shadow-[#11D4D8]/30 hover:shadow-2xl hover:shadow-[#11D4D8]/50 transition-all duration-300 hover:scale-110 active:scale-95 animate-fade-in"
         aria-label="Back to top"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          strokeWidth={2}
+          strokeWidth={2.5}
           stroke="currentColor"
           className="w-6 h-6"
         >

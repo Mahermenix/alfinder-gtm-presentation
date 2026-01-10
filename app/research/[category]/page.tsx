@@ -42,16 +42,18 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
   const researchCategory = researchCategories[category]
   const content = await getContent()
 
-  // Map category to the key used in content.json
-  const categoryMapping: Record<string, string> = {
-    'market-research': 'market-research',
-    'competitors': 'competitors',
-    'allaboutalfinder': 'allaboutalfinder',
-    'partnerships': 'partnerships',
+  // Filter research files by slug prefix based on category
+  const categoryPrefixes: Record<string, string[]> = {
+    'market-research': ['market-research/', 'research/market'],
+    'competitors': ['competitors/'],
+    'allaboutalfinder': ['allaboutalfinder/'],
+    'partnerships': ['partnerships/', 'research/market-collaboration', 'competitors/12-'],
   }
 
-  const contentKey = categoryMapping[category]
-  const researchFiles = contentKey ? (content.research as any)?.[contentKey] || [] : []
+  const prefixes = categoryPrefixes[category] || []
+  const researchFiles = (content.research as any[]).filter((file: any) =>
+    prefixes.some(prefix => file.slug.startsWith(prefix))
+  )
 
   if (!researchCategory) {
     notFound()

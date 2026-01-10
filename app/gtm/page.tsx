@@ -1903,12 +1903,12 @@ export default function GTMPresentationPage() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
 
-  const currentSlideData = slides[currentSlide]
-  const SlideIcon = currentSlideData.icon
-
   const filteredSlides = selectedCategory
     ? slides.filter(s => s.category === selectedCategory)
     : slides
+
+  const currentSlideData = filteredSlides[currentSlide]
+  const SlideIcon = currentSlideData.icon
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index)
@@ -1930,11 +1930,10 @@ export default function GTMPresentationPage() {
   const handleCategoryClick = (category: string) => {
     if (selectedCategory === category) {
       setSelectedCategory(null)
-      setCurrentSlide(0)
     } else {
       setSelectedCategory(category)
-      setCurrentSlide(0)
     }
+    setCurrentSlide(0)
   }
 
   // Auto-play functionality

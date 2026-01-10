@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { MetricCard } from '@/components/charts/metric-card'
 import { FunnelChart } from '@/components/charts/funnel-chart'
 import { Button } from '@/components/ui/button'
@@ -17,6 +18,7 @@ import {
   Globe,
   Sparkles,
 } from 'lucide-react'
+import Link from 'next/link'
 
 export function HomeDashboard() {
   const scrollToSection = (id: string) => {
@@ -54,37 +56,53 @@ export function HomeDashboard() {
               Executive Presentation 2026
             </Badge>
 
+            {/* Logo */}
+            <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.05s' }}>
+              <div className="inline-block relative w-32 h-32 rounded-2xl bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-sm border-2 border-white/30 p-2 shadow-2xl">
+                <div className="w-full h-full rounded-xl bg-white flex items-center justify-center overflow-hidden">
+                  <Image
+                    src="https://alfinder.ai/dist/img/logo.png"
+                    alt="Alfinder Logo"
+                    width={128}
+                    height={128}
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+
             {/* Main heading */}
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
-              Alfinder
-              <span className="block mt-2 text-[#11D4D8]">Go-to-Market Strategy</span>
+              Go-to-Market Strategy
             </h1>
 
-            {/* Subtitle */}
-            <p className="text-xl sm:text-2xl text-white/90 max-w-3xl mx-auto mb-10 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            {/* Subtitle - Made white for better readability */}
+            <p className="text-xl sm:text-2xl text-white max-w-3xl mx-auto mb-10 animate-fade-in" style={{ animationDelay: '0.2s' }}>
               AI-powered search that understands Arabic dialects. A comprehensive 6-month strategy to scale from 80 to 300+ paying users.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap justify-center gap-4 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-              <Button
-                size="lg"
-                className="gap-2 bg-white text-[#065D7E] hover:bg-[#F0FBFB] shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 px-8 py-6 text-lg"
-                onClick={() => scrollToSection('metrics')}
-              >
-                <Target className="w-5 h-5" />
-                View Strategy
-                <ArrowRight className="w-5 h-5" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-white/10 border-2 border-white/30 text-white hover:bg-white/20 hover:border-white/50 backdrop-blur-sm shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 px-8 py-6 text-lg"
-                onClick={() => scrollToSection('research')}
-              >
-                <BarChart3 className="w-5 h-5 mr-2" />
-                Explore Research
-              </Button>
+              <Link href="/gtm">
+                <Button
+                  size="lg"
+                  className="gap-2 bg-white text-[#065D7E] hover:bg-[#F0FBFB] shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 px-8 py-6 text-lg"
+                >
+                  <Target className="w-5 h-5" />
+                  Go-to-Market Strategy
+                  <ArrowRight className="w-5 h-5" />
+                </Button>
+              </Link>
+              <Link href="/research">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-white/10 border-2 border-white/30 text-white hover:bg-white/20 hover:border-white/50 backdrop-blur-sm shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 px-8 py-6 text-lg"
+                >
+                  <BarChart3 className="w-5 h-5 mr-2" />
+                  Browse Research
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -685,7 +703,7 @@ export function HomeDashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-gray-500">
-              © 2026 Alfinder GTM Strategy. Built with comprehensive research and analysis.
+              Made with love by <a href="https://momaher.com" target="_blank" rel="noopener noreferrer" className="text-[#11D4D8] hover:text-[#065D7E] font-medium transition-colors">Mo Maher</a>
             </p>
             <div className="flex items-center gap-3">
               <Badge variant="outline" className="text-xs border-[#11D4D8]/20 text-[#065D7E]">
@@ -693,9 +711,6 @@ export function HomeDashboard() {
               </Badge>
               <Badge variant="outline" className="text-xs border-[#11D4D8]/20 text-[#065D7E]">
                 70+ Research Files
-              </Badge>
-              <Badge variant="outline" className="text-xs border-[#11D4D8]/20 text-[#065D7E]">
-                $20K Budget
               </Badge>
             </div>
           </div>

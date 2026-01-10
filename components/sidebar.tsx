@@ -100,63 +100,56 @@ export function Sidebar() {
       >
         <div className="flex flex-col h-full">
           {/* Header - Logo and Brand */}
-          <div className="relative p-6 border-b border-[#11D4D8]/10">
-            {/* Decorative gradient line */}
-            <div className="absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r from-[#065D7E] via-[#11D4D8] to-[#065D7E] opacity-60" />
-
-            <div className="flex items-center justify-between">
+          <div className="relative p-6 pb-4">
+            <div className="flex flex-col items-center">
               {!isCollapsed && (
-                <Link href="/" className="flex items-center gap-3 group">
-                  {/* Logo */}
-                  <div className="relative w-12 h-12 rounded-xl bg-gradient-to-br from-[#065D7E] to-[#11D4D8] p-0.5 shadow-lg group-hover:shadow-[#11D4D8]/30 transition-all duration-300">
-                    <div className="w-full h-full rounded-xl bg-white flex items-center justify-center overflow-hidden">
-                      <Image
-                        src="https://alfinder.ai/dist/img/logo.png"
-                        alt="Alfinder Logo"
-                        width={40}
-                        height={40}
-                        className="object-contain"
-                      />
-                    </div>
+                <Link href="/" className="flex flex-col items-center gap-3 group">
+                  {/* Logo - No box, just the logo with space */}
+                  <div className="relative w-16 h-16">
+                    <Image
+                      src="https://alfinder.ai/dist/img/logo.png"
+                      alt="Alfinder Logo"
+                      width={64}
+                      height={64}
+                      className="object-contain"
+                    />
                   </div>
 
-                  {/* Brand Text - Only show GTM STRATEGY */}
-                  <div className="space-y-0.5">
-                    <p className="text-xs text-[#11D4D8] font-medium tracking-wide">GTM STRATEGY</p>
+                  {/* Brand Text - Under the logo */}
+                  <div className="space-y-0.5 text-center">
+                    <p className="text-sm font-semibold text-[#065D7E]">GTM STRATEGY</p>
                   </div>
                 </Link>
               )}
 
-              {/* Collapse button */}
+              {/* Collapse button - positioned to the right */}
               <button
                 onClick={() => setIsCollapsed(!isCollapsed)}
                 className={cn(
-                  "hidden lg:flex p-2.5 rounded-xl transition-all duration-300",
+                  "absolute top-6 right-6 hidden lg:flex p-2 rounded-lg transition-all duration-300",
                   "hover:bg-[#F0FBFB] hover:scale-110 active:scale-95",
                   "text-[#065D7E] hover:text-[#11D4D8]"
                 )}
                 aria-label="Toggle sidebar"
               >
-                <Menu size={20} />
+                <Menu size={18} />
               </button>
-
-              {/* Collapsed logo */}
-              {isCollapsed && (
-                <Link href="/" className="mx-auto">
-                  <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-[#065D7E] to-[#11D4D8] p-0.5 shadow-lg hover:shadow-[#11D4D8]/30 transition-all duration-300 hover:scale-110">
-                    <div className="w-full h-full rounded-xl bg-white flex items-center justify-center overflow-hidden">
-                      <Image
-                        src="https://alfinder.ai/dist/img/logo.png"
-                        alt="Alfinder Logo"
-                        width={32}
-                        height={32}
-                        className="object-contain"
-                      />
-                    </div>
-                  </div>
-                </Link>
-              )}
             </div>
+
+            {/* Collapsed logo */}
+            {isCollapsed && (
+              <Link href="/" className="mx-auto flex flex-col items-center gap-2">
+                <div className="relative w-10 h-10">
+                  <Image
+                    src="https://alfinder.ai/dist/img/logo.png"
+                    alt="Alfinder Logo"
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                  />
+                </div>
+              </Link>
+            )}
           </div>
 
           {/* Search Bar */}

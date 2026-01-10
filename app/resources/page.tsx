@@ -58,8 +58,8 @@ export default function ResourcesPage() {
   })).filter(section => section.items.length > 0)
 
   const handleDownload = (itemName: string) => {
-    // For demo purposes, show an alert. In production, this would trigger actual downloads
-    alert(`Download initiated for: ${itemName}\n\nNote: Actual file downloads will be available once resources are stored in the _bmad-output directory.`)
+    // Downloads will be available once resources are stored
+    console.log(`Download requested for: ${itemName}`)
   }
 
   return (

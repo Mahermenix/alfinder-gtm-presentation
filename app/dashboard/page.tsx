@@ -34,22 +34,22 @@ export default function DashboardPage() {
           </div>
 
           {/* Campaign Status Banner */}
-          <Card className="mb-8 bg-gradient-to-r from-[#065D7E] to-[#11D4D8] text-white border-0 shadow-lg">
+          <Card className="mb-8 bg-gradient-to-r from-[#F0FBFB] via-[#e0f5f5] to-[#F0FBFB] border border-[#11D4D8]/20 shadow-lg">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-white/20 backdrop-blur-sm">
-                    <Activity className="w-8 h-8" />
+                  <div className="p-3 rounded-xl bg-[#065D7E]/10 backdrop-blur-sm">
+                    <Activity className="w-8 h-8 text-[#065D7E]" />
                   </div>
                   <div>
-                    <p className="text-white/80 text-sm font-semibold uppercase tracking-wider mb-1">Campaign Status</p>
-                    <p className="text-2xl font-bold">Pre-Launch Phase</p>
-                    <p className="text-white/70 text-sm mt-1">Preparing for campaign kickoff</p>
+                    <p className="text-[#065D7E] text-sm font-semibold uppercase tracking-wider mb-1">Campaign Status</p>
+                    <p className="text-2xl font-bold text-gray-900">Pre-Launch Phase</p>
+                    <p className="text-gray-600 text-sm mt-1">Preparing for campaign kickoff</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-white/80 text-sm font-semibold uppercase tracking-wider mb-1">Launch Date</p>
-                  <p className="text-xl font-bold">TBD</p>
+                  <p className="text-[#065D7E] text-sm font-semibold uppercase tracking-wider mb-1">Launch Date</p>
+                  <p className="text-xl font-bold text-gray-900">TBD</p>
                 </div>
               </div>
             </CardContent>

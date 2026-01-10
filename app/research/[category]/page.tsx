@@ -130,21 +130,20 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
           </Link>
 
           {/* Hero Header */}
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#065D7E] via-[#0a7aa0] to-[#11D4D8] p-8 mb-8 shadow-xl">
-            <div className="absolute inset-0 bg-black/10" />
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#F0FBFB] via-[#e0f5f5] to-[#F0FBFB] p-8 mb-8 shadow-xl border border-[#11D4D8]/20">
             <div className="relative z-10">
               <div className="flex items-center gap-4 mb-4">
-                <div className="p-3 rounded-xl bg-white/20 backdrop-blur-sm">
-                  <CategoryIcon className="w-8 h-8 text-white" />
+                <div className="p-3 rounded-xl bg-[#065D7E]/10 backdrop-blur-sm">
+                  <CategoryIcon className="w-8 h-8 text-[#065D7E]" />
                 </div>
-                <Badge className="bg-white/20 backdrop-blur-sm text-white border-white/30">
+                <Badge className="bg-[#11D4D8]/10 backdrop-blur-sm text-[#065D7E] border-[#11D4D8]/30">
                   {researchCategory.count} Research Files
                 </Badge>
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#065D7E]">
                 {researchCategory.title}
               </h1>
-              <p className="text-lg text-white max-w-3xl [&_*]:text-white">
+              <p className="text-lg text-gray-700 max-w-3xl [&_*]:text-gray-700">
                 {researchCategory.description}
               </p>
             </div>
@@ -189,9 +188,9 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
               </div>
 
               <Card className="overflow-hidden shadow-lg border-2 border-[#065D7E]/20 bg-white">
-                <CardHeader className={`bg-gradient-to-r ${colors.from} ${colors.to} text-white`}>
-                  <CardTitle className="flex items-center gap-2 text-white">
-                    <FileText className="w-6 h-6" />
+                <CardHeader className={`bg-gradient-to-r from-[#F0FBFB] via-[#e0f5f5] to-[#F0FBFB] border-b border-[#11D4D8]/20`}>
+                  <CardTitle className="flex items-center gap-2 text-[#065D7E]">
+                    <FileText className="w-6 h-6 text-[#065D7E]" />
                     {synthesisStory.title || synthesisStory.slug}
                   </CardTitle>
                 </CardHeader>

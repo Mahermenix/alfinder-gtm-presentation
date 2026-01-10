@@ -282,6 +282,19 @@ body::before {
   pointer-events: none;
 }
 
+/* Text on dark backgrounds */
+.text-on-dark {
+  color: white !important;
+}
+
+.text-on-dark-muted {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.text-on-dark-subtle {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
 /* Selection color */
 ::selection {
   background-color: rgba(17, 212, 216, 0.3);

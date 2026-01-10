@@ -73,17 +73,22 @@ function extractTitle(content, fallback) {
 const gtmStories = readMarkdownFiles(GTM_STORIES_PATH);
 const researchFiles = readMarkdownFiles(RESEARCH_PATH);
 
-const output = {
-  gtm: gtmStories,
-  research: researchFiles,
-  buildDate: new Date().toISOString(),
-};
+// Only write output if we actually found content (not on Vercel where source doesn't exist)
+if (gtmStories.length > 0 || researchFiles.length > 0) {
+  const output = {
+    gtm: gtmStories,
+    research: researchFiles,
+    buildDate: new Date().toISOString(),
+  };
 
-// Write output
-fs.writeFileSync(
-  path.join(OUTPUT_PATH, 'content.json'),
-  JSON.stringify(output, null, 2)
-);
+  fs.writeFileSync(
+    path.join(OUTPUT_PATH, 'content.json'),
+    JSON.stringify(output, null, 2)
+  );
 
-console.log(`✅ Built content from ${gtmStories.length} GTM stories and ${researchFiles.length} research files`);
-console.log(`📁 Output written to ${OUTPUT_PATH}/content.json`);
+  console.log(`✅ Built content from ${gtmStories.length} GTM stories and ${researchFiles.length} research files`);
+  console.log(`📁 Output written to ${OUTPUT_PATH}/content.json`);
+} else {
+  console.log('ℹ️  No source content found, using existing content.json');
+  console.log('   (This is expected on Vercel where the source files are in a different location)');
+}

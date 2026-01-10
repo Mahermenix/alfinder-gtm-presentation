@@ -18,7 +18,7 @@ const researchCategories: Record<string, { title: string; description: string; c
   'market-research': {
     title: 'Market Research',
     description: 'Comprehensive analysis of the MENA e-commerce market, search technology trends, and merchant needs.',
-    count: 14,
+    count: 16,
   },
   'competitors': {
     title: 'Competitor Analysis',
@@ -40,6 +40,11 @@ const researchCategories: Record<string, { title: string; description: string; c
 export default async function ResearchPage({ params }: { params: Promise<{ category: string }> }) {
   const { category } = await params
   const researchCategory = researchCategories[category]
+
+  if (!researchCategory) {
+    notFound()
+  }
+
   const content = await getContent()
 
   // Filter research files by slug prefix based on category
@@ -51,13 +56,10 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
   }
 
   const prefixes = categoryPrefixes[category] || []
-  const researchFiles = (content.research as any[]).filter((file: any) =>
+  const allResearch = content.research || []
+  const researchFiles = allResearch.filter((file: any) =>
     prefixes.some(prefix => file.slug.startsWith(prefix))
   )
-
-  if (!researchCategory) {
-    notFound()
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50">

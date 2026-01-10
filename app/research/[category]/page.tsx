@@ -28,10 +28,11 @@ const researchCategories: Record<string, { title: string; description: string; c
   },
 }
 
-export default function ResearchPage({ params }: { params: { category: string } }) {
-  const category = researchCategories[params.category]
+export default async function ResearchPage({ params }: { params: Promise<{ category: string }> }) {
+  const { category } = await params
+  const researchCategory = researchCategories[category]
 
-  if (!category) {
+  if (!researchCategory) {
     notFound()
   }
 
@@ -56,11 +57,11 @@ export default function ResearchPage({ params }: { params: { category: string } 
               Research
             </Badge>
             <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary via-purple-600 to-pink-500 bg-clip-text text-transparent">
-              {category.title}
+              {researchCategory.title}
             </h1>
-            <p className="text-xl text-muted-foreground">{category.description}</p>
+            <p className="text-xl text-muted-foreground">{researchCategory.description}</p>
             <p className="text-sm text-muted-foreground mt-2">
-              {category.count} research files
+              {researchCategory.count} research files
             </p>
           </div>
 
@@ -76,9 +77,9 @@ export default function ResearchPage({ params }: { params: { category: string } 
               <div className="p-6 bg-blue-50 border border-blue-200 rounded-lg">
                 <p className="text-blue-800 font-medium mb-2">📚 Research Archive</p>
                 <p className="text-blue-700 text-sm">
-                  This category contains {category.count} research files from{' '}
+                  This category contains {researchCategory.count} research files from{' '}
                   <code className="bg-blue-100 px-1 py-0.5 rounded">
-                    _bmad-output/planning-artifacts/{params.category}/
+                    _bmad-output/planning-artifacts/{category}/
                   </code>
                 </p>
                 <p className="text-blue-700 text-sm mt-2">
@@ -89,7 +90,7 @@ export default function ResearchPage({ params }: { params: { category: string } 
               <div className="mt-6">
                 <h3 className="text-lg font-semibold mb-4">Research Files</h3>
                 <div className="grid grid-cols-1 gap-3">
-                  {Array.from({ length: Math.min(category.count, 5) }).map((_, i) => (
+                  {Array.from({ length: Math.min(researchCategory.count, 5) }).map((_, i) => (
                     <Link
                       key={i}
                       href="#"
@@ -107,9 +108,9 @@ export default function ResearchPage({ params }: { params: { category: string } 
                       </div>
                     </Link>
                   ))}
-                  {category.count > 5 && (
+                  {researchCategory.count > 5 && (
                     <div className="text-center py-4 text-sm text-muted-foreground">
-                      + {category.count - 5} more files
+                      + {researchCategory.count - 5} more files
                     </div>
                   )}
                 </div>
@@ -124,7 +125,7 @@ export default function ResearchPage({ params }: { params: { category: string } 
                 key={key}
                 href={`/research/${key}`}
                 className={`block p-4 rounded-lg border-2 transition-all ${
-                  key === params.category
+                  key === category
                     ? 'border-primary bg-primary/5'
                     : 'border-gray-200 hover:border-primary/50'
                 }`}

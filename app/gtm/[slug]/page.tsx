@@ -38,8 +38,9 @@ const gtmStories: Record<string, { title: string; description: string }> = {
   },
 }
 
-export default function GTMStoryPage({ params }: { params: { slug: string } }) {
-  const story = gtmStories[params.slug]
+export default async function GTMStoryPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const story = gtmStories[slug]
 
   if (!story) {
     notFound()
@@ -85,7 +86,7 @@ export default function GTMStoryPage({ params }: { params: { slug: string } }) {
                 <p className="text-yellow-700 text-sm">
                   This story page is ready to display the full markdown content from{' '}
                   <code className="bg-yellow-100 px-1 py-0.5 rounded">
-                    _bmad-output/GTM/Stories/{params.slug}.md
+                    _bmad-output/GTM/Stories/{slug}.md
                   </code>
                 </p>
                 <p className="text-yellow-700 text-sm mt-2">

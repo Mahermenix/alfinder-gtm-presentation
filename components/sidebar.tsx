@@ -58,14 +58,9 @@ const navigation: NavItem[] = [
     ],
   },
   {
-    name: 'Visualizations',
-    href: '/visualizations',
+    name: 'Dashboard',
+    href: '/dashboard',
     icon: PieChart,
-  },
-  {
-    name: 'Resources',
-    href: '/resources',
-    icon: BookOpen,
   },
 ]
 

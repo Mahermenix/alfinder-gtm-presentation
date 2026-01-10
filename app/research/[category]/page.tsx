@@ -50,10 +50,10 @@ const researchCategories: Record<string, { title: string; description: string; c
 }
 
 const categoryColors: Record<string, { from: string; to: string; accent: string }> = {
-  'market-research': { from: 'from-blue-500', to: 'to-cyan-500', accent: 'text-blue-600' },
-  'competitors': { from: 'from-red-500', to: 'to-orange-500', accent: 'text-red-600' },
-  'allaboutalfinder': { from: 'from-purple-500', to: 'to-pink-500', accent: 'text-purple-600' },
-  'partnerships': { from: 'from-green-500', to: 'to-emerald-500', accent: 'text-green-600' },
+  'market-research': { from: 'from-[#065D7E]', to: 'to-[#11D4D8]', accent: 'text-[#065D7E]' },
+  'competitors': { from: 'from-[#0a7aa0]', to: 'to-[#11D4D8]', accent: 'text-[#0a7aa0]' },
+  'allaboutalfinder': { from: 'from-[#065D7E]', to: 'to-[#0a7aa0]', accent: 'text-[#065D7E]' },
+  'partnerships': { from: 'from-[#11D4D8]', to: 'to-[#065D7E]', accent: 'text-[#11D4D8]' },
 }
 
 // Extract key metrics from synthesis content
@@ -202,7 +202,7 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
             </div>
           )}
 
-          {/* Supporting Research */}
+          {/* Supporting Research - Compact Cards with Expandable Content */}
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 rounded-lg bg-gray-100">
@@ -216,74 +216,41 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-4">
               {supportingStories.map((file: any, index: number) => (
-                <Link
-                  key={file.slug || index}
-                  href={`#research-${index}`}
-                  className="group"
-                >
-                  <Card className="h-full bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-[#065D7E]/50 transition-all">
-                    <CardContent className="p-4">
-                      <div className="flex items-start gap-3">
-                        <div className={`p-2 rounded-lg bg-gradient-to-br ${colors.from} ${colors.to} bg-opacity-10 mt-1`}>
-                          <FileText className={`w-4 h-4 ${colors.accent}`} />
+                <details key={file.slug || index} className="group">
+                  <summary className="cursor-pointer">
+                    <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-[#065D7E]/50 transition-all">
+                      <CardContent className="p-4">
+                        <div className="flex items-start gap-3">
+                          <div className={`p-2 rounded-lg bg-gradient-to-br ${colors.from} ${colors.to} bg-opacity-10 mt-1 flex-shrink-0`}>
+                            <FileText className={`w-4 h-4 ${colors.accent}`} />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-[#065D7E] transition-colors">
+                              {file.title || file.slug}
+                            </h3>
+                            <p className="text-xs text-gray-500 line-clamp-1">
+                              {file.slug}
+                            </p>
+                          </div>
+                          <ArrowRight className="w-4 h-4 text-gray-500 group-hover:text-[#065D7E] group-open:rotate-90 transition-all mt-2 flex-shrink-0" />
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <h3 className="font-semibold text-gray-900 mb-1 line-clamp-2 group-hover:text-[#065D7E] transition-colors">
-                            {file.title || file.slug}
-                          </h3>
-                          <p className="text-xs text-gray-500 line-clamp-2">
-                            {file.slug}
-                          </p>
-                        </div>
-                        <ArrowRight className="w-4 h-4 text-gray-500 group-hover:text-[#065D7E] group-hover:translate-x-1 transition-all mt-2 flex-shrink-0" />
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-            </div>
-          </div>
+                      </CardContent>
+                    </Card>
+                  </summary>
 
-          {/* Full Research Archive (Collapsible) */}
-          {supportingStories.length > 0 && (
-            <div className="mb-8">
-              <details className="group">
-                <summary className="cursor-pointer">
-                  <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-all">
-                    <CardContent className="p-4">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <CheckCircle2 className="w-5 h-5 text-green-600" />
-                          <span className="font-semibold text-gray-900">
-                            View Full Research Archive ({supportingStories.length} files)
-                          </span>
-                        </div>
-                        <ArrowRight className="w-5 h-5 text-gray-500 group-open:rotate-90 transition-transform" />
-                      </div>
-                    </CardContent>
-                  </Card>
-                </summary>
-
-                <div className="mt-4 space-y-6">
-                  {supportingStories.map((file: any, index: number) => (
-                    <Card key={file.slug || index} id={`research-${index}`} className="overflow-hidden bg-white border border-gray-200 shadow-sm">
-                      <CardHeader className="bg-gradient-to-r from-gray-50 to-gray-100 border-b">
-                        <CardTitle className="flex items-center gap-2 text-lg text-gray-900">
-                          <FileText className="w-5 h-5 text-gray-600" />
-                          {file.title || file.slug}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent className="prose prose-gray max-w-none p-6">
+                  <div className="mt-2 ml-4">
+                    <Card className="bg-gray-50 border border-gray-200">
+                      <CardContent className="prose prose-gray prose-sm max-w-none p-6">
                         <MarkdownRenderer content={file.content} />
                       </CardContent>
                     </Card>
-                  ))}
-                </div>
-              </details>
+                  </div>
+                </details>
+              ))}
             </div>
-          )}
+          </div>
 
           {/* Quick Navigation */}
           <div>

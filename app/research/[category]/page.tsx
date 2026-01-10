@@ -132,7 +132,7 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
           {/* Hero Header */}
           <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#065D7E] via-[#0a7aa0] to-[#11D4D8] p-8 mb-8 shadow-xl">
             <div className="absolute inset-0 bg-black/10" />
-            <div className="relative z-10">
+            <div className="relative z-10 text-white">
               <div className="flex items-center gap-4 mb-4">
                 <div className="p-3 rounded-xl bg-white/20 backdrop-blur-sm">
                   <CategoryIcon className="w-8 h-8 text-white" />
@@ -144,7 +144,7 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
                 {researchCategory.title}
               </h1>
-              <p className="text-lg text-white/90 max-w-3xl">
+              <p className="text-lg text-white max-w-3xl">
                 {researchCategory.description}
               </p>
             </div>

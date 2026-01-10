@@ -5,23 +5,20 @@ import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import {
   Home,
-  Target,
-  TrendingUp,
-  DollarSign,
-  Users,
-  BarChart3,
-  FileText,
-  Search,
-  BookOpen,
-  PieChart,
-  CheckSquare,
   ExternalLink,
   Menu,
   X,
 } from 'lucide-react'
+import { LucideIcon } from 'lucide-react'
 import { useState } from 'react'
 
-const navigation = [
+interface NavItem {
+  name: string
+  href: string
+  icon: LucideIcon
+}
+
+const navigation: NavItem[] = [
   {
     name: 'Overview',
     href: '/',
@@ -90,26 +87,6 @@ export function Sidebar() {
                   <section.icon size={20} />
                   {!isCollapsed && <span>{section.name}</span>}
                 </Link>
-
-                {section.children && !isCollapsed && (
-                  <div className="ml-8 mt-2 space-y-1">
-                    {section.children.map((child) => (
-                      <Link
-                        key={child.name}
-                        href={child.href}
-                        className={cn(
-                          'block px-3 py-1.5 rounded-lg text-sm transition-colors',
-                          'hover:bg-gray-100 dark:hover:bg-gray-800',
-                          pathname === child.href
-                            ? 'text-primary font-medium'
-                            : 'text-gray-600 dark:text-gray-400'
-                        )}
-                      >
-                        {child.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
               </div>
             ))}
           </nav>

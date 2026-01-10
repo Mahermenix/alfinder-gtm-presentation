@@ -2,12 +2,12 @@ import { Sidebar } from '@/components/sidebar'
 import { FunnelChart } from '@/components/charts/funnel-chart'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { ArrowLeft, BarChart3 } from 'lucide-react'
+import { ArrowLeft, BarChart3, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 
 export default function VisualizationsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50">
+    <div className="min-h-screen">
       <Sidebar />
 
       <main className="lg:ml-72">
@@ -15,7 +15,7 @@ export default function VisualizationsPage() {
           {/* Back Button */}
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-6 transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-[#11D4D8] mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Overview
@@ -23,13 +23,13 @@ export default function VisualizationsPage() {
 
           {/* Header */}
           <div className="mb-8">
-            <Badge className="mb-4" variant="gradient">
+            <Badge className="mb-4 bg-[#11D4D8]/10 text-[#065D7E] border-[#11D4D8]/20">
               Visualizations
             </Badge>
-            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary via-purple-600 to-pink-500 bg-clip-text text-transparent">
+            <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-gradient-brand">
               GTM Visualizations
             </h1>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-gray-600 max-w-2xl">
               Interactive charts and diagrams illustrating the Alfinder go-to-market strategy
             </p>
           </div>
@@ -43,25 +43,25 @@ export default function VisualizationsPage() {
                   {
                     label: 'Trial Signups',
                     value: 100,
-                    color: '#6366f1',
+                    color: '#065D7E',
                     description: 'Merchant installs Alfinder',
                   },
                   {
                     label: 'Aha Moment',
                     value: 80,
-                    color: '#8b5cf6',
+                    color: '#11D4D8',
                     description: 'Experiences dialect search success',
                   },
                   {
                     label: 'Day 7 Payment Prompt',
                     value: 25,
-                    color: '#a855f7',
+                    color: '#0a7aa0',
                     description: 'Reaches payment decision point',
                   },
                   {
                     label: 'Paying Customers',
                     value: 21,
-                    color: '#ec4899',
+                    color: '#044256',
                     description: '21% net conversion (95% retention)',
                   },
                 ]}
@@ -77,16 +77,18 @@ export default function VisualizationsPage() {
               { title: 'Channel Performance', description: 'Expected ROI by channel' },
               { title: 'KPI Dashboard', description: 'Real-time metrics tracking' },
             ].map((viz) => (
-              <Card key={viz.title} className="border-l-4 border-l-primary/50">
+              <Card key={viz.title} className="glass-card hover-lift border-l-4 border-l-[#065D7E]">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-lg">
-                    <BarChart3 className="w-5 h-5 text-primary" />
+                  <CardTitle className="flex items-center gap-2 text-[#065D7E]">
+                    <div className="p-2 rounded-lg bg-[#065D7E]/10">
+                      <BarChart3 className="w-5 h-5 text-[#065D7E]" />
+                    </div>
                     {viz.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">{viz.description}</p>
-                  <Badge variant="secondary" className="mt-3">
+                  <p className="text-sm text-gray-600">{viz.description}</p>
+                  <Badge className="mt-3 bg-[#11D4D8]/10 text-[#11D4D8] border-[#11D4D8]/20">
                     Coming Soon
                   </Badge>
                 </CardContent>
@@ -95,13 +97,20 @@ export default function VisualizationsPage() {
           </div>
 
           {/* Info Card */}
-          <Card className="mt-8 bg-gradient-to-br from-primary/5 via-purple-500/5 to-pink-500/5">
+          <Card className="mt-8 bg-gradient-to-br from-[#065D7E]/5 to-[#11D4D8]/5 border border-[#11D4D8]/20">
             <CardContent className="p-6">
-              <p className="text-sm font-medium mb-2">💡 Interactive Visualizations</p>
-              <p className="text-sm text-muted-foreground">
-                More visualizations will be added as we implement additional chart types and data displays.
-                Each visualization will be interactive and exportable for presentations.
-              </p>
+              <div className="flex items-start gap-3">
+                <div className="p-2 rounded-lg bg-[#11D4D8]/20">
+                  <Sparkles className="w-5 h-5 text-[#11D4D8]" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-[#065D7E] mb-1">Interactive Visualizations</p>
+                  <p className="text-sm text-gray-600">
+                    More visualizations will be added as we implement additional chart types and data displays.
+                    Each visualization will be interactive and exportable for presentations.
+                  </p>
+                </div>
+              </div>
             </CardContent>
           </Card>
         </div>

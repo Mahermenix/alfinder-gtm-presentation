@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 import {
   Home,
   Target,
-  Search,
+  Search as SearchIcon,
   PieChart,
   BookOpen,
   ExternalLink,
@@ -17,6 +17,7 @@ import {
 } from 'lucide-react'
 import { LucideIcon } from 'lucide-react'
 import { useState } from 'react'
+import { GlobalSearch } from '@/components/global-search'
 
 interface NavItem {
   name: string
@@ -48,7 +49,7 @@ const navigation: NavItem[] = [
   {
     name: 'Research',
     href: '/research',
-    icon: Search,
+    icon: SearchIcon,
     children: [
       { name: 'Market Research', href: '/research/market-research' },
       { name: 'Competitor Analysis', href: '/research/competitors' },
@@ -158,6 +159,13 @@ export function Sidebar() {
               )}
             </div>
           </div>
+
+          {/* Search Bar */}
+          {!isCollapsed && (
+            <div className="px-4 pb-4">
+              <GlobalSearch />
+            </div>
+          )}
 
           {/* Navigation */}
           <nav className="flex-1 overflow-y-auto overflow-x-hidden p-4 space-y-2">

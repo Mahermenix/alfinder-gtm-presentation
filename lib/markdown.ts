@@ -1,7 +1,6 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { MDXRemoteSerializeError } from 'next-mdx-remote'
 
 const GTM_STORIES_PATH = path.join(process.cwd(), '..', '_bmad-output', 'GTM', 'Stories')
 const RESEARCH_PATH = path.join(process.cwd(), '..', '_bmad-output', 'planning-artifacts')

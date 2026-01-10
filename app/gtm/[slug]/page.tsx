@@ -4,6 +4,10 @@ import { Badge } from '@/components/ui/badge'
 import { ArrowLeft, Calendar } from 'lucide-react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
+import { MarkdownRenderer } from '@/components/markdown-renderer'
 
 // This would normally read from the content.json or markdown files
 // For now, we'll show a placeholder that indicates the story content
@@ -38,9 +42,32 @@ const gtmStories: Record<string, { title: string; description: string }> = {
   },
 }
 
+async function getStoryContent(slug: string) {
+  try {
+    const storiesPath = path.join(process.cwd(), '..', '_bmad-output', 'GTM', 'Stories')
+    const filePath = path.join(storiesPath, `${slug}.md`)
+
+    if (!fs.existsSync(filePath)) {
+      return null
+    }
+
+    const fileContent = fs.readFileSync(filePath, 'utf-8')
+    const { data, content } = matter(fileContent)
+
+    return {
+      frontmatter: data,
+      content,
+    }
+  } catch (error) {
+    console.error('Error reading story:', error)
+    return null
+  }
+}
+
 export default async function GTMStoryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const story = gtmStories[slug]
+  const storyContent = await getStoryContent(slug)
 
   if (!story) {
     notFound()
@@ -72,39 +99,32 @@ export default async function GTMStoryPage({ params }: { params: Promise<{ slug:
             <p className="text-xl text-muted-foreground">{story.description}</p>
           </div>
 
-          {/* Content Placeholder */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-primary" />
-                Story Content
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="prose prose-gray max-w-none">
-              <div className="p-6 bg-yellow-50 border border-yellow-200 rounded-lg">
-                <p className="text-yellow-800 font-medium mb-2">📄 Content Loading...</p>
+          {/* Content */}
+          {storyContent ? (
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Calendar className="w-5 h-5 text-primary" />
+                  Story Details
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="prose prose-gray max-w-none">
+                <MarkdownRenderer content={storyContent.content} />
+              </CardContent>
+            </Card>
+          ) : (
+            <Card>
+              <CardContent className="p-6 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <p className="text-yellow-800 font-medium mb-2">📄 Content Not Found</p>
                 <p className="text-yellow-700 text-sm">
-                  This story page is ready to display the full markdown content from{' '}
+                  The markdown file for this story could not be loaded from{' '}
                   <code className="bg-yellow-100 px-1 py-0.5 rounded">
                     _bmad-output/GTM/Stories/{slug}.md
                   </code>
                 </p>
-                <p className="text-yellow-700 text-sm mt-2">
-                  The content will be automatically loaded from the markdown file in the next update.
-                </p>
-              </div>
-
-              <div className="mt-6 space-y-4">
-                <h3 className="text-lg font-semibold">What's Included:</h3>
-                <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-                  <li>Detailed analysis and strategic recommendations</li>
-                  <li>Data-driven insights and metrics</li>
-                  <li>Actionable next steps and execution plans</li>
-                  <li>Supporting research and references</li>
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          )}
 
           {/* Navigation Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">

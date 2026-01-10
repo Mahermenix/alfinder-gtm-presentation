@@ -1556,8 +1556,8 @@ const renderSlideContent = (slideId: string) => {
                   {[
                     { channel: 'Google Search Ads', budget: '$2,800', pct: '35%' },
                     { channel: 'Instagram Ads', budget: '$2,000', pct: '25%' },
+                    { channel: 'Freelancers (Content & Ads)', budget: '$4,000', pct: '20%' },
                     { channel: 'Content Production', budget: '$1,600', pct: '20%' },
-                    { channel: 'Freelancers', budget: '$1,200', pct: '15%' },
                     { channel: 'Tools & Software', budget: '$400', pct: '5%' },
                   ].map((item) => (
                     <div key={item.channel}>
@@ -1631,12 +1631,13 @@ const renderSlideContent = (slideId: string) => {
                     <Zap className="w-6 h-6 text-[#11D4D8]" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-[#11D4D8] font-bold text-lg mb-2">Content Freelancers (2)</h3>
+                    <h3 className="text-[#11D4D8] font-bold text-lg mb-2">Content Writer & Graphic Designer</h3>
                     <p className="text-gray-500 text-sm mb-3">Part-time, $2,500/mo total</p>
                     <ul className="space-y-2 text-gray-600 text-sm">
                       <li>• Create social media content</li>
+                      <li>• Design ad creatives & graphics</li>
                       <li>• Produce video demos</li>
-                      <li>• Write case studies</li>
+                      <li>• Write case studies & blog posts</li>
                       <li>• Manage content calendar</li>
                     </ul>
                   </div>
@@ -1663,41 +1664,21 @@ const renderSlideContent = (slideId: string) => {
                 </div>
               </CardContent>
             </ModernCard>
-
-            <ModernCard highlight>
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-[#065D7E]/10">
-                    <Shield className="w-6 h-6 text-[#065D7E]" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-[#065D7E] font-bold text-lg mb-2">Customer Support</h3>
-                    <p className="text-gray-500 text-sm mb-3">Part-time, $1,000/mo</p>
-                    <ul className="space-y-2 text-gray-600 text-sm">
-                      <li>• Trial user onboarding</li>
-                      <li>• Customer success</li>
-                      <li>• Feedback collection</li>
-                      <li>• Churn prevention</li>
-                    </ul>
-                  </div>
-                </div>
-              </CardContent>
-            </ModernCard>
           </div>
 
           <Card className="border-0 shadow-md bg-white">
             <CardContent className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                 <div>
-                  <p className="text-3xl font-bold text-[#065D7E]">$6,000</p>
-                  <p className="text-sm text-gray-600">Monthly team cost</p>
+                  <p className="text-3xl font-bold text-[#065D7E]">$4,000</p>
+                  <p className="text-sm text-gray-600">Monthly freelancer cost</p>
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-[#11D4D8]">4</p>
+                  <p className="text-3xl font-bold text-[#11D4D8]">3</p>
                   <p className="text-sm text-gray-600">Team members</p>
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-[#0a7aa0]">30%</p>
+                  <p className="text-3xl font-bold text-[#0a7aa0]">20%</p>
                   <p className="text-sm text-gray-600">Of budget allocated</p>
                 </div>
               </div>

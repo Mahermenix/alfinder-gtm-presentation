@@ -703,7 +703,7 @@ export function HomeDashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-gray-500">
-              Made with love by <a href="https://momaher.com" target="_blank" rel="noopener noreferrer" className="text-[#11D4D8] hover:text-[#065D7E] font-medium transition-colors">Mo Maher</a>
+              Made with love by <a href="https://mahher.com" target="_blank" rel="noopener noreferrer" className="text-[#11D4D8] hover:text-[#065D7E] font-medium transition-colors">Mo Maher</a>
             </p>
             <div className="flex items-center gap-3">
               <Badge variant="outline" className="text-xs border-[#11D4D8]/20 text-[#065D7E]">

@@ -71,7 +71,6 @@ const navigation: NavItem[] = [
 
 export function Sidebar() {
   const pathname = usePathname()
-  const [isCollapsed, setIsCollapsed] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
 
   return (
@@ -89,12 +88,11 @@ export function Sidebar() {
         {isMobileOpen ? <X size={24} className="text-[#065D7E]" /> : <Menu size={24} className="text-[#065D7E]" />}
       </button>
 
-      {/* Sidebar - Futuristic glass morphism */}
+      {/* Sidebar - Always visible on desktop, toggle on mobile */}
       <aside
         className={cn(
-          'fixed top-0 left-0 z-40 h-screen transition-all duration-500 ease-out',
+          'fixed top-0 left-0 z-40 h-screen w-80 transition-all duration-500 ease-out',
           'glass-card border-r border-[#11D4D8]/20',
-          isCollapsed ? 'w-20' : 'w-80',
           isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         )}
       >
@@ -102,62 +100,30 @@ export function Sidebar() {
           {/* Header - Logo and Brand */}
           <div className="relative p-6 pb-4">
             <div className="flex flex-col items-center">
-              {!isCollapsed && (
-                <Link href="/" className="flex flex-col items-center gap-3 group">
-                  {/* Logo - No box, just the logo with space */}
-                  <div className="relative w-16 h-16">
-                    <Image
-                      src="https://alfinder.ai/dist/img/logo.png"
-                      alt="Alfinder Logo"
-                      width={64}
-                      height={64}
-                      className="object-contain"
-                    />
-                  </div>
-
-                  {/* Brand Text - Under the logo */}
-                  <div className="space-y-0.5 text-center">
-                    <p className="text-sm font-semibold text-[#065D7E]">GTM STRATEGY</p>
-                  </div>
-                </Link>
-              )}
-
-              {/* Collapse button - positioned to the right */}
-              <button
-                onClick={() => setIsCollapsed(!isCollapsed)}
-                className={cn(
-                  "absolute top-6 right-6 hidden lg:flex p-2 rounded-lg transition-all duration-300",
-                  "hover:bg-[#F0FBFB] hover:scale-110 active:scale-95",
-                  "text-[#065D7E] hover:text-[#11D4D8]"
-                )}
-                aria-label="Toggle sidebar"
-              >
-                <Menu size={18} />
-              </button>
-            </div>
-
-            {/* Collapsed logo */}
-            {isCollapsed && (
-              <Link href="/" className="mx-auto flex flex-col items-center gap-2">
-                <div className="relative w-10 h-10">
+              <Link href="/" className="flex flex-col items-center gap-3 group">
+                {/* Logo - No box, just the logo with space */}
+                <div className="relative w-16 h-16">
                   <Image
                     src="https://alfinder.ai/dist/img/logo.png"
                     alt="Alfinder Logo"
-                    width={40}
-                    height={40}
+                    width={64}
+                    height={64}
                     className="object-contain"
                   />
                 </div>
+
+                {/* Brand Text - Under the logo */}
+                <div className="space-y-0.5 text-center">
+                  <p className="text-sm font-semibold text-[#065D7E]">GTM STRATEGY</p>
+                </div>
               </Link>
-            )}
+            </div>
           </div>
 
           {/* Search Bar */}
-          {!isCollapsed && (
-            <div className="px-4 pb-4">
-              <GlobalSearch />
-            </div>
-          )}
+          <div className="px-4 pb-4">
+            <GlobalSearch />
+          </div>
 
           {/* Navigation */}
           <nav className="flex-1 overflow-y-auto overflow-x-hidden p-4 space-y-2">
@@ -184,19 +150,15 @@ export function Sidebar() {
                         isActive ? 'text-white' : 'text-[#11D4D8]'
                       )}
                     />
-                    {!isCollapsed && (
-                      <>
-                        <span className="font-medium text-sm">{section.name}</span>
-                        {section.children && (
-                          <ChevronRight
-                            size={16}
-                            className={cn(
-                              'ml-auto transition-transform duration-300',
-                              isActive && 'rotate-90'
-                            )}
-                          />
+                    <span className="font-medium text-sm">{section.name}</span>
+                    {section.children && (
+                      <ChevronRight
+                        size={16}
+                        className={cn(
+                          'ml-auto transition-transform duration-300',
+                          isActive && 'rotate-90'
                         )}
-                      </>
+                      />
                     )}
 
                     {/* Active indicator */}
@@ -206,7 +168,7 @@ export function Sidebar() {
                   </Link>
 
                   {/* Children */}
-                  {section.children && !isCollapsed && (
+                  {section.children && (
                     <div className={cn(
                       'ml-8 mt-1 space-y-1 overflow-hidden transition-all duration-500',
                       isActive ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
@@ -237,23 +199,21 @@ export function Sidebar() {
           </nav>
 
           {/* Footer - GitHub Link */}
-          {!isCollapsed && (
-            <div className="p-4 border-t border-[#11D4D8]/10">
-              <a
-                href="https://github.com/Mahermenix/alfinder-gtm-presentation"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  'flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium',
-                  'transition-all duration-300 hover:scale-[1.02]',
-                  'hover:bg-[#F0FBFB] text-[#065D7E] hover:text-[#11D4D8]'
-                )}
-              >
-                <ExternalLink size={16} className="text-[#11D4D8]" />
-                <span>View on GitHub</span>
-              </a>
-            </div>
-          )}
+          <div className="p-4 border-t border-[#11D4D8]/10">
+            <a
+              href="https://github.com/Mahermenix/alfinder-gtm-presentation"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                'flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium',
+                'transition-all duration-300 hover:scale-[1.02]',
+                'hover:bg-[#F0FBFB] text-[#065D7E] hover:text-[#11D4D8]'
+              )}
+            >
+              <ExternalLink size={16} className="text-[#11D4D8]" />
+              <span>View on GitHub</span>
+            </a>
+          </div>
         </div>
 
         {/* Decorative glow effect */}

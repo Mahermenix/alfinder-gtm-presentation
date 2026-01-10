@@ -73,130 +73,90 @@ export default async function GTMStoryPage({ params }: { params: Promise<{ slug:
   const nextStory = currentIndex < storySlugs.length - 1 ? storySlugs[currentIndex + 1] : null
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Sidebar />
 
-      <main className="lg:ml-72">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          {/* Back Button */}
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-[#11D4D8] mb-6 transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Overview
-          </Link>
-
-          {/* Header */}
-          <div className="mb-8">
-            <Badge className="mb-4 bg-[#11D4D8]/10 text-[#065D7E] border-[#11D4D8]/20">
-              GTM Strategy
-            </Badge>
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-gradient-brand">
-              {story.title}
-            </h1>
-            <p className="text-xl text-gray-700 max-w-3xl leading-relaxed">{story.description}</p>
+      <main className="lg:ml-72 flex-1 flex flex-col">
+        {/* Fixed Navigation Header - Always Visible */}
+        <div className="sticky top-0 z-10 bg-[#F0FBFB]/95 backdrop-blur-sm border-b border-[#11D4D8]/10 px-4 sm:px-6 lg:px-8 py-4">
+          <div className="max-w-4xl mx-auto">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-[#11D4D8] mb-4 transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back to Overview
+            </Link>
+            <div className="flex items-center justify-between">
+              <Badge className="bg-[#11D4D8]/10 text-[#065D7E] border-[#11D4D8]/20">
+                GTM Strategy {story.index + 1}/7
+              </Badge>
+              <div className="flex gap-3">
+                {previousStory && (
+                  <Link
+                    href={`/gtm/${previousStory}`}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#11D4D8]/20 hover:border-[#11D4D8] hover:shadow-md transition-all text-sm font-medium text-[#065D7E]"
+                  >
+                    <ArrowLeftIcon className="w-4 h-4" />
+                    Previous
+                  </Link>
+                )}
+                {nextStory && (
+                  <Link
+                    href={`/gtm/${nextStory}`}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-[#065D7E] to-[#11D4D8] text-white hover:shadow-lg transition-all text-sm font-medium"
+                  >
+                    Next
+                    <ArrowRightIcon className="w-4 h-4" />
+                  </Link>
+                )}
+              </div>
+            </div>
           </div>
+        </div>
 
-          {/* Content Card */}
-          {storyContent ? (
-            <Card className="glass-card">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-[#065D7E]">
-                  <div className="p-2 rounded-lg bg-[#065D7E]/10">
-                    <Calendar className="w-5 h-5 text-[#065D7E]" />
-                  </div>
-                  Story Details
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="prose prose-lg max-w-none">
-                <MarkdownRenderer content={storyContent.content} />
-              </CardContent>
-            </Card>
-          ) : (
-            <Card className="bg-gradient-to-br from-[#065D7E]/5 to-[#11D4D8]/5 border border-[#11D4D8]/20">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-lg bg-[#11D4D8]/20">
-                    <svg className="w-5 h-5 text-[#11D4D8]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.707.293H19a2 2 0 012 2v11a2 2 0 01-2 2z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-[#065D7E] mb-1">Content Not Found</p>
-                    <p className="text-sm text-gray-600">
-                      This story content could not be loaded from the content database.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          )}
+        {/* Scrollable Content */}
+        <div className="flex-1 overflow-y-auto">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            {/* Header */}
+            <div className="mb-8">
+              <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-[#065D7E]">
+                {story.title}
+              </h1>
+              <p className="text-xl text-gray-700 max-w-3xl leading-relaxed">{story.description}</p>
+            </div>
 
-          {/* Navigation Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-            {/* Previous Story */}
-            {previousStory ? (
-              <Link
-                href={`/gtm/${previousStory}`}
-                className="group"
-              >
-                <Card className="glass-card hover-lift border-l-4 border-l-[#065D7E] h-full">
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="p-2 rounded-lg bg-[#065D7E]/10 group-hover:bg-[#065D7E]/20 transition-colors">
-                    <ArrowLeftIcon className="w-4 h-4 text-[#065D7E]" />
-                  </div>
-                  <p className="text-sm font-medium text-gray-500">Previous Story</p>
-                </div>
-                <p className="text-lg font-bold text-[#065D7E] group-hover:text-[#11D4D8] transition-colors">
-                  {gtmStories[previousStory].title}
-                </p>
-                <p className="text-sm text-gray-500 mt-1 line-clamp-1">
-                  {gtmStories[previousStory].description}
-                </p>
-              </CardContent>
-            </Card>
-              </Link>
-            ) : (
-              <Card className="border-l-4 border-l-gray-300 opacity-50">
-                <CardContent className="p-6">
-                  <p className="text-sm font-medium text-gray-400 mb-2">Previous Story</p>
-                  <p className="text-gray-400">First story</p>
+            {/* Content Card */}
+            {storyContent ? (
+              <Card className="glass-card">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-[#065D7E]">
+                    <div className="p-2 rounded-lg bg-[#065D7E]/10">
+                      <Calendar className="w-5 h-5 text-[#065D7E]" />
+                    </div>
+                    Story Details
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="prose prose-lg max-w-none">
+                  <MarkdownRenderer content={storyContent.content} />
                 </CardContent>
               </Card>
-            )}
-
-            {/* Next Story */}
-            {nextStory ? (
-              <Link
-                href={`/gtm/${nextStory}`}
-                className="group"
-              >
-                <Card className="glass-card hover-lift border-l-4 border-l-[#11D4D8] h-full">
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center gap-2">
-                        <div className="p-2 rounded-lg bg-[#11D4D8]/10 group-hover:bg-[#11D4D8]/20 transition-colors">
-                          <ArrowRightIcon className="w-4 h-4 text-[#11D4D8]" />
-                        </div>
-                        <p className="text-sm font-medium text-gray-500">Next Story</p>
-                      </div>
-                    </div>
-                    <p className="text-lg font-bold text-[#065D7E] group-hover:text-[#11D4D8] transition-colors">
-                      {gtmStories[nextStory].title}
-                    </p>
-                    <p className="text-sm text-gray-500 mt-1 line-clamp-1">
-                      {gtmStories[nextStory].description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </Link>
             ) : (
-              <Card className="border-l-4 border-l-gray-300 opacity-50">
+              <Card className="bg-gradient-to-br from-[#065D7E]/5 to-[#11D4D8]/5 border border-[#11D4D8]/20">
                 <CardContent className="p-6">
-                  <p className="text-sm font-medium text-gray-400 mb-2">Next Story</p>
-                  <p className="text-gray-400">Last story</p>
+                  <div className="flex items-start gap-3">
+                    <div className="p-2 rounded-lg bg-[#11D4D8]/20">
+                      <svg className="w-5 h-5 text-[#11D4D8]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.707.293H19a2 2 0 012 2v11a2 2 0 01-2 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-[#065D7E] mb-1">Content Not Found</p>
+                      <p className="text-sm text-gray-600">
+                        This story content could not be loaded from the content database.
+                      </p>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             )}

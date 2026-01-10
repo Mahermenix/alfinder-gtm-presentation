@@ -120,9 +120,8 @@ export function Sidebar() {
                     </div>
                   </div>
 
-                  {/* Brand Text */}
+                  {/* Brand Text - Only show GTM STRATEGY */}
                   <div className="space-y-0.5">
-                    <h1 className="text-xl font-bold text-gradient-brand">Alfinder</h1>
                     <p className="text-xs text-[#11D4D8] font-medium tracking-wide">GTM STRATEGY</p>
                   </div>
                 </Link>

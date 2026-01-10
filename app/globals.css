@@ -228,10 +228,8 @@ body::before {
 
 /* Futuristic glass morphism effect */
 .glass-card {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(17, 212, 216, 0.2);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
 }
 
 .glass-card-dark {

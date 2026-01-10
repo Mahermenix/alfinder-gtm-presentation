@@ -73,12 +73,12 @@ export default async function GTMStoryPage({ params }: { params: Promise<{ slug:
   const nextStory = currentIndex < storySlugs.length - 1 ? storySlugs[currentIndex + 1] : null
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <Sidebar />
 
       <main className="lg:ml-72 flex-1 flex flex-col">
         {/* Fixed Navigation Header - Always Visible */}
-        <div className="sticky top-0 z-10 bg-[#F0FBFB]/95 backdrop-blur-sm border-b border-[#11D4D8]/10 px-4 sm:px-6 lg:px-8 py-4">
+        <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-gray-200 px-4 sm:px-6 lg:px-8 py-4">
           <div className="max-w-4xl mx-auto">
             <Link
               href="/"
@@ -95,7 +95,7 @@ export default async function GTMStoryPage({ params }: { params: Promise<{ slug:
                 {previousStory && (
                   <Link
                     href={`/gtm/${previousStory}`}
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-[#11D4D8]/20 hover:border-[#11D4D8] hover:shadow-md transition-all text-sm font-medium text-[#065D7E]"
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-gray-200 hover:border-[#11D4D8] hover:shadow-md transition-all text-sm font-medium text-[#065D7E]"
                   >
                     <ArrowLeftIcon className="w-4 h-4" />
                     Previous
@@ -128,7 +128,7 @@ export default async function GTMStoryPage({ params }: { params: Promise<{ slug:
 
             {/* Content Card */}
             {storyContent ? (
-              <Card className="glass-card">
+              <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-[#065D7E]">
                     <div className="p-2 rounded-lg bg-[#065D7E]/10">
@@ -142,7 +142,7 @@ export default async function GTMStoryPage({ params }: { params: Promise<{ slug:
                 </CardContent>
               </Card>
             ) : (
-              <Card className="bg-gradient-to-br from-[#065D7E]/5 to-[#11D4D8]/5 border border-[#11D4D8]/20">
+              <Card className="bg-white border border-[#11D4D8]/20 shadow-sm">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-3">
                     <div className="p-2 rounded-lg bg-[#11D4D8]/20">

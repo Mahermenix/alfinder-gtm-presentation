@@ -37,7 +37,7 @@ const researchCategories = [
 
 export default function ResearchPage() {
   return (
-    <div className="min-h-screen bg-[#F0FBFB]">
+    <div className="min-h-screen bg-white">
       <Sidebar />
 
       <main className="lg:ml-72">
@@ -68,7 +68,7 @@ export default function ResearchPage() {
                   href={`/research/${category.slug}`}
                   className="group"
                 >
-                  <Card className={`h-full border-l-4 ${colors[idx]} glass-card hover-lift transition-all`}>
+                  <Card className={`h-full border border-gray-200 shadow-sm hover:shadow-md transition-shadow border-l-4 ${colors[idx]}`}>
                     <CardContent className="p-6">
                       <div className="flex items-start justify-between mb-4">
                         <div className={`p-3 rounded-lg ${iconColors[idx]}`}>
@@ -94,7 +94,7 @@ export default function ResearchPage() {
           </div>
 
           {/* Stats Summary */}
-          <Card className="mt-8 glass-card">
+          <Card className="mt-8 bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
             <CardContent className="p-6">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                 <div>

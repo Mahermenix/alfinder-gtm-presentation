@@ -115,7 +115,7 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
   const metrics = synthesisStory ? extractMetrics(synthesisStory.content) : []
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50">
+    <div className="min-h-screen bg-white">
       <Sidebar />
 
       <main className="lg:ml-72">
@@ -123,14 +123,14 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
           {/* Back Button */}
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-6 transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-[#11D4D8] mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Overview
           </Link>
 
           {/* Hero Header */}
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary via-purple-600 to-pink-500 p-8 mb-8 shadow-xl">
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#065D7E] via-[#0a7aa0] to-[#11D4D8] p-8 mb-8 shadow-xl">
             <div className="absolute inset-0 bg-black/10" />
             <div className="relative z-10">
               <div className="flex items-center gap-4 mb-4">
@@ -156,13 +156,13 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
               {metrics.map((metric, idx) => {
                 const Icon = metric.icon
                 return (
-                  <Card key={idx} className="border-l-4 border-l-primary bg-gradient-to-br from-primary/5 to-transparent">
+                  <Card key={idx} className="border border-gray-200 shadow-sm hover:shadow-md transition-shadow border-l-4 border-l-[#065D7E]">
                     <CardContent className="p-4">
                       <div className="flex items-center gap-3 mb-2">
                         <div className={`p-2 rounded-lg bg-gradient-to-br ${colors.from} ${colors.to} bg-opacity-10`}>
                           <Icon className={`w-4 h-4 ${colors.accent}`} />
                         </div>
-                        <span className="text-xs text-muted-foreground uppercase tracking-wide">{metric.label}</span>
+                        <span className="text-xs text-gray-500 uppercase tracking-wide">{metric.label}</span>
                       </div>
                       <p className="text-2xl font-bold text-gray-900">{metric.value}</p>
                     </CardContent>
@@ -180,15 +180,15 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
                   <Lightbulb className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900">Executive Synthesis</h2>
-                  <p className="text-sm text-muted-foreground">Comprehensive analysis and strategic recommendations</p>
+                  <h2 className="text-2xl font-bold text-[#065D7E]">Executive Synthesis</h2>
+                  <p className="text-sm text-gray-600">Comprehensive analysis and strategic recommendations</p>
                 </div>
                 <Badge className={`ml-auto bg-gradient-to-r ${colors.from} ${colors.to} text-white border-0`}>
                   Featured
                 </Badge>
               </div>
 
-              <Card className="overflow-hidden shadow-lg border-2 border-primary/20">
+              <Card className="overflow-hidden shadow-lg border-2 border-[#065D7E]/20 bg-white">
                 <CardHeader className={`bg-gradient-to-r ${colors.from} ${colors.to} text-white`}>
                   <CardTitle className="flex items-center gap-2 text-white">
                     <FileText className="w-6 h-6" />
@@ -209,8 +209,8 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
                 <Search className="w-5 h-5 text-gray-600" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold text-gray-900">Supporting Research</h2>
-                <p className="text-sm text-muted-foreground">
+                <h2 className="text-2xl font-bold text-[#065D7E]">Supporting Research</h2>
+                <p className="text-sm text-gray-600">
                   {supportingStories.length} in-depth studies and analysis reports
                 </p>
               </div>
@@ -223,21 +223,21 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
                   href={`#research-${index}`}
                   className="group"
                 >
-                  <Card className="h-full transition-all hover:shadow-md hover:border-primary/50 border-2">
+                  <Card className="h-full bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-[#065D7E]/50 transition-all">
                     <CardContent className="p-4">
                       <div className="flex items-start gap-3">
                         <div className={`p-2 rounded-lg bg-gradient-to-br ${colors.from} ${colors.to} bg-opacity-10 mt-1`}>
                           <FileText className={`w-4 h-4 ${colors.accent}`} />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-semibold text-gray-900 mb-1 line-clamp-2 group-hover:text-primary transition-colors">
+                          <h3 className="font-semibold text-gray-900 mb-1 line-clamp-2 group-hover:text-[#065D7E] transition-colors">
                             {file.title || file.slug}
                           </h3>
-                          <p className="text-xs text-muted-foreground line-clamp-2">
+                          <p className="text-xs text-gray-500 line-clamp-2">
                             {file.slug}
                           </p>
                         </div>
-                        <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all mt-2 flex-shrink-0" />
+                        <ArrowRight className="w-4 h-4 text-gray-500 group-hover:text-[#065D7E] group-hover:translate-x-1 transition-all mt-2 flex-shrink-0" />
                       </div>
                     </CardContent>
                   </Card>
@@ -251,7 +251,7 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
             <div className="mb-8">
               <details className="group">
                 <summary className="cursor-pointer">
-                  <Card className="transition-all hover:shadow-md">
+                  <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-all">
                     <CardContent className="p-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
@@ -260,7 +260,7 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
                             View Full Research Archive ({supportingStories.length} files)
                           </span>
                         </div>
-                        <ArrowRight className="w-5 h-5 text-muted-foreground group-open:rotate-90 transition-transform" />
+                        <ArrowRight className="w-5 h-5 text-gray-500 group-open:rotate-90 transition-transform" />
                       </div>
                     </CardContent>
                   </Card>
@@ -268,9 +268,9 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
 
                 <div className="mt-4 space-y-6">
                   {supportingStories.map((file: any, index: number) => (
-                    <Card key={file.slug || index} id={`research-${index}`} className="overflow-hidden">
+                    <Card key={file.slug || index} id={`research-${index}`} className="overflow-hidden bg-white border border-gray-200 shadow-sm">
                       <CardHeader className="bg-gradient-to-r from-gray-50 to-gray-100 border-b">
-                        <CardTitle className="flex items-center gap-2 text-lg">
+                        <CardTitle className="flex items-center gap-2 text-lg text-gray-900">
                           <FileText className="w-5 h-5 text-gray-600" />
                           {file.title || file.slug}
                         </CardTitle>
@@ -287,7 +287,7 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
 
           {/* Quick Navigation */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Explore Other Categories</h3>
+            <h3 className="text-lg font-semibold text-[#065D7E] mb-4">Explore Other Categories</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {Object.entries(researchCategories).map(([key, cat]) => {
                 const CatIcon = cat.icon
@@ -298,15 +298,15 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
                     href={`/research/${key}`}
                     className={`block p-4 rounded-lg border-2 transition-all ${
                       key === category
-                        ? 'border-primary bg-primary/5 shadow-md'
-                        : 'border-gray-200 hover:border-primary/50 hover:shadow-md'
+                        ? 'border-[#065D7E] bg-[#065D7E]/5 shadow-md'
+                        : 'border-gray-200 hover:border-[#065D7E]/50 hover:shadow-md bg-white'
                     }`}
                   >
                     <div className={`p-2 rounded-lg bg-gradient-to-br ${catColors.from} ${catColors.to} bg-opacity-10 w-fit mb-3`}>
                       <CatIcon className={`w-5 h-5 ${catColors.accent}`} />
                     </div>
-                    <p className="text-sm font-medium mb-1">{cat.title}</p>
-                    <p className="text-xs text-muted-foreground">{cat.count} files</p>
+                    <p className="text-sm font-medium mb-1 text-gray-900">{cat.title}</p>
+                    <p className="text-xs text-gray-500">{cat.count} files</p>
                   </Link>
                 )
               })}

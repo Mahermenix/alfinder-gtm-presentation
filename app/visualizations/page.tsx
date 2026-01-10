@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 export default function VisualizationsPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Sidebar />
 
       <main className="lg:ml-72">
@@ -77,7 +77,7 @@ export default function VisualizationsPage() {
               { title: 'Channel Performance', description: 'Expected ROI by channel' },
               { title: 'KPI Dashboard', description: 'Real-time metrics tracking' },
             ].map((viz) => (
-              <Card key={viz.title} className="glass-card hover-lift border-l-4 border-l-[#065D7E]">
+              <Card key={viz.title} className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow border-l-4 border-l-[#065D7E]">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-[#065D7E]">
                     <div className="p-2 rounded-lg bg-[#065D7E]/10">
@@ -97,7 +97,7 @@ export default function VisualizationsPage() {
           </div>
 
           {/* Info Card */}
-          <Card className="mt-8 bg-gradient-to-br from-[#065D7E]/5 to-[#11D4D8]/5 border border-[#11D4D8]/20">
+          <Card className="mt-8 bg-white border border-[#11D4D8]/20 shadow-sm">
             <CardContent className="p-6">
               <div className="flex items-start gap-3">
                 <div className="p-2 rounded-lg bg-[#11D4D8]/20">

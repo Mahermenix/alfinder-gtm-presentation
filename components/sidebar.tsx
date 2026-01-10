@@ -80,7 +80,7 @@ export function Sidebar() {
         onClick={() => setIsMobileOpen(!isMobileOpen)}
         className={cn(
           "lg:hidden fixed top-4 left-4 z-50 p-3 rounded-2xl",
-          "glass-card glow-cyan transition-all duration-300",
+          "bg-white border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300",
           "hover:scale-105 active:scale-95"
         )}
         aria-label="Toggle menu"
@@ -92,7 +92,7 @@ export function Sidebar() {
       <aside
         className={cn(
           'fixed top-0 left-0 z-40 h-screen w-80 transition-all duration-500 ease-out',
-          'glass-card border-r border-[#11D4D8]/20',
+          'bg-white border-r border-gray-200 shadow-lg',
           isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         )}
       >

@@ -129,7 +129,7 @@ export function HomeDashboard() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="glass-card hover-lift border-l-4 border-l-[#065D7E]">
+            <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow border-l-4 border-l-[#065D7E]">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-[#065D7E]">
                   <div className="p-2 rounded-lg bg-[#065D7E]/10">
@@ -160,7 +160,7 @@ export function HomeDashboard() {
               </CardContent>
             </Card>
 
-            <Card className="glass-card hover-lift border-l-4 border-l-[#11D4D8]">
+            <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow border-l-4 border-l-[#11D4D8]">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-[#065D7E]">
                   <div className="p-2 rounded-lg bg-[#11D4D8]/10">
@@ -191,7 +191,7 @@ export function HomeDashboard() {
               </CardContent>
             </Card>
 
-            <Card className="glass-card hover-lift border-l-4 border-l-[#065D7E]">
+            <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow border-l-4 border-l-[#065D7E]">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-[#065D7E]">
                   <div className="p-2 rounded-lg bg-[#065D7E]/10">
@@ -283,7 +283,7 @@ export function HomeDashboard() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="glass-card hover-lift">
+            <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <CardHeader className="pb-3">
                 <CardDescription className="text-gray-500">Monthly Revenue</CardDescription>
                 <CardTitle className="text-2xl text-[#065D7E]">$102</CardTitle>
@@ -293,7 +293,7 @@ export function HomeDashboard() {
               </CardContent>
             </Card>
 
-            <Card className="glass-card hover-lift">
+            <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <CardHeader className="pb-3">
                 <CardDescription className="text-gray-500">Customer Lifetime</CardDescription>
                 <CardTitle className="text-2xl text-[#065D7E]">12 months</CardTitle>
@@ -303,7 +303,7 @@ export function HomeDashboard() {
               </CardContent>
             </Card>
 
-            <Card className="glass-card hover-lift">
+            <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <CardHeader className="pb-3">
                 <CardDescription className="text-gray-500">Lifetime Value</CardDescription>
                 <CardTitle className="text-2xl text-[#065D7E]">$1,224</CardTitle>
@@ -313,7 +313,7 @@ export function HomeDashboard() {
               </CardContent>
             </Card>
 
-            <Card className="glass-card hover-lift">
+            <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <CardHeader className="pb-3">
                 <CardDescription className="text-gray-500">Payback Period</CardDescription>
                 <CardTitle className="text-2xl text-[#065D7E]">3.2 months</CardTitle>
@@ -359,7 +359,7 @@ export function HomeDashboard() {
 
             <div className="space-y-6">
               {/* Channel Strategy Card */}
-              <Card className="glass-card border-l-4 border-l-[#11D4D8]">
+              <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow border-l-4 border-l-[#11D4D8]">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-[#065D7E]">
                     <div className="p-2 rounded-lg bg-[#11D4D8]/10">
@@ -391,7 +391,7 @@ export function HomeDashboard() {
               </Card>
 
               {/* Organic Channels Card */}
-              <Card className="glass-card">
+              <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-[#065D7E]">
                     <div className="p-2 rounded-lg bg-[#065D7E]/10">
@@ -421,7 +421,7 @@ export function HomeDashboard() {
               </Card>
 
               {/* Reinvestment Model */}
-              <Card className="bg-gradient-to-br from-[#065D7E]/5 to-[#11D4D8]/5 border border-[#11D4D8]/20">
+              <Card className="bg-white border border-[#11D4D8]/20 shadow-sm">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-3">
                     <div className="p-2 rounded-lg bg-[#11D4D8]/20">
@@ -449,7 +449,7 @@ export function HomeDashboard() {
             <h2 className="text-3xl sm:text-4xl font-bold text-[#065D7E]">6-Month Roadmap</h2>
           </div>
 
-          <Card className="glass-card">
+          <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
             <CardContent className="p-8">
               <div className="space-y-6">
                 {[
@@ -551,7 +551,7 @@ export function HomeDashboard() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card className="glass-card hover-lift border-t-4 border-t-[#065D7E]">
+            <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow border-t-4 border-t-[#065D7E]">
               <CardHeader>
                 <CardTitle className="text-[#065D7E]">Market Research</CardTitle>
                 <CardDescription>14 comprehensive studies</CardDescription>
@@ -578,7 +578,7 @@ export function HomeDashboard() {
               </CardContent>
             </Card>
 
-            <Card className="glass-card hover-lift border-t-4 border-t-[#11D4D8]">
+            <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow border-t-4 border-t-[#11D4D8]">
               <CardHeader>
                 <CardTitle className="text-[#065D7E]">Competitive Analysis</CardTitle>
                 <CardDescription>13 competitors analyzed</CardDescription>
@@ -605,7 +605,7 @@ export function HomeDashboard() {
               </CardContent>
             </Card>
 
-            <Card className="glass-card hover-lift border-t-4 border-t-[#065D7E]">
+            <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow border-t-4 border-t-[#065D7E]">
               <CardHeader>
                 <CardTitle className="text-[#065D7E]">Alfinder Analysis</CardTitle>
                 <CardDescription>18 deep-dive studies</CardDescription>
@@ -632,7 +632,7 @@ export function HomeDashboard() {
               </CardContent>
             </Card>
 
-            <Card className="glass-card hover-lift border-t-4 border-t-[#11D4D8]">
+            <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow border-t-4 border-t-[#11D4D8]">
               <CardHeader>
                 <CardTitle className="text-[#065D7E]">Partnership Opportunities</CardTitle>
                 <CardDescription>10 strategic partners identified</CardDescription>

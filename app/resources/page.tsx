@@ -63,7 +63,7 @@ export default function ResourcesPage() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Sidebar />
 
       <main className="lg:ml-72">
@@ -112,7 +112,7 @@ export default function ResourcesPage() {
           {/* Resources Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {filteredResources.map((section) => (
-              <Card key={section.category} className="glass-card hover-lift border-l-4 border-l-[#065D7E]">
+              <Card key={section.category} className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow border-l-4 border-l-[#065D7E]">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-[#065D7E]">
                     <div className="p-2 rounded-lg bg-[#065D7E]/10">
@@ -154,7 +154,7 @@ export default function ResourcesPage() {
           </div>
 
           {filteredResources.length === 0 && (
-            <Card className="glass-card">
+            <Card className="bg-white border border-gray-200 shadow-sm">
               <CardContent className="p-12 text-center">
                 <Search className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-[#065D7E] mb-2">No resources found</h3>
@@ -164,7 +164,7 @@ export default function ResourcesPage() {
           )}
 
           {/* External Links */}
-          <Card className="mt-8 glass-card">
+          <Card className="mt-8 bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-[#065D7E]">
                 <div className="p-2 rounded-lg bg-[#11D4D8]/10">
@@ -208,7 +208,7 @@ export default function ResourcesPage() {
           </Card>
 
           {/* Info Card */}
-          <Card className="mt-8 bg-gradient-to-br from-[#065D7E]/5 to-[#11D4D8]/5 border border-[#11D4D8]/20">
+          <Card className="mt-8 bg-white border border-[#11D4D8]/20 shadow-sm">
             <CardContent className="p-6">
               <div className="flex items-start gap-3">
                 <div className="p-2 rounded-lg bg-[#11D4D8]/20">

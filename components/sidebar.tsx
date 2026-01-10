@@ -5,9 +5,19 @@ import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import {
   Home,
+  Target,
+  TrendingUp,
+  DollarSign,
+  Users,
+  BarChart3,
+  FileText,
+  Search,
+  BookOpen,
+  PieChart,
   ExternalLink,
   Menu,
   X,
+  ChevronRight,
 } from 'lucide-react'
 import { LucideIcon } from 'lucide-react'
 import { useState } from 'react'
@@ -16,6 +26,7 @@ interface NavItem {
   name: string
   href: string
   icon: LucideIcon
+  children?: { name: string; href: string }[]
 }
 
 const navigation: NavItem[] = [
@@ -23,6 +34,41 @@ const navigation: NavItem[] = [
     name: 'Overview',
     href: '/',
     icon: Home,
+  },
+  {
+    name: 'GTM Strategy',
+    href: '/gtm',
+    icon: Target,
+    children: [
+      { name: '1. Target Audience', href: '/gtm/story-01-target-audience' },
+      { name: '2. Conversion Funnel', href: '/gtm/story-02-conversion-funnel' },
+      { name: '3. Channel Strategy', href: '/gtm/story-03-channel-strategy' },
+      { name: '4. Lead Generation', href: '/gtm/story-04-lead-generation' },
+      { name: '5. Budget & ROI', href: '/gtm/story-05-budget-roi' },
+      { name: '6. Timeline & KPIs', href: '/gtm/story-06-timeline-kpis' },
+      { name: '7. Master Plan', href: '/gtm/story-07-master-plan' },
+    ],
+  },
+  {
+    name: 'Research',
+    href: '/research',
+    icon: Search,
+    children: [
+      { name: 'Market Research', href: '/research/market-research' },
+      { name: 'Competitor Analysis', href: '/research/competitors' },
+      { name: 'Alfinder Analysis', href: '/research/allaboutalfinder' },
+      { name: 'Partnerships', href: '/research/partnerships' },
+    ],
+  },
+  {
+    name: 'Visualizations',
+    href: '/visualizations',
+    icon: PieChart,
+  },
+  {
+    name: 'Resources',
+    href: '/resources',
+    icon: BookOpen,
   },
 ]
 
@@ -86,7 +132,30 @@ export function Sidebar() {
                 >
                   <section.icon size={20} />
                   {!isCollapsed && <span>{section.name}</span>}
+                  {!isCollapsed && section.children && (
+                    <ChevronRight size={16} className="ml-auto" />
+                  )}
                 </Link>
+
+                {section.children && !isCollapsed && (
+                  <div className="ml-8 mt-2 space-y-1">
+                    {section.children.map((child) => (
+                      <Link
+                        key={child.name}
+                        href={child.href}
+                        className={cn(
+                          'block px-3 py-1.5 rounded-lg text-sm transition-colors',
+                          'hover:bg-gray-100 dark:hover:bg-gray-800',
+                          pathname === child.href
+                            ? 'text-primary font-medium'
+                            : 'text-gray-600 dark:text-gray-400'
+                        )}
+                      >
+                        {child.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </nav>
@@ -95,7 +164,7 @@ export function Sidebar() {
           {!isCollapsed && (
             <div className="p-4 border-t border-gray-200 dark:border-gray-800">
               <a
-                href="https://github.com"
+                href="https://github.com/Mahermenix/alfinder-gtm-presentation"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"

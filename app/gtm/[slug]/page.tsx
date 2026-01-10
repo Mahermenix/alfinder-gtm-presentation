@@ -6,8 +6,13 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import fs from 'fs'
 import path from 'path'
-import matter from 'gray-matter'
 import { MarkdownRenderer } from '@/components/markdown-renderer'
+
+async function getContent() {
+  const contentPath = path.join(process.cwd(), 'app', 'data', 'content.json')
+  const fileContent = fs.readFileSync(contentPath, 'utf-8')
+  return JSON.parse(fileContent)
+}
 
 // This would normally read from the content.json or markdown files
 // For now, we'll show a placeholder that indicates the story content
@@ -42,32 +47,13 @@ const gtmStories: Record<string, { title: string; description: string }> = {
   },
 }
 
-async function getStoryContent(slug: string) {
-  try {
-    const storiesPath = path.join(process.cwd(), '..', '_bmad-output', 'GTM', 'Stories')
-    const filePath = path.join(storiesPath, `${slug}.md`)
-
-    if (!fs.existsSync(filePath)) {
-      return null
-    }
-
-    const fileContent = fs.readFileSync(filePath, 'utf-8')
-    const { data, content } = matter(fileContent)
-
-    return {
-      frontmatter: data,
-      content,
-    }
-  } catch (error) {
-    console.error('Error reading story:', error)
-    return null
-  }
-}
-
 export default async function GTMStoryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const story = gtmStories[slug]
-  const storyContent = await getStoryContent(slug)
+  const content = await getContent()
+
+  // Find the story content from content.json
+  const storyContent = content.gtm?.find((s: any) => s.slug === slug)
 
   if (!story) {
     notFound()
@@ -117,10 +103,7 @@ export default async function GTMStoryPage({ params }: { params: Promise<{ slug:
               <CardContent className="p-6 bg-yellow-50 border border-yellow-200 rounded-lg">
                 <p className="text-yellow-800 font-medium mb-2">📄 Content Not Found</p>
                 <p className="text-yellow-700 text-sm">
-                  The markdown file for this story could not be loaded from{' '}
-                  <code className="bg-yellow-100 px-1 py-0.5 rounded">
-                    _bmad-output/GTM/Stories/{slug}.md
-                  </code>
+                  This story content could not be loaded from the content database.
                 </p>
               </CardContent>
             </Card>

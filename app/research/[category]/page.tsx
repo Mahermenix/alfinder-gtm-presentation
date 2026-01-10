@@ -6,8 +6,13 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import fs from 'fs'
 import path from 'path'
-import matter from 'gray-matter'
 import { MarkdownRenderer } from '@/components/markdown-renderer'
+
+async function getContent() {
+  const contentPath = path.join(process.cwd(), 'app', 'data', 'content.json')
+  const fileContent = fs.readFileSync(contentPath, 'utf-8')
+  return JSON.parse(fileContent)
+}
 
 const researchCategories: Record<string, { title: string; description: string; count: number }> = {
   'market-research': {
@@ -32,53 +37,21 @@ const researchCategories: Record<string, { title: string; description: string; c
   },
 }
 
-interface ResearchFile {
-  slug: string
-  title: string
-  content: string
-  frontmatter: Record<string, any>
-}
-
-async function getResearchFiles(category: string): Promise<ResearchFile[]> {
-  try {
-    const researchPath = path.join(process.cwd(), '..', '_bmad-output', 'planning-artifacts', category)
-
-    if (!fs.existsSync(researchPath)) {
-      return []
-    }
-
-    const files = fs.readdirSync(researchPath)
-    const markdownFiles = files.filter((f) => f.endsWith('.md'))
-
-    const researchFiles: ResearchFile[] = []
-
-    for (const file of markdownFiles) {
-      const filePath = path.join(researchPath, file)
-      const fileContent = fs.readFileSync(filePath, 'utf-8')
-      const { data, content } = matter(fileContent)
-
-      // Extract title from filename or frontmatter
-      const title = data.title || file.replace(/-\d+\.md$/, '').replace(/-/g, ' ').replace(/^(\d+)/, '$1. ')
-
-      researchFiles.push({
-        slug: file.replace('.md', ''),
-        title,
-        content,
-        frontmatter: data,
-      })
-    }
-
-    return researchFiles.sort((a, b) => a.slug.localeCompare(b.slug))
-  } catch (error) {
-    console.error('Error reading research files:', error)
-    return []
-  }
-}
-
 export default async function ResearchPage({ params }: { params: Promise<{ category: string }> }) {
   const { category } = await params
   const researchCategory = researchCategories[category]
-  const researchFiles = await getResearchFiles(category)
+  const content = await getContent()
+
+  // Map category to the key used in content.json
+  const categoryMapping: Record<string, string> = {
+    'market-research': 'market-research',
+    'competitors': 'competitors',
+    'allaboutalfinder': 'allaboutalfinder',
+    'partnerships': 'partnerships',
+  }
+
+  const contentKey = categoryMapping[category]
+  const researchFiles = contentKey ? (content.research as any)?.[contentKey] || [] : []
 
   if (!researchCategory) {
     notFound()
@@ -116,12 +89,12 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
           {/* Research Files */}
           {researchFiles.length > 0 ? (
             <div className="space-y-6">
-              {researchFiles.map((file) => (
-                <Card key={file.slug} className="overflow-hidden">
+              {researchFiles.map((file: any, index: number) => (
+                <Card key={file.slug || index} className="overflow-hidden">
                   <CardHeader className="bg-gradient-to-r from-primary/5 via-purple-500/5 to-pink-500/5">
                     <CardTitle className="flex items-center gap-2">
                       <FileText className="w-5 h-5 text-primary" />
-                      {file.title}
+                      {file.title || file.slug}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="prose prose-gray max-w-none">
@@ -135,10 +108,7 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
               <CardContent className="p-6 bg-blue-50 border border-blue-200 rounded-lg">
                 <p className="text-blue-800 font-medium mb-2">📚 Research Archive</p>
                 <p className="text-blue-700 text-sm">
-                  No research files found in{' '}
-                  <code className="bg-blue-100 px-1 py-0.5 rounded">
-                    _bmad-output/planning-artifacts/{category}/
-                  </code>
+                  No research files found in this category.
                 </p>
               </CardContent>
             </Card>

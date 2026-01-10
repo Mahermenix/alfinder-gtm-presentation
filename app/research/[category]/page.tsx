@@ -22,18 +22,18 @@ const researchCategories: Record<string, { title: string; description: string; c
   },
   'competitors': {
     title: 'Competitor Analysis',
-    description: 'In-depth analysis of 13 key competitors including Algolia, Lableb, and other search solutions.',
-    count: 13,
+    description: 'In-depth analysis of key competitors including Algolia, Lableb, and other search solutions.',
+    count: 14,
   },
   'allaboutalfinder': {
     title: 'Alfinder Deep Dive',
-    description: '18 comprehensive studies analyzing Alfinder\'s current position, strengths, and opportunities.',
-    count: 18,
+    description: 'Comprehensive studies analyzing Alfinder\'s current position, strengths, and opportunities.',
+    count: 21,
   },
   'partnerships': {
     title: 'Partnership Opportunities',
     description: 'Strategic partnership opportunities with Salla, Zid, payment gateways, and digital agencies.',
-    count: 10,
+    count: 13,
   },
 }
 

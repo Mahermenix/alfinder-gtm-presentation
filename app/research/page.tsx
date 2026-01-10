@@ -9,23 +9,23 @@ const researchCategories = [
     slug: 'market-research',
     title: 'Market Research',
     description: 'MENA e-commerce market analysis and search technology trends',
-    count: 14,
+    count: 16,
     icon: FileText,
     color: 'blue',
   },
   {
     slug: 'competitors',
     title: 'Competitor Analysis',
-    description: 'In-depth analysis of 13 key competitors in the search space',
-    count: 13,
+    description: 'In-depth analysis of key competitors in the search space',
+    count: 14,
     icon: Users,
     color: 'red',
   },
   {
     slug: 'allaboutalfinder',
     title: 'Alfinder Deep Dive',
-    description: '18 comprehensive studies of Alfinder\'s position and potential',
-    count: 18,
+    description: 'Comprehensive studies of Alfinder\'s position and potential',
+    count: 21,
     icon: Search,
     color: 'purple',
   },
@@ -33,7 +33,7 @@ const researchCategories = [
     slug: 'partnerships',
     title: 'Partnership Opportunities',
     description: 'Strategic partnerships with platforms and agencies',
-    count: 10,
+    count: 13,
     icon: Handshake,
     color: 'green',
   },
@@ -62,7 +62,7 @@ export default function ResearchPage() {
               Research & Analysis
             </h1>
             <p className="text-xl text-muted-foreground">
-              Explore 55+ research files covering market analysis, competitors, and strategic insights
+              Explore 64 research files covering market analysis, competitors, and strategic insights
             </p>
           </div>
 
@@ -104,19 +104,19 @@ export default function ResearchPage() {
             <CardContent className="p-6">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                 <div>
-                  <p className="text-3xl font-bold text-primary">14</p>
+                  <p className="text-3xl font-bold text-primary">16</p>
                   <p className="text-sm text-muted-foreground">Market Studies</p>
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-purple-600">13</p>
+                  <p className="text-3xl font-bold text-purple-600">14</p>
                   <p className="text-sm text-muted-foreground">Competitors</p>
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-pink-600">18</p>
+                  <p className="text-3xl font-bold text-pink-600">21</p>
                   <p className="text-sm text-muted-foreground">Alfinder Files</p>
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-blue-600">10</p>
+                  <p className="text-3xl font-bold text-blue-600">13</p>
                   <p className="text-sm text-muted-foreground">Partnerships</p>
                 </div>
               </div>

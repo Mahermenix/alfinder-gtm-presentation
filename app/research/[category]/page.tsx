@@ -1,7 +1,7 @@
 import { Sidebar } from '@/components/sidebar'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { ArrowLeft, FileText, Search } from 'lucide-react'
+import { ArrowLeft, FileText, Search, TrendingUp, Users, BarChart3, Target, Award, Lightbulb, CheckCircle2, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import fs from 'fs'
@@ -14,32 +14,77 @@ async function getContent() {
   return JSON.parse(fileContent)
 }
 
-const researchCategories: Record<string, { title: string; description: string; count: number }> = {
+// Synthesis story slug for each category
+const synthesisStories: Record<string, string> = {
+  'market-research': 'market-research/14-market-research-synthesis',
+  'competitors': 'competitors/10-competitive-landscape-synthesis',
+  'allaboutalfinder': 'allaboutalfinder/14-alfinder-synthesis',
+  'partnerships': 'partnerships/10-enterprise-software',
+}
+
+const researchCategories: Record<string, { title: string; description: string; count: number; icon: any }> = {
   'market-research': {
     title: 'Market Research',
     description: 'Comprehensive analysis of the MENA e-commerce market, search technology trends, and merchant needs.',
     count: 16,
+    icon: TrendingUp,
   },
   'competitors': {
     title: 'Competitor Analysis',
     description: 'In-depth analysis of key competitors including Algolia, Lableb, and other search solutions.',
     count: 14,
+    icon: Users,
   },
   'allaboutalfinder': {
     title: 'Alfinder Deep Dive',
     description: 'Comprehensive studies analyzing Alfinder\'s current position, strengths, and opportunities.',
     count: 21,
+    icon: Target,
   },
   'partnerships': {
     title: 'Partnership Opportunities',
     description: 'Strategic partnership opportunities with Salla, Zid, payment gateways, and digital agencies.',
     count: 13,
+    icon: Award,
   },
+}
+
+const categoryColors: Record<string, { from: string; to: string; accent: string }> = {
+  'market-research': { from: 'from-blue-500', to: 'to-cyan-500', accent: 'text-blue-600' },
+  'competitors': { from: 'from-red-500', to: 'to-orange-500', accent: 'text-red-600' },
+  'allaboutalfinder': { from: 'from-purple-500', to: 'to-pink-500', accent: 'text-purple-600' },
+  'partnerships': { from: 'from-green-500', to: 'to-emerald-500', accent: 'text-green-600' },
+}
+
+// Extract key metrics from synthesis content
+function extractMetrics(content: string) {
+  const metrics: { label: string; value: string; icon: any }[] = []
+
+  // Extract dollar values with B, M, K suffixes
+  const dollarMatches = content.match(/\$\{0,1}\d+[BMK]-?\d*\s*(Billion|Million|Thousand)?/gi)
+  if (dollarMatches) {
+    dollarMatches.slice(0, 4).forEach((match, idx) => {
+      const icons = [BarChart3, TrendingUp, Target, Award]
+      metrics.push({ label: 'Market Metric', value: match, icon: icons[idx % icons.length] })
+    })
+  }
+
+  // Extract percentage values
+  const percentMatches = content.match(/\d+%/g)
+  if (percentMatches) {
+    percentMatches.slice(0, 3).forEach((match, idx) => {
+      metrics.push({ label: 'Growth Rate', value: match, icon: TrendingUp })
+    })
+  }
+
+  return metrics
 }
 
 export default async function ResearchPage({ params }: { params: Promise<{ category: string }> }) {
   const { category } = await params
   const researchCategory = researchCategories[category]
+  const colors = categoryColors[category] || categoryColors['market-research']
+  const CategoryIcon = researchCategory.icon
 
   if (!researchCategory) {
     notFound()
@@ -59,14 +104,22 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
   const allResearch = content.research || []
   const researchFiles = allResearch.filter((file: any) =>
     prefixes.some(prefix => file.slug.startsWith(prefix))
-  )
+  ).sort((a: any, b: any) => a.slug.localeCompare(b.slug))
+
+  // Find the synthesis story
+  const synthesisSlug = synthesisStories[category]
+  const synthesisStory = researchFiles.find((file: any) => file.slug === synthesisSlug)
+  const supportingStories = researchFiles.filter((file: any) => file.slug !== synthesisSlug)
+
+  // Extract metrics from synthesis story
+  const metrics = synthesisStory ? extractMetrics(synthesisStory.content) : []
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50">
       <Sidebar />
 
       <main className="lg:ml-72">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Back Button */}
           <Link
             href="/"
@@ -76,64 +129,188 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
             Back to Overview
           </Link>
 
-          {/* Header */}
-          <div className="mb-8">
-            <Badge className="mb-4" variant="gradient">
-              Research
-            </Badge>
-            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary via-purple-600 to-pink-500 bg-clip-text text-transparent">
-              {researchCategory.title}
-            </h1>
-            <p className="text-xl text-muted-foreground">{researchCategory.description}</p>
-            <p className="text-sm text-muted-foreground mt-2">
-              {researchCategory.count} research files
-            </p>
+          {/* Hero Header */}
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary via-purple-600 to-pink-500 p-8 mb-8 shadow-xl">
+            <div className="absolute inset-0 bg-black/10" />
+            <div className="relative z-10">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 rounded-xl bg-white/20 backdrop-blur-sm">
+                  <CategoryIcon className="w-8 h-8 text-white" />
+                </div>
+                <Badge className="bg-white/20 backdrop-blur-sm text-white border-white/30">
+                  {researchCategory.count} Research Files
+                </Badge>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+                {researchCategory.title}
+              </h1>
+              <p className="text-lg text-white/90 max-w-3xl">
+                {researchCategory.description}
+              </p>
+            </div>
           </div>
 
-          {/* Research Files */}
-          {researchFiles.length > 0 ? (
-            <div className="space-y-6">
-              {researchFiles.map((file: any, index: number) => (
-                <Card key={file.slug || index} className="overflow-hidden">
-                  <CardHeader className="bg-gradient-to-r from-primary/5 via-purple-500/5 to-pink-500/5">
-                    <CardTitle className="flex items-center gap-2">
-                      <FileText className="w-5 h-5 text-primary" />
-                      {file.title || file.slug}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="prose prose-gray max-w-none">
-                    <MarkdownRenderer content={file.content} />
-                  </CardContent>
-                </Card>
+          {/* Key Metrics Dashboard */}
+          {metrics.length > 0 && (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              {metrics.map((metric, idx) => {
+                const Icon = metric.icon
+                return (
+                  <Card key={idx} className="border-l-4 border-l-primary bg-gradient-to-br from-primary/5 to-transparent">
+                    <CardContent className="p-4">
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className={`p-2 rounded-lg bg-gradient-to-br ${colors.from} ${colors.to} bg-opacity-10`}>
+                          <Icon className={`w-4 h-4 ${colors.accent}`} />
+                        </div>
+                        <span className="text-xs text-muted-foreground uppercase tracking-wide">{metric.label}</span>
+                      </div>
+                      <p className="text-2xl font-bold text-gray-900">{metric.value}</p>
+                    </CardContent>
+                  </Card>
+                )
+              })}
+            </div>
+          )}
+
+          {/* Synthesis Story - Featured */}
+          {synthesisStory && (
+            <div className="mb-8">
+              <div className="flex items-center gap-3 mb-4">
+                <div className={`p-2 rounded-lg bg-gradient-to-r ${colors.from} ${colors.to}`}>
+                  <Lightbulb className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900">Executive Synthesis</h2>
+                  <p className="text-sm text-muted-foreground">Comprehensive analysis and strategic recommendations</p>
+                </div>
+                <Badge className={`ml-auto bg-gradient-to-r ${colors.from} ${colors.to} text-white border-0`}>
+                  Featured
+                </Badge>
+              </div>
+
+              <Card className="overflow-hidden shadow-lg border-2 border-primary/20">
+                <CardHeader className={`bg-gradient-to-r ${colors.from} ${colors.to} text-white`}>
+                  <CardTitle className="flex items-center gap-2 text-white">
+                    <FileText className="w-6 h-6" />
+                    {synthesisStory.title || synthesisStory.slug}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="prose prose-gray max-w-none p-6">
+                  <MarkdownRenderer content={synthesisStory.content} />
+                </CardContent>
+              </Card>
+            </div>
+          )}
+
+          {/* Supporting Research */}
+          <div className="mb-8">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-2 rounded-lg bg-gray-100">
+                <Search className="w-5 h-5 text-gray-600" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900">Supporting Research</h2>
+                <p className="text-sm text-muted-foreground">
+                  {supportingStories.length} in-depth studies and analysis reports
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {supportingStories.map((file: any, index: number) => (
+                <Link
+                  key={file.slug || index}
+                  href={`#research-${index}`}
+                  className="group"
+                >
+                  <Card className="h-full transition-all hover:shadow-md hover:border-primary/50 border-2">
+                    <CardContent className="p-4">
+                      <div className="flex items-start gap-3">
+                        <div className={`p-2 rounded-lg bg-gradient-to-br ${colors.from} ${colors.to} bg-opacity-10 mt-1`}>
+                          <FileText className={`w-4 h-4 ${colors.accent}`} />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-semibold text-gray-900 mb-1 line-clamp-2 group-hover:text-primary transition-colors">
+                            {file.title || file.slug}
+                          </h3>
+                          <p className="text-xs text-muted-foreground line-clamp-2">
+                            {file.slug}
+                          </p>
+                        </div>
+                        <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all mt-2 flex-shrink-0" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
             </div>
-          ) : (
-            <Card>
-              <CardContent className="p-6 bg-blue-50 border border-blue-200 rounded-lg">
-                <p className="text-blue-800 font-medium mb-2">📚 Research Archive</p>
-                <p className="text-blue-700 text-sm">
-                  No research files found in this category.
-                </p>
-              </CardContent>
-            </Card>
+          </div>
+
+          {/* Full Research Archive (Collapsible) */}
+          {supportingStories.length > 0 && (
+            <div className="mb-8">
+              <details className="group">
+                <summary className="cursor-pointer">
+                  <Card className="transition-all hover:shadow-md">
+                    <CardContent className="p-4">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <CheckCircle2 className="w-5 h-5 text-green-600" />
+                          <span className="font-semibold text-gray-900">
+                            View Full Research Archive ({supportingStories.length} files)
+                          </span>
+                        </div>
+                        <ArrowRight className="w-5 h-5 text-muted-foreground group-open:rotate-90 transition-transform" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </summary>
+
+                <div className="mt-4 space-y-6">
+                  {supportingStories.map((file: any, index: number) => (
+                    <Card key={file.slug || index} id={`research-${index}`} className="overflow-hidden">
+                      <CardHeader className="bg-gradient-to-r from-gray-50 to-gray-100 border-b">
+                        <CardTitle className="flex items-center gap-2 text-lg">
+                          <FileText className="w-5 h-5 text-gray-600" />
+                          {file.title || file.slug}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="prose prose-gray max-w-none p-6">
+                        <MarkdownRenderer content={file.content} />
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </details>
+            </div>
           )}
 
           {/* Quick Navigation */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-            {Object.entries(researchCategories).map(([key, cat]) => (
-              <Link
-                key={key}
-                href={`/research/${key}`}
-                className={`block p-4 rounded-lg border-2 transition-all ${
-                  key === category
-                    ? 'border-primary bg-primary/5'
-                    : 'border-gray-200 hover:border-primary/50'
-                }`}
-              >
-                <p className="text-sm font-medium mb-1">{cat.title}</p>
-                <p className="text-xs text-muted-foreground">{cat.count} files</p>
-              </Link>
-            ))}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Explore Other Categories</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {Object.entries(researchCategories).map(([key, cat]) => {
+                const CatIcon = cat.icon
+                const catColors = categoryColors[key] || categoryColors['market-research']
+                return (
+                  <Link
+                    key={key}
+                    href={`/research/${key}`}
+                    className={`block p-4 rounded-lg border-2 transition-all ${
+                      key === category
+                        ? 'border-primary bg-primary/5 shadow-md'
+                        : 'border-gray-200 hover:border-primary/50 hover:shadow-md'
+                    }`}
+                  >
+                    <div className={`p-2 rounded-lg bg-gradient-to-br ${catColors.from} ${catColors.to} bg-opacity-10 w-fit mb-3`}>
+                      <CatIcon className={`w-5 h-5 ${catColors.accent}`} />
+                    </div>
+                    <p className="text-sm font-medium mb-1">{cat.title}</p>
+                    <p className="text-xs text-muted-foreground">{cat.count} files</p>
+                  </Link>
+                )
+              })}
+            </div>
           </div>
         </div>
       </main>

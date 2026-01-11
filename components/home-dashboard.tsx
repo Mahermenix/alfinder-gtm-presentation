@@ -470,17 +470,20 @@ export function HomeDashboard() {
           <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
             <CardContent className="p-8">
               <div className="space-y-6">
-                {[
-                  { month: 'Month 1', users: '0 (foundation)', focus: 'Launch all channels', milestone: 'GTM Launch Complete', color: 'from-[#065D7E] to-[#11D4D8]' },
-                  { month: 'Month 2', users: '10-20', focus: 'First paying users', milestone: 'Reinvestment Loop Active', color: 'from-[#11D4D8] to-[#0a7aa0]' },
-                  { month: 'Month 3', users: '40-60', focus: 'Validation phase', milestone: 'Break-Even Achieved', color: 'from-[#065D7E] to-[#11D4D8]' },
-                  { month: 'Month 4', users: '80-110', focus: 'Scaling winners', milestone: 'Cash Flow Positive', color: 'from-[#11D4D8] to-[#0a7aa0]' },
-                  { month: 'Month 5', users: '120-140', focus: 'Aggressive growth', milestone: 'Conservative Target Close', color: 'from-[#065D7E] to-[#11D4D8]' },
-                  { month: 'Month 6', users: '160-300', focus: 'Final push', milestone: 'Target Achieved', color: 'from-[#11D4D8] to-[#065D7E]' },
-                ].map((item, index) => (
+                {metrics.roadmap.map((item, index) => {
+                  const colors = [
+                    'from-[#065D7E] to-[#11D4D8]',
+                    'from-[#11D4D8] to-[#0a7aa0]',
+                    'from-[#065D7E] to-[#11D4D8]',
+                    'from-[#11D4D8] to-[#0a7aa0]',
+                    'from-[#065D7E] to-[#11D4D8]',
+                    'from-[#11D4D8] to-[#065D7E]'
+                  ]
+                  const color = colors[index % colors.length]
+                  return (
                   <div key={item.month} className="relative pl-10 pb-6 last:pb-0">
                     {/* Timeline indicator */}
-                    <div className={`absolute left-0 top-1 w-10 h-10 rounded-xl bg-gradient-to-br shadow-lg flex items-center justify-center text-white text-sm font-bold ${item.color}`}>
+                    <div className={`absolute left-0 top-1 w-10 h-10 rounded-xl bg-gradient-to-br shadow-lg flex items-center justify-center text-white text-sm font-bold ${color}`}>
                       {index + 1}
                     </div>
 
@@ -500,7 +503,7 @@ export function HomeDashboard() {
                       </div>
                     </div>
                   </div>
-                ))}
+                )})}
               </div>
             </CardContent>
           </Card>
@@ -520,7 +523,7 @@ export function HomeDashboard() {
               <CardContent className="p-6">
                 <p className="text-gray-600 text-sm mb-2">Paid Media</p>
                 <p className="text-3xl font-bold mb-1 text-[#065D7E]">${metrics.paidMedia.toLocaleString()}</p>
-                <p className="text-gray-500 text-sm">60% of budget</p>
+                <p className="text-gray-500 text-sm">{((metrics.paidMedia / metrics.budget) * 100).toFixed(0)}% of budget</p>
               </CardContent>
             </Card>
 
@@ -528,7 +531,7 @@ export function HomeDashboard() {
               <CardContent className="p-6">
                 <p className="text-gray-600 text-sm mb-2">Content Production</p>
                 <p className="text-3xl font-bold mb-1 text-[#11D4D8]">${metrics.content.toLocaleString()}</p>
-                <p className="text-gray-500 text-sm">15% of budget</p>
+                <p className="text-gray-500 text-sm">{((metrics.content / metrics.budget) * 100).toFixed(0)}% of budget</p>
               </CardContent>
             </Card>
 
@@ -536,7 +539,7 @@ export function HomeDashboard() {
               <CardContent className="p-6">
                 <p className="text-gray-600 text-sm mb-2">Freelancers</p>
                 <p className="text-3xl font-bold mb-1 text-[#065D7E]">${metrics.freelancers.toLocaleString()}</p>
-                <p className="text-gray-500 text-sm">15% of budget</p>
+                <p className="text-gray-500 text-sm">{((metrics.freelancers / metrics.budget) * 100).toFixed(0)}% of budget</p>
               </CardContent>
             </Card>
 
@@ -544,7 +547,7 @@ export function HomeDashboard() {
               <CardContent className="p-6">
                 <p className="text-gray-600 text-sm mb-2">Tools & Software</p>
                 <p className="text-3xl font-bold mb-1 text-[#11D4D8]">${metrics.tools.toLocaleString()}</p>
-                <p className="text-gray-500 text-sm">5% of budget</p>
+                <p className="text-gray-500 text-sm">{((metrics.tools / metrics.budget) * 100).toFixed(0)}% of budget</p>
               </CardContent>
             </Card>
 
@@ -552,7 +555,7 @@ export function HomeDashboard() {
               <CardContent className="p-6">
                 <p className="text-gray-600 text-sm mb-2">Retention</p>
                 <p className="text-3xl font-bold mb-1 text-[#0a7aa0]">${metrics.retention.toLocaleString()}</p>
-                <p className="text-gray-500 text-sm">5% of budget</p>
+                <p className="text-gray-500 text-sm">{((metrics.retention / metrics.budget) * 100).toFixed(0)}% of budget</p>
               </CardContent>
             </Card>
           </div>

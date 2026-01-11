@@ -30,6 +30,7 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { useBudget } from '@/components/budget-context'
 import { BudgetToggle } from '@/components/budget-toggle'
+import { InfoTooltip } from '@/components/ui/tooltip'
 
 // ============================================
 // TYPES
@@ -249,7 +250,10 @@ const renderSlideContent = (slideId: string, metrics: any) => {
                     <TrendingUp className="w-5 h-5 text-[#11D4D8]" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-[#11D4D8] text-xs font-semibold mb-1 tracking-wider uppercase">Growth Target</p>
+                    <p className="text-[#11D4D8] text-xs font-semibold mb-1 tracking-wider uppercase flex items-center gap-1">
+                      Growth Target
+                      <InfoTooltip content={`${metrics.budgetLabel} budget ÷ $200 CAC = ${Math.round(metrics.budget / 200)} paying users. Assuming 33% trial-to-paid conversion.`} />
+                    </p>
                     <p className="text-gray-900 font-bold text-lg mb-1">{metrics.targetUsers} paying users</p>
                     <p className="text-gray-500 text-sm">Conservative: {metrics.monthlyMRR} revenue | Stretch: {metrics.targetUsersMax * 2}+ users</p>
                   </div>
@@ -279,9 +283,12 @@ const renderSlideContent = (slideId: string, metrics: any) => {
                     <DollarSign className="w-5 h-5 text-[#065D7E]" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-[#065D7E] text-xs font-semibold mb-1 tracking-wider uppercase">Unit Economics</p>
+                    <p className="text-[#065D7E] text-xs font-semibold mb-1 tracking-wider uppercase flex items-center gap-1">
+                      Unit Economics
+                      <InfoTooltip content="LTV:CAC = $1,040 LTV ÷ $200 CAC = 5.2x. Payback = $200 ÷ $80/month = 2.5 months to recover acquisition costs." />
+                    </p>
                     <p className="text-gray-900 font-bold text-lg mb-1">5.2x LTV:CAC, 2.5mo payback</p>
-                    <p className="text-gray-500 text-sm">$1,040 net LTV, ${metrics.cpa} CAC, Break-even Month 3</p>
+                    <p className="text-gray-500 text-sm">$1,040 net LTV, $200 CAC, Break-even Month 3</p>
                   </div>
                 </div>
               </CardContent>
@@ -372,9 +379,12 @@ const renderSlideContent = (slideId: string, metrics: any) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <ModernCard>
               <CardContent className="p-6">
-                <p className="text-gray-400 text-xs font-semibold mb-2 uppercase tracking-wider">Revenue (Month 6)</p>
+                <p className="text-gray-400 text-xs font-semibold mb-2 uppercase tracking-wider flex items-center gap-1">
+                  Revenue (Month 6)
+                  <InfoTooltip content="{metrics.targetUsersMin}-{metrics.targetUsersMax} users × $102/month = {metrics.monthlyMRR} MRR. Based on Pro plan pricing midpoint." />
+                </p>
                 <div className="flex items-baseline gap-2 mb-2">
-                  <p className="text-4xl font-bold text-gray-900">$16.3K</p>
+                  <p className="text-4xl font-bold text-gray-900">{metrics.monthlyMRR}</p>
                   <p className="text-gray-500 text-sm">MRR</p>
                 </div>
                 <p className="text-gray-500 text-sm">Conservative: $60K total | Stretch: $114K+ total</p>
@@ -383,9 +393,12 @@ const renderSlideContent = (slideId: string, metrics: any) => {
 
             <ModernCard>
               <CardContent className="p-6">
-                <p className="text-gray-400 text-xs font-semibold mb-2 uppercase tracking-wider">Trial Signups</p>
+                <p className="text-gray-400 text-xs font-semibold mb-2 uppercase tracking-wider flex items-center gap-1">
+                  Trial Signups
+                  <InfoTooltip content="{metrics.initialTrials} trial signups ÷ 33% conversion = ~{Math.round(metrics.initialTrials * 0.33)} paying users. Based on $80 CPA per trial." />
+                </p>
                 <div className="flex items-baseline gap-2 mb-2">
-                  <p className="text-4xl font-bold text-gray-900">480-500</p>
+                  <p className="text-4xl font-bold text-gray-900">{metrics.initialTrials}-{Math.round(metrics.initialTrials * 1.05)}</p>
                   <p className="text-gray-500 text-sm">total trials</p>
                 </div>
                 <p className="text-gray-500 text-sm">33% trial-to-paid conversion rate (5 paying per 15 trials)</p>
@@ -420,22 +433,19 @@ const renderSlideContent = (slideId: string, metrics: any) => {
             <CardContent className="p-6">
               <p className="text-gray-900 font-bold text-lg mb-5">Monthly Milestones</p>
               <div className="space-y-3">
-                {[
-                  { month: 'M1', metric: '75-90 trials', milestone: 'GTM Launch Complete', color: 'bg-[#065D7E]' },
-                  { month: 'M2', metric: '10-20 paying users', milestone: 'Reinvestment Loop Active', color: 'bg-[#0a7aa0]' },
-                  { month: 'M3', metric: '40-60 paying users', milestone: 'Break-Even Achieved', color: 'bg-[#11D4D8]' },
-                  { month: 'M4', metric: '80-110 paying users', milestone: 'Cash Flow Positive', color: 'bg-[#065D7E]' },
-                  { month: 'M5', metric: '120-140 paying users', milestone: 'Conservative Target Close', color: 'bg-[#0a7aa0]' },
-                  { month: 'M6', metric: '160 paying users', milestone: 'Target Achieved ✓', color: 'bg-[#11D4D8]' },
-                ].map((item) => (
+                {metrics.roadmap.map((item, index) => {
+                  const colors = ['bg-[#065D7E]', 'bg-[#0a7aa0]', 'bg-[#11D4D8]', 'bg-[#065D7E]', 'bg-[#0a7aa0]', 'bg-[#11D4D8]']
+                  const color = colors[index % colors.length]
+                  const shortMonth = `M${index + 1}`
+                  return (
                   <div key={item.month} className="flex items-center justify-between p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
                     <div className="flex items-center gap-4">
-                      <Badge className={cn("text-white", item.color)}>{item.month}</Badge>
-                      <span className="text-gray-900 font-semibold">{item.metric}</span>
+                      <Badge className={cn("text-white", color)}>{shortMonth}</Badge>
+                      <span className="text-gray-900 font-semibold">{item.users} users</span>
                     </div>
                     <AccentBadge color="accent">{item.milestone}</AccentBadge>
                   </div>
-                ))}
+                )})}
               </div>
             </CardContent>
           </Card>
@@ -493,21 +503,30 @@ const renderSlideContent = (slideId: string, metrics: any) => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="text-center">
                   <div className="p-4 rounded-xl bg-gray-50 mb-3">
-                    <p className="text-gray-400 text-xs font-semibold mb-1 uppercase tracking-wider">Net LTV (Lifetime Value)</p>
+                    <p className="text-gray-400 text-xs font-semibold mb-1 uppercase tracking-wider flex items-center justify-center gap-1">
+                      Net LTV (Lifetime Value)
+                      <InfoTooltip content="$80/month contribution margin × 13 months average customer lifetime = $1,040. Based on 78% gross margin after fees, hosting, and support." />
+                    </p>
                     <p className="text-3xl font-bold text-gray-900">$1,040</p>
                     <p className="text-gray-500 text-sm mt-1">$80 contribution × 13 months</p>
                   </div>
                 </div>
                 <div className="text-center">
                   <div className="p-4 rounded-xl bg-gray-50 mb-3">
-                    <p className="text-gray-400 text-xs font-semibold mb-1 uppercase tracking-wider">CAC (Acquisition Cost)</p>
+                    <p className="text-gray-400 text-xs font-semibold mb-1 uppercase tracking-wider flex items-center justify-center gap-1">
+                      CAC (Acquisition Cost)
+                      <InfoTooltip content="$80 CPA per trial ÷ 33% trial-to-paid conversion = $242 per paying customer. Rounded to $200 for conservative projection." />
+                    </p>
                     <p className="text-3xl font-bold text-gray-900">$200</p>
                     <p className="text-gray-500 text-sm mt-1">Per paying user (includes conversion)</p>
                   </div>
                 </div>
                 <div className="text-center">
                   <div className="p-4 rounded-xl bg-[#11D4D8]/5 border-2 border-[#11D4D8]/20 mb-3">
-                    <p className="text-gray-400 text-xs font-semibold mb-1 uppercase tracking-wider">LTV:CAC Ratio</p>
+                    <p className="text-gray-400 text-xs font-semibold mb-1 uppercase tracking-wider flex items-center justify-center gap-1">
+                      LTV:CAC Ratio
+                      <InfoTooltip content="$1,040 LTV ÷ $200 CAC = 5.2x. Industry benchmark is 3:1 minimum. 5.2x indicates healthy unit economics." />
+                    </p>
                     <p className="text-3xl font-bold text-[#11D4D8]">5.2:1</p>
                     <p className="text-gray-500 text-sm mt-1">Healthy (&gt;3:1)</p>
                   </div>
@@ -1366,18 +1385,21 @@ const renderSlideContent = (slideId: string, metrics: any) => {
           </div>
 
           <div className="space-y-4">
-            {[
-              { month: 'Month 1', focus: 'Launch all channels', users: '0 (foundation)', milestone: 'GTM Launch Complete', color: 'from-[#065D7E] to-[#11D4D8]' },
-              { month: 'Month 2', focus: 'First paying users', users: '10-20', milestone: 'Reinvestment Loop Active', color: 'from-[#11D4D8] to-[#0a7aa0]' },
-              { month: 'Month 3', focus: 'Validation phase', users: '40-60', milestone: 'Break-Even Achieved', color: 'from-[#065D7E] to-[#11D4D8]' },
-              { month: 'Month 4', focus: 'Scaling winners', users: '80-110', milestone: 'Cash Flow Positive', color: 'from-[#11D4D8] to-[#0a7aa0]' },
-              { month: 'Month 5', focus: 'Aggressive growth', users: '120-140', milestone: 'Conservative Target Close', color: 'from-[#065D7E] to-[#11D4D8]' },
-              { month: 'Month 6', focus: 'Final push', users: '160 / 300', milestone: 'Target Achieved', color: 'from-[#11D4D8] to-[#065D7E]' },
-            ].map((item, index) => (
+            {metrics.roadmap.map((item, index) => {
+              const colors = [
+                'from-[#065D7E] to-[#11D4D8]',
+                'from-[#11D4D8] to-[#0a7aa0]',
+                'from-[#065D7E] to-[#11D4D8]',
+                'from-[#11D4D8] to-[#0a7aa0]',
+                'from-[#065D7E] to-[#11D4D8]',
+                'from-[#11D4D8] to-[#065D7E]'
+              ]
+              const color = colors[index % colors.length]
+              return (
               <Card key={item.month} className="border-0 shadow-md bg-white">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-6">
-                    <div className={`p-3 rounded-xl bg-gradient-to-br ${item.color} text-white flex-shrink-0`}>
+                    <div className={`p-3 rounded-xl bg-gradient-to-br ${color} text-white flex-shrink-0`}>
                       <span className="text-lg font-bold">{index + 1}</span>
                     </div>
                     <div className="flex-1">
@@ -1391,7 +1413,7 @@ const renderSlideContent = (slideId: string, metrics: any) => {
                   </div>
                 </CardContent>
               </Card>
-            ))}
+            )})}
           </div>
         </div>
       )
@@ -1627,7 +1649,7 @@ const renderSlideContent = (slideId: string, metrics: any) => {
                     <Users className="w-6 h-6 text-[#065D7E]" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-[#065D7E] font-bold text-lg mb-2">GTM Lead (Founder)</h3>
+                    <h3 className="text-[#065D7E] font-bold text-lg mb-2">GTM Lead</h3>
                     <p className="text-gray-500 text-sm mb-3">Full-time</p>
                     <ul className="space-y-2 text-gray-600 text-sm">
                       <li>• Strategy & budget decisions</li>
@@ -1648,7 +1670,7 @@ const renderSlideContent = (slideId: string, metrics: any) => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-[#11D4D8] font-bold text-lg mb-2">Content Writer & Graphic Designer</h3>
-                    <p className="text-gray-500 text-sm mb-3">Part-time, $2,500/mo total</p>
+                    <p className="text-gray-500 text-sm mb-3">Part-time, $15K total (6 months)</p>
                     <ul className="space-y-2 text-gray-600 text-sm">
                       <li>• Create social media content</li>
                       <li>• Design ad creatives & graphics</li>
@@ -1669,7 +1691,7 @@ const renderSlideContent = (slideId: string, metrics: any) => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-[#0a7aa0] font-bold text-lg mb-2">Ads Specialist</h3>
-                    <p className="text-gray-500 text-sm mb-3">Contractor, $1,500/mo</p>
+                    <p className="text-gray-500 text-sm mb-3">Contractor, $9K total (6 months)</p>
                     <ul className="space-y-2 text-gray-600 text-sm">
                       <li>• Manage Google/Instagram ads</li>
                       <li>• A/B test creatives</li>
@@ -1686,15 +1708,15 @@ const renderSlideContent = (slideId: string, metrics: any) => {
             <CardContent className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                 <div>
-                  <p className="text-3xl font-bold text-[#065D7E]">$4,000</p>
-                  <p className="text-sm text-gray-600">Monthly freelancer cost</p>
+                  <p className="text-3xl font-bold text-[#065D7E]">$24K</p>
+                  <p className="text-sm text-gray-600">Total freelancer cost (6 months)</p>
                 </div>
                 <div>
                   <p className="text-3xl font-bold text-[#11D4D8]">3</p>
                   <p className="text-sm text-gray-600">Team members</p>
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-[#0a7aa0]">20%</p>
+                  <p className="text-3xl font-bold text-[#0a7aa0]">{metrics.budget === 20000 ? '15%' : '7.5%'}</p>
                   <p className="text-sm text-gray-600">Of budget allocated</p>
                 </div>
               </div>

@@ -1,22 +1,48 @@
 'use client'
 
+import { useState } from 'react'
 import { useBudget } from './budget-context'
-import { DollarSign, TrendingUp } from 'lucide-react'
+import { DollarSign, TrendingUp, Minimize2, Maximize2 } from 'lucide-react'
 
 export function BudgetToggle() {
   const { budgetLevel, setBudgetLevel, getMetrics } = useBudget()
   const metrics = getMetrics()
+  const [isMinimized, setIsMinimized] = useState(false)
+
+  if (isMinimized) {
+    return (
+      <button
+        onClick={() => setIsMinimized(false)}
+        className="fixed bottom-8 left-8 z-50 bg-white rounded-lg shadow-xl border-2 border-[#11D4D8]/20 p-3 hover:shadow-2xl transition-all duration-200 animate-fade-in group"
+        title="Show Budget Scenario"
+      >
+        <div className="flex items-center gap-2">
+          <Maximize2 className="w-4 h-4 text-[#065D7E]" />
+          <span className="font-bold text-[#065D7E]">{metrics.budgetLabel}</span>
+        </div>
+      </button>
+    )
+  }
 
   return (
-    <div className="fixed bottom-8 left-8 z-50 bg-white rounded-xl shadow-2xl border-2 border-[#11D4D8]/20 p-4 animate-fade-in">
-      <div className="flex items-center gap-3 mb-3">
-        <div className="p-2 rounded-lg bg-gradient-to-br from-[#065D7E] to-[#11D4D8]">
-          <DollarSign className="w-5 h-5 text-white" />
+    <div className="fixed bottom-8 left-8 z-50 bg-white rounded-xl shadow-2xl border-2 border-[#11D4D8]/20 p-4 animate-fade-in max-w-xs">
+      <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center gap-3">
+          <div className="p-2 rounded-lg bg-gradient-to-br from-[#065D7E] to-[#11D4D8]">
+            <DollarSign className="w-5 h-5 text-white" />
+          </div>
+          <div>
+            <p className="text-xs text-gray-500 font-medium">BUDGET SCENARIO</p>
+            <p className="text-lg font-bold text-[#065D7E]">{metrics.budgetLabel}</p>
+          </div>
         </div>
-        <div>
-          <p className="text-xs text-gray-500 font-medium">BUDGET SCENARIO</p>
-          <p className="text-lg font-bold text-[#065D7E]">{metrics.budgetLabel}</p>
-        </div>
+        <button
+          onClick={() => setIsMinimized(true)}
+          className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition-colors"
+          title="Minimize"
+        >
+          <Minimize2 className="w-4 h-4" />
+        </button>
       </div>
 
       <div className="flex items-center gap-2 bg-gray-100 rounded-lg p-1">

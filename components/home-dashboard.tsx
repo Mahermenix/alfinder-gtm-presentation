@@ -470,7 +470,7 @@ export function HomeDashboard() {
           <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
             <CardContent className="p-8">
               <div className="space-y-6">
-                {metrics.roadmap.map((item, index) => {
+                {metrics.roadmap.map((item: { month: string; users: string; focus: string; milestone: string }, index) => {
                   const colors = [
                     'from-[#065D7E] to-[#11D4D8]',
                     'from-[#11D4D8] to-[#0a7aa0]',

@@ -264,7 +264,7 @@ export function HomeDashboard() {
             />
             <MetricCard
               title="Expected ROI"
-              value={180}
+              value={1.8}
               variant="percentage"
               target="250% (stretch)"
               icon={BarChart3}

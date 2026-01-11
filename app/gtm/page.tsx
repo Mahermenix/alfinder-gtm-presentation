@@ -445,6 +445,7 @@ const renderSlideContent = (slideId: string, metrics: any) => {
                     </div>
                     <AccentBadge color="accent">{item.milestone}</AccentBadge>
                   </div>
+                  )
                 })}
               </div>
             </CardContent>

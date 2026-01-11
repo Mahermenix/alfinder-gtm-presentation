@@ -278,7 +278,7 @@ const renderSlideContent = (slideId: string) => {
                   </div>
                   <div className="flex-1">
                     <p className="text-[#065D7E] text-xs font-semibold mb-1 tracking-wider uppercase">Unit Economics</p>
-                    <p className="text-gray-900 font-bold text-lg mb-1">29.5x LTV:CAC, <1mo payback</p>
+                    <p className="text-gray-900 font-bold text-lg mb-1">29.5x LTV:CAC, less than 1mo payback</p>
                     <p className="text-gray-500 text-sm">$2,360 LTV, $80 CAC, Break-even Month 1</p>
                   </div>
                 </div>

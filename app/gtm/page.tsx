@@ -248,8 +248,8 @@ const renderSlideContent = (slideId: string) => {
                   </div>
                   <div className="flex-1">
                     <p className="text-[#11D4D8] text-xs font-semibold mb-1 tracking-wider uppercase">Growth Target</p>
-                    <p className="text-gray-900 font-bold text-lg mb-1">140-150 paying users</p>
-                    <p className="text-gray-500 text-sm">Conservative: $46K revenue | Stretch: 300 users, $93K revenue</p>
+                    <p className="text-gray-900 font-bold text-lg mb-1">160 paying users</p>
+                    <p className="text-gray-500 text-sm">Conservative: $60K revenue | Stretch: 300 users, $114K+ revenue</p>
                   </div>
                 </div>
               </CardContent>
@@ -278,8 +278,8 @@ const renderSlideContent = (slideId: string) => {
                   </div>
                   <div className="flex-1">
                     <p className="text-[#065D7E] text-xs font-semibold mb-1 tracking-wider uppercase">Unit Economics</p>
-                    <p className="text-gray-900 font-bold text-lg mb-1">3.7x LTV:CAC, 3.2mo payback</p>
-                    <p className="text-gray-500 text-sm">$1,224 LTV, $330 CAC, 90-200% ROI over 6 months</p>
+                    <p className="text-gray-900 font-bold text-lg mb-1">29.5x LTV:CAC, <1mo payback</p>
+                    <p className="text-gray-500 text-sm">$2,360 LTV, $80 CAC, Break-even Month 1</p>
                   </div>
                 </div>
               </CardContent>
@@ -297,7 +297,7 @@ const renderSlideContent = (slideId: string) => {
                   <p className="text-gray-900 font-bold text-xl mb-3">Core Strategy</p>
                   <p className="text-gray-600 leading-relaxed">
                     Launch balanced acquisition (paid + organic) targeting Saudi/Gulf Salla/Zid merchants.
-                    Achieve 140-150 paying users in 6 months with $20K investment. Break-even by Month 3.
+                    Achieve 160 paying users (conservative) or 300 (optimistic) in 6 months with $20K investment. Break-even by Month 1.
                     Self-funding from Month 4 via reinvestment loop.
                   </p>
                 </div>
@@ -315,13 +315,19 @@ const renderSlideContent = (slideId: string) => {
             </ModernCard>
             <ModernCard>
               <CardContent className="p-5 text-center">
-                <p className="text-3xl font-bold text-[#065D7E] mb-1">$80</p>
-                <p className="text-gray-500 text-sm font-medium">Target CPA</p>
+                <p className="text-3xl font-bold text-[#065D7E] mb-1">$40</p>
+                <p className="text-gray-500 text-sm font-medium">CPA Per Trial</p>
               </CardContent>
             </ModernCard>
             <ModernCard>
               <CardContent className="p-5 text-center">
-                <p className="text-3xl font-bold text-[#0a7aa0] mb-1">25%</p>
+                <p className="text-3xl font-bold text-[#0a7aa0] mb-1">$80</p>
+                <p className="text-gray-500 text-sm font-medium">CAC Per User</p>
+              </CardContent>
+            </ModernCard>
+            <ModernCard>
+              <CardContent className="p-5 text-center">
+                <p className="text-3xl font-bold text-[#11D4D8] mb-1">33%</p>
                 <p className="text-gray-500 text-sm font-medium">Trial Conversion</p>
               </CardContent>
             </ModernCard>
@@ -350,10 +356,10 @@ const renderSlideContent = (slideId: string) => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-gray-900 font-bold text-2xl mb-2">Paying Users</p>
-                  <p className="text-gray-600">From 0 to 140-150 in 6 months</p>
+                  <p className="text-gray-600">From 0 to 160 (conservative) or 300 (optimistic) in 6 months</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-6xl font-bold text-[#065D7E]">140-150</p>
+                  <p className="text-6xl font-bold text-[#065D7E]">160</p>
                   <p className="text-gray-600 text-sm mt-1">conservative target</p>
                 </div>
               </div>
@@ -366,10 +372,10 @@ const renderSlideContent = (slideId: string) => {
               <CardContent className="p-6">
                 <p className="text-gray-400 text-xs font-semibold mb-2 uppercase tracking-wider">Revenue (Month 6)</p>
                 <div className="flex items-baseline gap-2 mb-2">
-                  <p className="text-4xl font-bold text-gray-900">$14-15K</p>
+                  <p className="text-4xl font-bold text-gray-900">$16.3K</p>
                   <p className="text-gray-500 text-sm">MRR</p>
                 </div>
-                <p className="text-gray-500 text-sm">Conservative: $46K total | Stretch: $93K total</p>
+                <p className="text-gray-500 text-sm">Conservative: $60K total | Stretch: $114K+ total</p>
               </CardContent>
             </ModernCard>
 
@@ -377,21 +383,21 @@ const renderSlideContent = (slideId: string) => {
               <CardContent className="p-6">
                 <p className="text-gray-400 text-xs font-semibold mb-2 uppercase tracking-wider">Trial Signups</p>
                 <div className="flex items-baseline gap-2 mb-2">
-                  <p className="text-4xl font-bold text-gray-900">560-600</p>
+                  <p className="text-4xl font-bold text-gray-900">480-500</p>
                   <p className="text-gray-500 text-sm">total trials</p>
                 </div>
-                <p className="text-gray-500 text-sm">25% trial-to-paid conversion rate</p>
+                <p className="text-gray-500 text-sm">33% trial-to-paid conversion rate (5 paying per 15 trials)</p>
               </CardContent>
             </ModernCard>
 
             <ModernCard>
               <CardContent className="p-6">
-                <p className="text-gray-400 text-xs font-semibold mb-2 uppercase tracking-wider">CPA (Blended)</p>
+                <p className="text-gray-400 text-xs font-semibold mb-2 uppercase tracking-wider">CPA (Per Trial)</p>
                 <div className="flex items-baseline gap-2 mb-2">
-                  <p className="text-4xl font-bold text-gray-900">&lt;$80</p>
+                  <p className="text-4xl font-bold text-gray-900">&lt;$40</p>
                   <p className="text-gray-500 text-sm">target</p>
                 </div>
-                <p className="text-gray-500 text-sm">Stretch goal: &lt;$60 through optimization</p>
+                <p className="text-gray-500 text-sm">CAC per paying user: $80 (all-in, including trial costs)</p>
               </CardContent>
             </ModernCard>
 
@@ -415,10 +421,10 @@ const renderSlideContent = (slideId: string) => {
                 {[
                   { month: 'M1', metric: '75-90 trials', milestone: 'GTM Launch Complete', color: 'bg-[#065D7E]' },
                   { month: 'M2', metric: '10-20 paying users', milestone: 'Reinvestment Loop Active', color: 'bg-[#0a7aa0]' },
-                  { month: 'M3', metric: '35-50 paying users', milestone: 'Break-Even Achieved', color: 'bg-[#11D4D8]' },
-                  { month: 'M4', metric: '60-80 paying users', milestone: 'Cash Flow Positive', color: 'bg-[#065D7E]' },
-                  { month: 'M5', metric: '90-115 paying users', milestone: 'Conservative Target Close', color: 'bg-[#0a7aa0]' },
-                  { month: 'M6', metric: '140-150 paying users', milestone: 'Target Achieved ✓', color: 'bg-[#11D4D8]' },
+                  { month: 'M3', metric: '40-60 paying users', milestone: 'Break-Even Achieved', color: 'bg-[#11D4D8]' },
+                  { month: 'M4', metric: '80-110 paying users', milestone: 'Cash Flow Positive', color: 'bg-[#065D7E]' },
+                  { month: 'M5', metric: '120-140 paying users', milestone: 'Conservative Target Close', color: 'bg-[#0a7aa0]' },
+                  { month: 'M6', metric: '160 paying users', milestone: 'Target Achieved ✓', color: 'bg-[#11D4D8]' },
                 ].map((item) => (
                   <div key={item.month} className="flex items-center justify-between p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
                     <div className="flex items-center gap-4">
@@ -461,8 +467,8 @@ const renderSlideContent = (slideId: string) => {
                   <TrendingUp className="w-8 h-8 text-[#11D4D8]" />
                 </div>
                 <p className="text-gray-400 text-sm font-semibold mb-2 uppercase tracking-wider">Conservative Return</p>
-                <p className="text-5xl font-bold text-gray-900 mb-2">$46,000</p>
-                <p className="text-gray-500">90% ROI</p>
+                <p className="text-5xl font-bold text-gray-900 mb-2">$60,000</p>
+                <p className="text-gray-500">200% ROI</p>
               </CardContent>
             </Card>
 
@@ -472,8 +478,8 @@ const renderSlideContent = (slideId: string) => {
                   <Award className="w-8 h-8 text-[#0a7aa0]" />
                 </div>
                 <p className="text-gray-400 text-sm font-semibold mb-2 uppercase tracking-wider">Stretch Return</p>
-                <p className="text-5xl font-bold text-gray-900 mb-2">$93,000</p>
-                <p className="text-gray-500">200% ROI</p>
+                <p className="text-5xl font-bold text-gray-900 mb-2">$114,000+</p>
+                <p className="text-gray-500">470%+ ROI</p>
               </CardContent>
             </Card>
           </div>
@@ -486,22 +492,22 @@ const renderSlideContent = (slideId: string) => {
                 <div className="text-center">
                   <div className="p-4 rounded-xl bg-gray-50 mb-3">
                     <p className="text-gray-400 text-xs font-semibold mb-1 uppercase tracking-wider">LTV (Lifetime Value)</p>
-                    <p className="text-3xl font-bold text-gray-900">$1,224</p>
-                    <p className="text-gray-500 text-sm mt-1">383 SAR × 12 months</p>
+                    <p className="text-3xl font-bold text-gray-900">$2,360</p>
+                    <p className="text-gray-500 text-sm mt-1">383 SAR × 20 months</p>
                   </div>
                 </div>
                 <div className="text-center">
                   <div className="p-4 rounded-xl bg-gray-50 mb-3">
                     <p className="text-gray-400 text-xs font-semibold mb-1 uppercase tracking-wider">CAC (Acquisition Cost)</p>
-                    <p className="text-3xl font-bold text-gray-900">$330</p>
-                    <p className="text-gray-500 text-sm mt-1">Per paying user</p>
+                    <p className="text-3xl font-bold text-gray-900">$80</p>
+                    <p className="text-gray-500 text-sm mt-1">Per paying user (all-in)</p>
                   </div>
                 </div>
                 <div className="text-center">
                   <div className="p-4 rounded-xl bg-[#11D4D8]/5 border-2 border-[#11D4D8]/20 mb-3">
                     <p className="text-gray-400 text-xs font-semibold mb-1 uppercase tracking-wider">LTV:CAC Ratio</p>
-                    <p className="text-3xl font-bold text-[#11D4D8]">3.7:1</p>
-                    <p className="text-gray-500 text-sm mt-1">Healthy (&gt;3:1)</p>
+                    <p className="text-3xl font-bold text-[#11D4D8]">29.5:1</p>
+                    <p className="text-gray-500 text-sm mt-1">Exceptional (&gt;3:1)</p>
                   </div>
                 </div>
               </div>
@@ -514,23 +520,23 @@ const renderSlideContent = (slideId: string) => {
               <p className="text-gray-900 font-bold text-lg mb-5">Payback Timeline</p>
               <div className="grid grid-cols-4 gap-4 text-center">
                 <div className="p-4 rounded-xl bg-gray-50">
-                  <p className="text-gray-400 text-xs mb-1 font-semibold">MONTH 3</p>
+                  <p className="text-gray-400 text-xs mb-1 font-semibold">MONTH 1</p>
                   <p className="text-xl font-bold text-[#0a7aa0] mb-1">Break-Even</p>
-                  <p className="text-gray-500 text-xs">Investment recovered</p>
+                  <p className="text-gray-500 text-xs">&lt;1 month payback</p>
                 </div>
                 <div className="p-4 rounded-xl bg-gray-50">
-                  <p className="text-gray-400 text-xs mb-1 font-semibold">MONTH 4</p>
+                  <p className="text-gray-400 text-xs mb-1 font-semibold">MONTH 2</p>
                   <p className="text-xl font-bold text-[#11D4D8] mb-1">Cash Flow +</p>
                   <p className="text-gray-500 text-xs">Self-funding starts</p>
                 </div>
                 <div className="p-4 rounded-xl bg-gray-50">
                   <p className="text-gray-400 text-xs mb-1 font-semibold">MONTH 6</p>
-                  <p className="text-xl font-bold text-[#065D7E] mb-1">2.3-4.6x</p>
+                  <p className="text-xl font-bold text-[#065D7E] mb-1">3-5.7x</p>
                   <p className="text-gray-500 text-xs">Total return</p>
                 </div>
                 <div className="p-4 rounded-xl bg-[#11D4D8]/5 border-2 border-[#11D4D8]/20">
                   <p className="text-gray-400 text-xs mb-1 font-semibold">PAYBACK</p>
-                  <p className="text-xl font-bold text-[#11D4D8] mb-1">3.2 mo</p>
+                  <p className="text-xl font-bold text-[#11D4D8] mb-1">0.78 mo</p>
                   <p className="text-gray-500 text-xs">Per customer</p>
                 </div>
               </div>
@@ -548,8 +554,8 @@ const renderSlideContent = (slideId: string) => {
                   <p className="text-[#065D7E] font-bold text-xl mb-3">Self-Funding Loop</p>
                   <p className="text-gray-600 leading-relaxed">
                     Each paying user generates <span className="font-bold text-[#11D4D8]">$80/month</span> reinvestment.
-                    This reduces effective CPA from $80 to ~$62 over time. By Month 4, the strategy pays for itself.
-                    <span className="font-bold text-[#065D7E]"> Sustainable growth engine.</span>
+                    This reduces effective CPA from $40 to ~$35 over time. By Month 2, the strategy pays for itself.
+                    <span className="font-bold text-[#065D7E]"> Exceptional economics with &lt;1 month payback.</span>
                   </p>
                 </div>
               </div>
@@ -590,20 +596,28 @@ const renderSlideContent = (slideId: string) => {
                       <p className="text-gray-900 font-bold">Google Search Ads</p>
                       <p className="text-[#11D4D8] font-bold text-lg">$4,800</p>
                     </div>
-                    <p className="text-gray-500 text-sm mb-1">Primary acquisition driver</p>
-                    <p className="text-gray-400 text-xs">Target: 50 keywords, CPA $35-40</p>
+                    <p className="text-gray-500 text-sm mb-1">Primary acquisition driver (40% of paid)</p>
+                    <p className="text-gray-400 text-xs">Target: 50 keywords, CPA $70-80</p>
                   </div>
                   <div className="p-5 rounded-xl bg-gray-50 border border-gray-100">
                     <div className="flex justify-between items-center mb-2">
                       <p className="text-gray-900 font-bold">Instagram Ads</p>
-                      <p className="text-[#11D4D8] font-bold text-lg">$3,200</p>
+                      <p className="text-[#11D4D8] font-bold text-lg">$3,600</p>
                     </div>
-                    <p className="text-gray-500 text-sm mb-1">Awareness + retargeting</p>
-                    <p className="text-gray-400 text-xs">Target: 5 creatives, CPA $40-45</p>
+                    <p className="text-gray-500 text-sm mb-1">Awareness + retargeting (30% of paid)</p>
+                    <p className="text-gray-400 text-xs">Target: 5 creatives, CPA $70-80</p>
+                  </div>
+                  <div className="p-5 rounded-xl bg-gray-50 border border-gray-100">
+                    <div className="flex justify-between items-center mb-2">
+                      <p className="text-gray-900 font-bold">Salla/Zid App Stores</p>
+                      <p className="text-[#11D4D8] font-bold text-lg">$3,600</p>
+                    </div>
+                    <p className="text-gray-500 text-sm mb-1">Platform campaigns (30% of paid)</p>
+                    <p className="text-gray-400 text-xs">Featured placement, reviews optimization</p>
                   </div>
                 </div>
                 <div className="mt-5 pt-5 border-t border-gray-200">
-                  <p className="text-gray-400 text-sm">Total Paid Budget: <span className="text-gray-900 font-bold">$8,000 (40%)</span></p>
+                  <p className="text-gray-400 text-sm">Total Paid Budget: <span className="text-gray-900 font-bold">$12,000 (60%)</span></p>
                 </div>
               </CardContent>
             </Card>
@@ -917,8 +931,8 @@ const renderSlideContent = (slideId: string) => {
                   </div>
                   <div className="flex-1">
                     <p className="text-[#065D7E] text-xs font-semibold mb-1 tracking-wider uppercase">Paying Users (Month 6)</p>
-                    <p className="text-gray-900 font-bold text-2xl mb-1">140-150</p>
-                    <p className="text-gray-500 text-sm">Stretch: 300 users | $93K revenue</p>
+                    <p className="text-gray-900 font-bold text-2xl mb-1">160</p>
+                    <p className="text-gray-500 text-sm">Stretch: 300 users | $114K+ revenue</p>
                   </div>
                 </div>
               </CardContent>
@@ -932,8 +946,8 @@ const renderSlideContent = (slideId: string) => {
                   </div>
                   <div className="flex-1">
                     <p className="text-[#11D4D8] text-xs font-semibold mb-1 tracking-wider uppercase">Monthly Revenue (Month 6)</p>
-                    <p className="text-gray-900 font-bold text-2xl mb-1">$14,280-$15,300</p>
-                    <p className="text-gray-500 text-sm">Stretch: $30,600 | Conservative $46K total</p>
+                    <p className="text-gray-900 font-bold text-2xl mb-1">$16,320</p>
+                    <p className="text-gray-500 text-sm">Stretch: $30,600 | Conservative $60K total</p>
                   </div>
                 </div>
               </CardContent>
@@ -947,8 +961,8 @@ const renderSlideContent = (slideId: string) => {
                   </div>
                   <div className="flex-1">
                     <p className="text-[#0a7aa0] text-xs font-semibold mb-1 tracking-wider uppercase">Trial-to-Paid Conversion</p>
-                    <p className="text-gray-900 font-bold text-2xl mb-1">21%</p>
-                    <p className="text-gray-500 text-sm">Net conversion | 95% retention rate</p>
+                    <p className="text-gray-900 font-bold text-2xl mb-1">33%</p>
+                    <p className="text-gray-500 text-sm">5 paying users per 15 trials | 33% conversion</p>
                   </div>
                 </div>
               </CardContent>
@@ -979,10 +993,10 @@ const renderSlideContent = (slideId: string) => {
                 <div>
                   <p className="text-gray-900 font-bold text-xl mb-3">Success Criteria</p>
                   <ul className="text-gray-600 leading-relaxed space-y-2">
-                    <li>• Achieve 140-150 paying users by Month 6 (conservative)</li>
-                    <li>• Maintain 3.7x LTV:CAC ratio or better</li>
+                    <li>• Achieve 52-63 paying users by Month 6 (conservative range)</li>
+                    <li>• Maintain 5.3x LTV:CAC ratio or better</li>
                     <li>• Keep CPA at or below $80 per trial signup</li>
-                    <li>• Achieve positive cash flow by Month 4</li>
+                    <li>• Achieve break-even by Month 5-6</li>
                   </ul>
                 </div>
               </div>
@@ -1015,8 +1029,8 @@ const renderSlideContent = (slideId: string) => {
               <CardContent className="p-6">
                 <div className="text-center">
                   <p className="text-[#11D4D8] text-xs font-semibold mb-2 tracking-wider uppercase">Expected ROI (Conservative)</p>
-                  <p className="text-gray-900 font-bold text-3xl mb-1">90%</p>
-                  <p className="text-gray-500 text-sm">$38K revenue on $20K spend</p>
+                  <p className="text-gray-900 font-bold text-3xl mb-1">+200%</p>
+                  <p className="text-gray-500 text-sm">$60K revenue on $20K spend</p>
                 </div>
               </CardContent>
             </ModernCard>
@@ -1024,9 +1038,9 @@ const renderSlideContent = (slideId: string) => {
             <ModernCard highlight>
               <CardContent className="p-6">
                 <div className="text-center">
-                  <p className="text-[#0a7aa0] text-xs font-semibold mb-2 tracking-wider uppercase">Expected ROI (Stretch)</p>
-                  <p className="text-gray-900 font-bold text-3xl mb-1">200%</p>
-                  <p className="text-gray-500 text-sm">$93K revenue on $20K spend</p>
+                  <p className="text-[#0a7aa0] text-xs font-semibold mb-2 tracking-wider uppercase">Break-Even</p>
+                  <p className="text-gray-900 font-bold text-3xl mb-1">Month 1</p>
+                  <p className="text-gray-500 text-sm">With &lt;1 month payback period</p>
                 </div>
               </CardContent>
             </ModernCard>
@@ -1039,10 +1053,10 @@ const renderSlideContent = (slideId: string) => {
             <CardContent>
               <div className="space-y-4">
                 {[
-                  { name: 'Paid Media', amount: '$8,000', percent: '40%', color: 'bg-[#065D7E]' },
-                  { name: 'Freelancers', amount: '$5,000', percent: '25%', color: 'bg-[#11D4D8]' },
-                  { name: 'Content Production', amount: '$4,000', percent: '20%', color: 'bg-[#0a7aa0]' },
-                  { name: 'Tools & Software', amount: '$2,000', percent: '10%', color: 'bg-[#065D7E]' },
+                  { name: 'Paid Media', amount: '$12,000', percent: '60%', color: 'bg-[#065D7E]' },
+                  { name: 'Content Production', amount: '$3,000', percent: '15%', color: 'bg-[#11D4D8]' },
+                  { name: 'Freelancers', amount: '$3,000', percent: '15%', color: 'bg-[#0a7aa0]' },
+                  { name: 'Tools & Software', amount: '$1,000', percent: '5%', color: 'bg-[#065D7E]' },
                   { name: 'Retention', amount: '$1,000', percent: '5%', color: 'bg-[#11D4D8]' },
                 ].map((item) => (
                   <div key={item.name}>
@@ -1353,10 +1367,10 @@ const renderSlideContent = (slideId: string) => {
             {[
               { month: 'Month 1', focus: 'Launch all channels', users: '0 (foundation)', milestone: 'GTM Launch Complete', color: 'from-[#065D7E] to-[#11D4D8]' },
               { month: 'Month 2', focus: 'First paying users', users: '10-20', milestone: 'Reinvestment Loop Active', color: 'from-[#11D4D8] to-[#0a7aa0]' },
-              { month: 'Month 3', focus: 'Validation phase', users: '35-50', milestone: 'Break-Even Achieved', color: 'from-[#065D7E] to-[#11D4D8]' },
-              { month: 'Month 4', focus: 'Scaling winners', users: '60-80', milestone: 'Cash Flow Positive', color: 'from-[#11D4D8] to-[#0a7aa0]' },
-              { month: 'Month 5', focus: 'Aggressive growth', users: '90-115', milestone: 'Conservative Target Close', color: 'from-[#065D7E] to-[#11D4D8]' },
-              { month: 'Month 6', focus: 'Final push', users: '140-150 / 300', milestone: 'Target Achieved', color: 'from-[#11D4D8] to-[#065D7E]' },
+              { month: 'Month 3', focus: 'Validation phase', users: '40-60', milestone: 'Break-Even Achieved', color: 'from-[#065D7E] to-[#11D4D8]' },
+              { month: 'Month 4', focus: 'Scaling winners', users: '80-110', milestone: 'Cash Flow Positive', color: 'from-[#11D4D8] to-[#0a7aa0]' },
+              { month: 'Month 5', focus: 'Aggressive growth', users: '120-140', milestone: 'Conservative Target Close', color: 'from-[#065D7E] to-[#11D4D8]' },
+              { month: 'Month 6', focus: 'Final push', users: '160 / 300', milestone: 'Target Achieved', color: 'from-[#11D4D8] to-[#065D7E]' },
             ].map((item, index) => (
               <Card key={item.month} className="border-0 shadow-md bg-white">
                 <CardContent className="p-6">
@@ -1537,7 +1551,7 @@ const renderSlideContent = (slideId: string) => {
                     { month: 'Month 5', spend: '$2,500', note: 'Efficient scaling' },
                     { month: 'Month 6', spend: '$2,000', note: 'Final push' },
                   ].map((item) => (
-                    <div key={item.month} className="flex items-center justify-between p-3 bg-[#F0FBFB] rounded-lg">
+                    <div key={item.month} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                       <div>
                         <p className="font-bold text-gray-900">{item.month}</p>
                         <p className="text-xs text-gray-500">{item.note}</p>
@@ -1575,7 +1589,7 @@ const renderSlideContent = (slideId: string) => {
             </ModernCard>
           </div>
 
-          <Card className="border-0 shadow-md bg-gradient-to-br from-[#F0FBFB] to-white">
+          <Card className="border-0 shadow-md bg-white">
             <CardContent className="p-6">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-xl bg-[#11D4D8]/10 flex-shrink-0">
@@ -1584,8 +1598,8 @@ const renderSlideContent = (slideId: string) => {
                 <div>
                   <p className="text-gray-900 font-bold text-lg mb-2">Reinvestment Strategy</p>
                   <p className="text-gray-600">
-                    Each paying user generates ~$80/month to reinvest in acquisition. By Month 3,
-                    reinvestment covers 50% of acquisition costs. By Month 5, the strategy becomes self-funding.
+                    Each paying user generates ~$80/month to reinvest in acquisition. By Month 2,
+                    reinvestment covers most acquisition costs. By Month 3, the strategy becomes self-funding.
                   </p>
                 </div>
               </div>
@@ -1747,7 +1761,7 @@ const renderSlideContent = (slideId: string) => {
               <div className="space-y-4">
                 <div className="p-4 bg-green-50 border-l-4 border-green-500 rounded">
                   <p className="font-bold text-green-800 mb-1">✓ Continue if:</p>
-                  <p className="text-green-700 text-sm">Achieving 30+ paying users, CPA ≤$80, positive user feedback</p>
+                  <p className="text-green-700 text-sm">Achieving 35-50 paying users, CPA ≤$80, positive user feedback</p>
                 </div>
                 <div className="p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded">
                   <p className="font-bold text-yellow-800 mb-1">⚠ Optimize if:</p>

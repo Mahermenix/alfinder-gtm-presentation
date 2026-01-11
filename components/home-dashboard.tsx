@@ -78,7 +78,7 @@ export function HomeDashboard() {
 
             {/* Subtitle - Made white for better readability */}
             <p className="text-xl sm:text-2xl text-white max-w-3xl mx-auto mb-10 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              AI-powered search that understands Arabic dialects. A comprehensive 6-month strategy to scale from 80 to 300+ paying users.
+              AI-powered search that understands Arabic dialects. A comprehensive 6-month strategy to scale from 80 to 160-300 paying users.
             </p>
 
             {/* CTA Buttons */}
@@ -216,7 +216,7 @@ export function HomeDashboard() {
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
-                    <span>Target: 300 users in 6 months</span>
+                    <span>Target: 160-300 users in 6 months</span>
                   </li>
                 </ul>
               </CardContent>
@@ -242,31 +242,31 @@ export function HomeDashboard() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <MetricCard
               title="Paying Users (Month 6)"
-              value="140-150"
-              target="300 (stretch)"
+              value="160-300"
+              target="Conservative: 160, Stretch: 300"
               icon={Users}
-              description="Conservative vs stretch goal"
+              description="6-month target"
             />
             <MetricCard
               title="Target CPA"
-              value={80}
+              value={40}
               variant="currency"
-              target="$60 (optimized)"
+              target="$35 (optimized)"
               icon={DollarSign}
               description="Cost per trial signup"
             />
             <MetricCard
               title="LTV:CAC Ratio"
-              value="3.7"
+              value="29.5"
               target=">3:1"
               icon={TrendingUp}
-              description="Healthy unit economics"
+              description="Exceptional unit economics"
             />
             <MetricCard
               title="Expected ROI"
-              value={90}
+              value={200}
               variant="percentage"
-              target="200% (stretch)"
+              target="470% (stretch)"
               icon={BarChart3}
               description="Conservative projection"
             />
@@ -296,7 +296,7 @@ export function HomeDashboard() {
             <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <CardHeader className="pb-3">
                 <CardDescription className="text-gray-500">Customer Lifetime</CardDescription>
-                <CardTitle className="text-2xl text-[#065D7E]">12 months</CardTitle>
+                <CardTitle className="text-2xl text-[#065D7E]">20 months</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-gray-500">Based on 5% monthly churn</p>
@@ -306,20 +306,20 @@ export function HomeDashboard() {
             <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <CardHeader className="pb-3">
                 <CardDescription className="text-gray-500">Lifetime Value</CardDescription>
-                <CardTitle className="text-2xl text-[#065D7E]">$1,224</CardTitle>
+                <CardTitle className="text-2xl text-[#065D7E]">$2,360</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-500">383 SAR × 12 months</p>
+                <p className="text-sm text-gray-500">383 SAR × 20 months</p>
               </CardContent>
             </Card>
 
             <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <CardHeader className="pb-3">
                 <CardDescription className="text-gray-500">Payback Period</CardDescription>
-                <CardTitle className="text-2xl text-[#065D7E]">3.2 months</CardTitle>
+                <CardTitle className="text-2xl text-[#065D7E]">0.78 months</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-500">Time to recover CAC</p>
+                <p className="text-sm text-gray-500">Less than 1 month</p>
               </CardContent>
             </Card>
           </div>
@@ -344,15 +344,15 @@ export function HomeDashboard() {
                 },
                 {
                   label: 'Day 7 Payment Prompt',
-                  value: 25,
+                  value: 33,
                   color: '#0a7aa0',
                   description: 'Reaches payment decision point',
                 },
                 {
                   label: 'Paying Customers',
-                  value: 21,
+                  value: 33,
                   color: '#044256',
-                  description: '21% net conversion (95% retention)',
+                  description: '33% net conversion (5 paying per 15 trials)',
                 },
               ]}
             />
@@ -455,10 +455,10 @@ export function HomeDashboard() {
                 {[
                   { month: 'Month 1', users: '0 (foundation)', focus: 'Launch all channels', milestone: 'GTM Launch Complete', color: 'from-[#065D7E] to-[#11D4D8]' },
                   { month: 'Month 2', users: '10-20', focus: 'First paying users', milestone: 'Reinvestment Loop Active', color: 'from-[#11D4D8] to-[#0a7aa0]' },
-                  { month: 'Month 3', users: '35-50', focus: 'Validation phase', milestone: 'Break-Even Achieved', color: 'from-[#065D7E] to-[#11D4D8]' },
-                  { month: 'Month 4', users: '60-80', focus: 'Scaling winners', milestone: 'Cash Flow Positive', color: 'from-[#11D4D8] to-[#0a7aa0]' },
-                  { month: 'Month 5', users: '90-115', focus: 'Aggressive growth', milestone: 'Conservative Target Close', color: 'from-[#065D7E] to-[#11D4D8]' },
-                  { month: 'Month 6', users: '140-150 / 300', focus: 'Final push', milestone: 'Target Achieved', color: 'from-[#11D4D8] to-[#065D7E]' },
+                  { month: 'Month 3', users: '40-60', focus: 'Validation phase', milestone: 'Break-Even Achieved', color: 'from-[#065D7E] to-[#11D4D8]' },
+                  { month: 'Month 4', users: '80-110', focus: 'Scaling winners', milestone: 'Cash Flow Positive', color: 'from-[#11D4D8] to-[#0a7aa0]' },
+                  { month: 'Month 5', users: '120-140', focus: 'Aggressive growth', milestone: 'Conservative Target Close', color: 'from-[#065D7E] to-[#11D4D8]' },
+                  { month: 'Month 6', users: '160-300', focus: 'Final push', milestone: 'Target Achieved', color: 'from-[#11D4D8] to-[#065D7E]' },
                 ].map((item, index) => (
                   <div key={item.month} className="relative pl-10 pb-6 last:pb-0">
                     {/* Timeline indicator */}
@@ -501,32 +501,32 @@ export function HomeDashboard() {
             <Card className="bg-gradient-to-br from-[#065D7E] to-[#0a7aa0] text-white border-0 shadow-xl shadow-[#065D7E]/30 hover-lift">
               <CardContent className="p-6">
                 <p className="text-white/70 text-sm mb-2">Paid Media</p>
-                <p className="text-3xl font-bold mb-1">$8,000</p>
-                <p className="text-white/70 text-sm">40% of budget</p>
+                <p className="text-3xl font-bold mb-1">$12,000</p>
+                <p className="text-white/70 text-sm">60% of budget</p>
               </CardContent>
             </Card>
 
             <Card className="bg-gradient-to-br from-[#11D4D8] to-[#0a7aa0] text-white border-0 shadow-xl shadow-[#11D4D8]/30 hover-lift">
               <CardContent className="p-6">
                 <p className="text-white/70 text-sm mb-2">Content Production</p>
-                <p className="text-3xl font-bold mb-1">$4,000</p>
-                <p className="text-white/70 text-sm">20% of budget</p>
+                <p className="text-3xl font-bold mb-1">$3,000</p>
+                <p className="text-white/70 text-sm">15% of budget</p>
               </CardContent>
             </Card>
 
             <Card className="bg-gradient-to-br from-[#065D7E] to-[#11D4D8] text-white border-0 shadow-xl shadow-[#11D4D8]/30 hover-lift">
               <CardContent className="p-6">
                 <p className="text-white/70 text-sm mb-2">Freelancers</p>
-                <p className="text-3xl font-bold mb-1">$5,000</p>
-                <p className="text-white/70 text-sm">25% of budget</p>
+                <p className="text-3xl font-bold mb-1">$3,000</p>
+                <p className="text-white/70 text-sm">15% of budget</p>
               </CardContent>
             </Card>
 
             <Card className="bg-gradient-to-br from-[#11D4D8] to-[#065D7E] text-white border-0 shadow-xl shadow-[#11D4D8]/30 hover-lift">
               <CardContent className="p-6">
                 <p className="text-white/70 text-sm mb-2">Tools & Software</p>
-                <p className="text-3xl font-bold mb-1">$2,000</p>
-                <p className="text-white/70 text-sm">10% of budget</p>
+                <p className="text-3xl font-bold mb-1">$1,000</p>
+                <p className="text-white/70 text-sm">5% of budget</p>
               </CardContent>
             </Card>
 

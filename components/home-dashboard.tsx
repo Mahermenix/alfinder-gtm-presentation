@@ -6,6 +6,7 @@ import { FunnelChart } from '@/components/charts/funnel-chart'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { InfoTooltip } from '@/components/ui/tooltip'
 import {
   Target,
   TrendingUp,
@@ -273,7 +274,7 @@ export function HomeDashboard() {
           </div>
         </section>
 
-        {/* Unit Economics - Clean Cards */}
+        {/* Unit Economics - Clean Cards with Tooltips */}
         <section className="animate-fade-in">
           <div className="mb-12">
             <Badge className="mb-3 bg-[#11D4D8]/10 text-[#065D7E] border-[#11D4D8]/20 text-xs px-4 py-1.5">
@@ -285,7 +286,10 @@ export function HomeDashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <CardHeader className="pb-3">
-                <CardDescription className="text-gray-500">Monthly Revenue (Gross)</CardDescription>
+                <CardDescription className="text-gray-500 flex items-center gap-1">
+                  Monthly Revenue (Gross)
+                  <InfoTooltip content="Price customers pay: 383 SAR/month ($102) based on Pro plan pricing midpoint" />
+                </CardDescription>
                 <CardTitle className="text-2xl text-[#065D7E]">$102</CardTitle>
               </CardHeader>
               <CardContent>
@@ -295,7 +299,10 @@ export function HomeDashboard() {
 
             <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <CardHeader className="pb-3">
-                <CardDescription className="text-gray-500">Monthly Contribution</CardDescription>
+                <CardDescription className="text-gray-500 flex items-center gap-1">
+                  Monthly Contribution
+                  <InfoTooltip content="Revenue after costs: $102 - $22 (payment fees, hosting, support) = $80 net margin per user" />
+                </CardDescription>
                 <CardTitle className="text-2xl text-[#065D7E]">$80</CardTitle>
               </CardHeader>
               <CardContent>
@@ -305,17 +312,23 @@ export function HomeDashboard() {
 
             <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <CardHeader className="pb-3">
-                <CardDescription className="text-gray-500">Net Lifetime Value</CardDescription>
-                <CardTitle className="text-2xl text-[#065D7E]">$1,040</CardTitle>
+                <CardDescription className="text-gray-500 flex items-center gap-1">
+                  Net Lifetime Value
+                  <InfoTooltip content="$80/month × 12 months = $960. Based on annual subscription model or average 12-month retention" />
+                </CardDescription>
+                <CardTitle className="text-2xl text-[#065D7E]">$960</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-500">$80 × 13 months (realistic retention)</p>
+                <p className="text-sm text-gray-500">$80 × 12 months (annual model)</p>
               </CardContent>
             </Card>
 
             <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <CardHeader className="pb-3">
-                <CardDescription className="text-gray-500">Payback Period</CardDescription>
+                <CardDescription className="text-gray-500 flex items-center gap-1">
+                  Payback Period
+                  <InfoTooltip content="$200 CAC ÷ $80/month = 2.5 months to recover acquisition costs. Healthy for B2B SaaS." />
+                </CardDescription>
                 <CardTitle className="text-2xl text-[#065D7E]">2.5 months</CardTitle>
               </CardHeader>
               <CardContent>
@@ -488,7 +501,7 @@ export function HomeDashboard() {
           </Card>
         </section>
 
-        {/* Budget Allocation - Branded Gradient Cards */}
+        {/* Budget Allocation - Lighter Background Cards */}
         <section className="animate-fade-in">
           <div className="mb-12">
             <Badge className="mb-3 bg-[#11D4D8]/10 text-[#065D7E] border-[#11D4D8]/20 text-xs px-4 py-1.5">
@@ -498,43 +511,43 @@ export function HomeDashboard() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-            <Card className="bg-gradient-to-br from-[#065D7E] to-[#0a7aa0] text-white border-0 shadow-xl shadow-[#065D7E]/30 hover-lift">
+            <Card className="bg-gradient-to-br from-[#065D7E]/5 to-[#0a7aa0]/10 border border-[#065D7E]/20 hover:shadow-md transition-shadow">
               <CardContent className="p-6">
-                <p className="text-white/70 text-sm mb-2">Paid Media</p>
-                <p className="text-3xl font-bold mb-1">$12,000</p>
-                <p className="text-white/70 text-sm">60% of budget</p>
+                <p className="text-gray-600 text-sm mb-2">Paid Media</p>
+                <p className="text-3xl font-bold mb-1 text-[#065D7E]">$12,000</p>
+                <p className="text-gray-500 text-sm">60% of budget</p>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-[#11D4D8] to-[#0a7aa0] text-white border-0 shadow-xl shadow-[#11D4D8]/30 hover-lift">
+            <Card className="bg-gradient-to-br from-[#11D4D8]/5 to-[#0a7aa0]/10 border border-[#11D4D8]/20 hover:shadow-md transition-shadow">
               <CardContent className="p-6">
-                <p className="text-white/70 text-sm mb-2">Content Production</p>
-                <p className="text-3xl font-bold mb-1">$3,000</p>
-                <p className="text-white/70 text-sm">15% of budget</p>
+                <p className="text-gray-600 text-sm mb-2">Content Production</p>
+                <p className="text-3xl font-bold mb-1 text-[#11D4D8]">$3,000</p>
+                <p className="text-gray-500 text-sm">15% of budget</p>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-[#065D7E] to-[#11D4D8] text-white border-0 shadow-xl shadow-[#11D4D8]/30 hover-lift">
+            <Card className="bg-gradient-to-br from-[#065D7E]/5 to-[#11D4D8]/10 border border-[#065D7E]/20 hover:shadow-md transition-shadow">
               <CardContent className="p-6">
-                <p className="text-white/70 text-sm mb-2">Freelancers</p>
-                <p className="text-3xl font-bold mb-1">$3,000</p>
-                <p className="text-white/70 text-sm">15% of budget</p>
+                <p className="text-gray-600 text-sm mb-2">Freelancers</p>
+                <p className="text-3xl font-bold mb-1 text-[#065D7E]">$3,000</p>
+                <p className="text-gray-500 text-sm">15% of budget</p>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-[#11D4D8] to-[#065D7E] text-white border-0 shadow-xl shadow-[#11D4D8]/30 hover-lift">
+            <Card className="bg-gradient-to-br from-[#11D4D8]/5 to-[#065D7E]/10 border border-[#11D4D8]/20 hover:shadow-md transition-shadow">
               <CardContent className="p-6">
-                <p className="text-white/70 text-sm mb-2">Tools & Software</p>
-                <p className="text-3xl font-bold mb-1">$1,000</p>
-                <p className="text-white/70 text-sm">5% of budget</p>
+                <p className="text-gray-600 text-sm mb-2">Tools & Software</p>
+                <p className="text-3xl font-bold mb-1 text-[#11D4D8]">$1,000</p>
+                <p className="text-gray-500 text-sm">5% of budget</p>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-[#0a7aa0] to-[#065D7E] text-white border-0 shadow-xl shadow-[#065D7E]/30 hover-lift">
+            <Card className="bg-gradient-to-br from-[#0a7aa0]/5 to-[#065D7E]/10 border border-[#0a7aa0]/20 hover:shadow-md transition-shadow">
               <CardContent className="p-6">
-                <p className="text-white/70 text-sm mb-2">Retention</p>
-                <p className="text-3xl font-bold mb-1">$1,000</p>
-                <p className="text-white/70 text-sm">5% of budget</p>
+                <p className="text-gray-600 text-sm mb-2">Retention</p>
+                <p className="text-3xl font-bold mb-1 text-[#0a7aa0]">$1,000</p>
+                <p className="text-gray-500 text-sm">5% of budget</p>
               </CardContent>
             </Card>
           </div>
@@ -675,14 +688,15 @@ export function HomeDashboard() {
                 Explore the complete GTM strategy, research artifacts, and execution plans
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Button
-                  size="lg"
-                  className="gap-2 bg-white text-[#065D7E] hover:bg-[#F0FBFB] shadow-xl hover:scale-105 transition-all duration-300 px-8 py-6 text-lg"
-                  onClick={() => scrollToSection('metrics')}
-                >
-                  <Target className="w-5 h-5" />
-                  View Full Strategy
-                </Button>
+                <Link href="/gtm">
+                  <Button
+                    size="lg"
+                    className="gap-2 bg-white text-[#065D7E] hover:bg-[#F0FBFB] shadow-xl hover:scale-105 transition-all duration-300 px-8 py-6 text-lg"
+                  >
+                    <Target className="w-5 h-5" />
+                    View Full Strategy
+                  </Button>
+                </Link>
                 <Button
                   size="lg"
                   variant="outline"

@@ -1386,7 +1386,7 @@ const renderSlideContent = (slideId: string, metrics: any) => {
           </div>
 
           <div className="space-y-4">
-            {metrics.roadmap.map((item: { month: string; users: string; focus: string; milestone: string }, index) => {
+            {metrics.roadmap.map((item: { month: string; users: string; focus: string; milestone: string }, index: number) => {
               const colors = [
                 'from-[#065D7E] to-[#11D4D8]',
                 'from-[#11D4D8] to-[#0a7aa0]',

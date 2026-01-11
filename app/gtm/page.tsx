@@ -433,7 +433,7 @@ const renderSlideContent = (slideId: string, metrics: any) => {
             <CardContent className="p-6">
               <p className="text-gray-900 font-bold text-lg mb-5">Monthly Milestones</p>
               <div className="space-y-3">
-                {metrics.roadmap.map((item: { month: string; users: string; focus: string; milestone: string }, index) => {
+                {metrics.roadmap.map((item: { month: string; users: string; focus: string; milestone: string }, index: number) => {
                   const colors = ['bg-[#065D7E]', 'bg-[#0a7aa0]', 'bg-[#11D4D8]', 'bg-[#065D7E]', 'bg-[#0a7aa0]', 'bg-[#11D4D8]']
                   const color = colors[index % colors.length]
                   const shortMonth = `M${index + 1}`

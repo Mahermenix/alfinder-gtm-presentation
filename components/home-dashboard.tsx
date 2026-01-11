@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { InfoTooltip } from '@/components/ui/tooltip'
+import { useBudget } from '@/components/budget-context'
+import { BudgetToggle } from '@/components/budget-toggle'
 import {
   Target,
   TrendingUp,
@@ -22,6 +24,9 @@ import {
 import Link from 'next/link'
 
 export function HomeDashboard() {
+  const { getMetrics } = useBudget()
+  const metrics = getMetrics()
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
@@ -236,15 +241,15 @@ export function HomeDashboard() {
               <p className="text-gray-500">6-month performance projections</p>
             </div>
             <Badge className="text-sm px-5 py-2.5 bg-gradient-to-r from-[#065D7E] to-[#11D4D8] text-white border-0 shadow-lg">
-              $20K Budget
+              {metrics.budgetLabel} Budget
             </Badge>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <MetricCard
               title="Paying Users (Month 6)"
-              value="160-300"
-              target="Conservative: 160, Stretch: 300"
+              value={metrics.targetUsers}
+              target={`Conservative: ${metrics.targetUsersMin}, Stretch: ${metrics.targetUsersMax}`}
               icon={Users}
               description="6-month target"
             />
@@ -514,7 +519,7 @@ export function HomeDashboard() {
             <Card className="bg-gradient-to-br from-[#065D7E]/5 to-[#0a7aa0]/10 border border-[#065D7E]/20 hover:shadow-md transition-shadow">
               <CardContent className="p-6">
                 <p className="text-gray-600 text-sm mb-2">Paid Media</p>
-                <p className="text-3xl font-bold mb-1 text-[#065D7E]">$12,000</p>
+                <p className="text-3xl font-bold mb-1 text-[#065D7E]">${metrics.paidMedia.toLocaleString()}</p>
                 <p className="text-gray-500 text-sm">60% of budget</p>
               </CardContent>
             </Card>
@@ -522,7 +527,7 @@ export function HomeDashboard() {
             <Card className="bg-gradient-to-br from-[#11D4D8]/5 to-[#0a7aa0]/10 border border-[#11D4D8]/20 hover:shadow-md transition-shadow">
               <CardContent className="p-6">
                 <p className="text-gray-600 text-sm mb-2">Content Production</p>
-                <p className="text-3xl font-bold mb-1 text-[#11D4D8]">$3,000</p>
+                <p className="text-3xl font-bold mb-1 text-[#11D4D8]">${metrics.content.toLocaleString()}</p>
                 <p className="text-gray-500 text-sm">15% of budget</p>
               </CardContent>
             </Card>
@@ -530,7 +535,7 @@ export function HomeDashboard() {
             <Card className="bg-gradient-to-br from-[#065D7E]/5 to-[#11D4D8]/10 border border-[#065D7E]/20 hover:shadow-md transition-shadow">
               <CardContent className="p-6">
                 <p className="text-gray-600 text-sm mb-2">Freelancers</p>
-                <p className="text-3xl font-bold mb-1 text-[#065D7E]">$3,000</p>
+                <p className="text-3xl font-bold mb-1 text-[#065D7E]">${metrics.freelancers.toLocaleString()}</p>
                 <p className="text-gray-500 text-sm">15% of budget</p>
               </CardContent>
             </Card>
@@ -538,7 +543,7 @@ export function HomeDashboard() {
             <Card className="bg-gradient-to-br from-[#11D4D8]/5 to-[#065D7E]/10 border border-[#11D4D8]/20 hover:shadow-md transition-shadow">
               <CardContent className="p-6">
                 <p className="text-gray-600 text-sm mb-2">Tools & Software</p>
-                <p className="text-3xl font-bold mb-1 text-[#11D4D8]">$1,000</p>
+                <p className="text-3xl font-bold mb-1 text-[#11D4D8]">${metrics.tools.toLocaleString()}</p>
                 <p className="text-gray-500 text-sm">5% of budget</p>
               </CardContent>
             </Card>
@@ -546,7 +551,7 @@ export function HomeDashboard() {
             <Card className="bg-gradient-to-br from-[#0a7aa0]/5 to-[#065D7E]/10 border border-[#0a7aa0]/20 hover:shadow-md transition-shadow">
               <CardContent className="p-6">
                 <p className="text-gray-600 text-sm mb-2">Retention</p>
-                <p className="text-3xl font-bold mb-1 text-[#0a7aa0]">$1,000</p>
+                <p className="text-3xl font-bold mb-1 text-[#0a7aa0]">${metrics.retention.toLocaleString()}</p>
                 <p className="text-gray-500 text-sm">5% of budget</p>
               </CardContent>
             </Card>
@@ -752,6 +757,9 @@ export function HomeDashboard() {
           />
         </svg>
       </button>
+
+      {/* Budget Toggle */}
+      <BudgetToggle />
     </>
   )
 }

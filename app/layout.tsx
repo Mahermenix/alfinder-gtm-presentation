@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { BudgetProvider } from "@/components/budget-context";
 
 export const metadata: Metadata = {
   title: "Alfinder GTM Presentation",
@@ -21,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className="antialiased">
-        {children}
+        <BudgetProvider>{children}</BudgetProvider>
       </body>
     </html>
   );

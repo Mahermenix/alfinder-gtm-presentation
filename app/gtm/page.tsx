@@ -28,6 +28,8 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
+import { useBudget } from '@/components/budget-context'
+import { BudgetToggle } from '@/components/budget-toggle'
 
 // ============================================
 // TYPES
@@ -209,7 +211,7 @@ const AccentBadge = ({ children, color = 'primary', className = '' }: { children
 // SLIDE CONTENT RENDERERS
 // ============================================
 
-const renderSlideContent = (slideId: string) => {
+const renderSlideContent = (slideId: string, metrics: any) => {
   switch (slideId) {
     // ============================================
     // PHASE 1: EXECUTIVE SUMMARY
@@ -248,8 +250,8 @@ const renderSlideContent = (slideId: string) => {
                   </div>
                   <div className="flex-1">
                     <p className="text-[#11D4D8] text-xs font-semibold mb-1 tracking-wider uppercase">Growth Target</p>
-                    <p className="text-gray-900 font-bold text-lg mb-1">160 paying users</p>
-                    <p className="text-gray-500 text-sm">Conservative: $60K revenue | Stretch: 300 users, $114K+ revenue</p>
+                    <p className="text-gray-900 font-bold text-lg mb-1">{metrics.targetUsers} paying users</p>
+                    <p className="text-gray-500 text-sm">Conservative: {metrics.monthlyMRR} revenue | Stretch: {metrics.targetUsersMax * 2}+ users</p>
                   </div>
                 </div>
               </CardContent>
@@ -279,7 +281,7 @@ const renderSlideContent = (slideId: string) => {
                   <div className="flex-1">
                     <p className="text-[#065D7E] text-xs font-semibold mb-1 tracking-wider uppercase">Unit Economics</p>
                     <p className="text-gray-900 font-bold text-lg mb-1">5.2x LTV:CAC, 2.5mo payback</p>
-                    <p className="text-gray-500 text-sm">$1,040 net LTV, $200 CAC, Break-even Month 3</p>
+                    <p className="text-gray-500 text-sm">$1,040 net LTV, ${metrics.cpa} CAC, Break-even Month 3</p>
                   </div>
                 </div>
               </CardContent>
@@ -297,7 +299,7 @@ const renderSlideContent = (slideId: string) => {
                   <p className="text-gray-900 font-bold text-xl mb-3">Core Strategy</p>
                   <p className="text-gray-600 leading-relaxed">
                     Launch balanced acquisition (paid + organic) targeting Saudi/Gulf Salla/Zid merchants.
-                    Achieve 160 paying users (conservative) or 300 (optimistic) in 6 months with $20K investment. Break-even by Month 1.
+                    Achieve {metrics.targetUsers} paying users (conservative) or {metrics.targetUsersMax * 2} (optimistic) in 6 months with {metrics.budgetLabel} investment. Break-even by Month 1.
                     Self-funding from Month 4 via reinvestment loop.
                   </p>
                 </div>
@@ -309,19 +311,19 @@ const renderSlideContent = (slideId: string) => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <ModernCard>
               <CardContent className="p-5 text-center">
-                <p className="text-3xl font-bold text-[#11D4D8] mb-1">$20K</p>
+                <p className="text-3xl font-bold text-[#11D4D8] mb-1">{metrics.budgetLabel}</p>
                 <p className="text-gray-500 text-sm font-medium">Total Investment</p>
               </CardContent>
             </ModernCard>
             <ModernCard>
               <CardContent className="p-5 text-center">
-                <p className="text-3xl font-bold text-[#065D7E] mb-1">$40</p>
+                <p className="text-3xl font-bold text-[#065D7E] mb-1">${metrics.cpa / 2}</p>
                 <p className="text-gray-500 text-sm font-medium">CPA Per Trial</p>
               </CardContent>
             </ModernCard>
             <ModernCard>
               <CardContent className="p-5 text-center">
-                <p className="text-3xl font-bold text-[#0a7aa0] mb-1">$80</p>
+                <p className="text-3xl font-bold text-[#0a7aa0] mb-1">${metrics.cpa}</p>
                 <p className="text-gray-500 text-sm font-medium">CAC Per User</p>
               </CardContent>
             </ModernCard>
@@ -356,10 +358,10 @@ const renderSlideContent = (slideId: string) => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-gray-900 font-bold text-2xl mb-2">Paying Users</p>
-                  <p className="text-gray-600">From 0 to 160 (conservative) or 300 (optimistic) in 6 months</p>
+                  <p className="text-gray-600">From 0 to {metrics.targetUsers} (conservative) or {metrics.targetUsersMax * 2} (optimistic) in 6 months</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-6xl font-bold text-[#065D7E]">160</p>
+                  <p className="text-6xl font-bold text-[#065D7E]">{metrics.targetUsersMin}-{metrics.targetUsersMax}</p>
                   <p className="text-gray-600 text-sm mt-1">conservative target</p>
                 </div>
               </div>
@@ -456,7 +458,7 @@ const renderSlideContent = (slideId: string) => {
                   <DollarSign className="w-8 h-8 text-[#065D7E]" />
                 </div>
                 <p className="text-gray-400 text-sm font-semibold mb-2 uppercase tracking-wider">Investment</p>
-                <p className="text-5xl font-bold text-gray-900 mb-2">$20,000</p>
+                <p className="text-5xl font-bold text-gray-900 mb-2">{metrics.budgetLabel}</p>
                 <p className="text-gray-500">6-month runway</p>
               </CardContent>
             </Card>
@@ -467,7 +469,7 @@ const renderSlideContent = (slideId: string) => {
                   <TrendingUp className="w-8 h-8 text-[#11D4D8]" />
                 </div>
                 <p className="text-gray-400 text-sm font-semibold mb-2 uppercase tracking-wider">Conservative Return</p>
-                <p className="text-5xl font-bold text-gray-900 mb-2">$60,000</p>
+                <p className="text-5xl font-bold text-gray-900 mb-2">{metrics.ltvGenerated}</p>
                 <p className="text-gray-500">200% ROI</p>
               </CardContent>
             </Card>
@@ -478,7 +480,7 @@ const renderSlideContent = (slideId: string) => {
                   <Award className="w-8 h-8 text-[#0a7aa0]" />
                 </div>
                 <p className="text-gray-400 text-sm font-semibold mb-2 uppercase tracking-wider">Stretch Return</p>
-                <p className="text-5xl font-bold text-gray-900 mb-2">$114,000+</p>
+                <p className="text-5xl font-bold text-gray-900 mb-2">${metrics.targetUsersMax * 2 * 80 * 13 / 1000}K+</p>
                 <p className="text-gray-500">470%+ ROI</p>
               </CardContent>
             </Card>
@@ -1535,7 +1537,7 @@ const renderSlideContent = (slideId: string) => {
           <div className="text-center">
             <p className="text-[#065D7E] text-sm font-semibold tracking-wider uppercase mb-3">Phase 3: Execution Plan</p>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3">Budget Allocation & Spend Phasing</h2>
-            <p className="text-gray-500 text-lg">$20K budget spread across 6 months</p>
+            <p className="text-gray-500 text-lg">{metrics.budgetLabel} budget spread across 6 months</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -1544,12 +1546,12 @@ const renderSlideContent = (slideId: string) => {
                 <h3 className="text-[#065D7E] font-bold mb-4">Monthly Spend Allocation</h3>
                 <div className="space-y-3">
                   {[
-                    { month: 'Month 1', spend: '$5,000', note: 'Setup & launch' },
-                    { month: 'Month 2', spend: '$4,000', note: 'Optimization phase' },
-                    { month: 'Month 3', spend: '$3,500', note: 'Scaling winners' },
-                    { month: 'Month 4', spend: '$3,000', note: 'Maintain + optimize' },
-                    { month: 'Month 5', spend: '$2,500', note: 'Efficient scaling' },
-                    { month: 'Month 6', spend: '$2,000', note: 'Final push' },
+                    { month: 'Month 1', spend: `$${(metrics.budget * 0.25 / 1000).toFixed(1)}K`, note: 'Setup & launch' },
+                    { month: 'Month 2', spend: `$${(metrics.budget * 0.20 / 1000).toFixed(1)}K`, note: 'Optimization phase' },
+                    { month: 'Month 3', spend: `$${(metrics.budget * 0.175 / 1000).toFixed(1)}K`, note: 'Scaling winners' },
+                    { month: 'Month 4', spend: `$${(metrics.budget * 0.15 / 1000).toFixed(1)}K`, note: 'Maintain + optimize' },
+                    { month: 'Month 5', spend: `$${(metrics.budget * 0.125 / 1000).toFixed(1)}K`, note: 'Efficient scaling' },
+                    { month: 'Month 6', spend: `$${(metrics.budget * 0.10 / 1000).toFixed(1)}K`, note: 'Final push' },
                   ].map((item) => (
                     <div key={item.month} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                       <div>
@@ -1568,11 +1570,11 @@ const renderSlideContent = (slideId: string) => {
                 <h3 className="text-[#11D4D8] font-bold mb-4">Channel Budget Split</h3>
                 <div className="space-y-3">
                   {[
-                    { channel: 'Google Search Ads', budget: '$2,800', pct: '35%' },
-                    { channel: 'Instagram Ads', budget: '$2,000', pct: '25%' },
-                    { channel: 'Freelancers (Content & Ads)', budget: '$4,000', pct: '20%' },
-                    { channel: 'Content Production', budget: '$1,600', pct: '20%' },
-                    { channel: 'Tools & Software', budget: '$400', pct: '5%' },
+                    { channel: 'Google Search Ads', budget: `$${(metrics.paidMedia * 0.40 / 1000).toFixed(1)}K`, pct: '35%' },
+                    { channel: 'Instagram Ads', budget: `$${(metrics.paidMedia * 0.30 / 1000).toFixed(1)}K`, pct: '25%' },
+                    { channel: 'Freelancers (Content & Ads)', budget: `$${(metrics.freelancers / 1000).toFixed(1)}K`, pct: '20%' },
+                    { channel: 'Content Production', budget: `$${(metrics.content / 1000).toFixed(1)}K`, pct: '20%' },
+                    { channel: 'Tools & Software', budget: `$${(metrics.tools / 1000).toFixed(1)}K`, pct: '5%' },
                   ].map((item) => (
                     <div key={item.channel}>
                       <div className="flex justify-between mb-1">
@@ -1792,7 +1794,7 @@ const renderSlideContent = (slideId: string) => {
           <Card className="border-0 shadow-md bg-gradient-to-br from-[#F0FBFB] via-[#e0f5f5] to-[#F0FBFB] border border-[#11D4D8]/20">
             <CardContent className="p-8 text-center">
               <p className="text-[#065D7E] text-sm font-semibold mb-3 tracking-wider uppercase">Investment Requested</p>
-              <p className="text-5xl font-bold mb-2 text-gray-900">$20,000</p>
+              <p className="text-5xl font-bold mb-2 text-gray-900">{metrics.budgetLabel}</p>
               <p className="text-gray-600">6-month GTM execution budget</p>
             </CardContent>
           </Card>
@@ -1805,7 +1807,7 @@ const renderSlideContent = (slideId: string) => {
                   Approval Required For
                 </h3>
                 <ul className="space-y-2 text-gray-600">
-                  <li>• $20K budget allocation</li>
+                  <li>• {metrics.budgetLabel} budget allocation</li>
                   <li>• Google & Instagram ad accounts</li>
                   <li>• Freelancer hiring approval</li>
                   <li>• Salla partnership outreach</li>
@@ -1851,6 +1853,8 @@ export default function GTMPresentationPage() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [selectedPhase, setSelectedPhase] = useState<string | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
+  const { getMetrics } = useBudget()
+  const metrics = getMetrics()
 
   const filteredSlides = selectedPhase
     ? slides.filter(s => s.phase === selectedPhase)
@@ -2031,7 +2035,7 @@ export default function GTMPresentationPage() {
 
                     {/* Slide Content */}
                     <div className="p-6 md:p-8 bg-white">
-                      {renderSlideContent(currentSlideData.id)}
+                      {renderSlideContent(currentSlideData.id, metrics)}
                     </div>
                   </Card>
                 </>
@@ -2099,6 +2103,9 @@ export default function GTMPresentationPage() {
           </div>
         </div>
       </main>
+
+      {/* Budget Toggle */}
+      <BudgetToggle />
     </div>
   )
 }

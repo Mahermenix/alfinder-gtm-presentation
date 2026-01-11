@@ -278,8 +278,8 @@ const renderSlideContent = (slideId: string) => {
                   </div>
                   <div className="flex-1">
                     <p className="text-[#065D7E] text-xs font-semibold mb-1 tracking-wider uppercase">Unit Economics</p>
-                    <p className="text-gray-900 font-bold text-lg mb-1">29.5x LTV:CAC, less than 1mo payback</p>
-                    <p className="text-gray-500 text-sm">$2,360 LTV, $80 CAC, Break-even Month 1</p>
+                    <p className="text-gray-900 font-bold text-lg mb-1">5.2x LTV:CAC, 2.5mo payback</p>
+                    <p className="text-gray-500 text-sm">$1,040 net LTV, $200 CAC, Break-even Month 3</p>
                   </div>
                 </div>
               </CardContent>
@@ -397,7 +397,7 @@ const renderSlideContent = (slideId: string) => {
                   <p className="text-4xl font-bold text-gray-900">&lt;$40</p>
                   <p className="text-gray-500 text-sm">target</p>
                 </div>
-                <p className="text-gray-500 text-sm">CAC per paying user: $80 (all-in, including trial costs)</p>
+                <p className="text-gray-500 text-sm">CAC per paying user: $200 (includes trial conversion costs)</p>
               </CardContent>
             </ModernCard>
 
@@ -491,23 +491,23 @@ const renderSlideContent = (slideId: string) => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="text-center">
                   <div className="p-4 rounded-xl bg-gray-50 mb-3">
-                    <p className="text-gray-400 text-xs font-semibold mb-1 uppercase tracking-wider">LTV (Lifetime Value)</p>
-                    <p className="text-3xl font-bold text-gray-900">$2,360</p>
-                    <p className="text-gray-500 text-sm mt-1">383 SAR × 20 months</p>
+                    <p className="text-gray-400 text-xs font-semibold mb-1 uppercase tracking-wider">Net LTV (Lifetime Value)</p>
+                    <p className="text-3xl font-bold text-gray-900">$1,040</p>
+                    <p className="text-gray-500 text-sm mt-1">$80 contribution × 13 months</p>
                   </div>
                 </div>
                 <div className="text-center">
                   <div className="p-4 rounded-xl bg-gray-50 mb-3">
                     <p className="text-gray-400 text-xs font-semibold mb-1 uppercase tracking-wider">CAC (Acquisition Cost)</p>
-                    <p className="text-3xl font-bold text-gray-900">$80</p>
-                    <p className="text-gray-500 text-sm mt-1">Per paying user (all-in)</p>
+                    <p className="text-3xl font-bold text-gray-900">$200</p>
+                    <p className="text-gray-500 text-sm mt-1">Per paying user (includes conversion)</p>
                   </div>
                 </div>
                 <div className="text-center">
                   <div className="p-4 rounded-xl bg-[#11D4D8]/5 border-2 border-[#11D4D8]/20 mb-3">
                     <p className="text-gray-400 text-xs font-semibold mb-1 uppercase tracking-wider">LTV:CAC Ratio</p>
-                    <p className="text-3xl font-bold text-[#11D4D8]">29.5:1</p>
-                    <p className="text-gray-500 text-sm mt-1">Exceptional (&gt;3:1)</p>
+                    <p className="text-3xl font-bold text-[#11D4D8]">5.2:1</p>
+                    <p className="text-gray-500 text-sm mt-1">Healthy (&gt;3:1)</p>
                   </div>
                 </div>
               </div>
@@ -994,8 +994,8 @@ const renderSlideContent = (slideId: string) => {
                   <p className="text-gray-900 font-bold text-xl mb-3">Success Criteria</p>
                   <ul className="text-gray-600 leading-relaxed space-y-2">
                     <li>• Achieve 52-63 paying users by Month 6 (conservative range)</li>
-                    <li>• Maintain 5.3x LTV:CAC ratio or better</li>
-                    <li>• Keep CPA at or below $80 per trial signup</li>
+                    <li>• Maintain 5.2x LTV:CAC ratio or better</li>
+                    <li>• Keep CPA at or below $40 per trial signup</li>
                     <li>• Achieve break-even by Month 5-6</li>
                   </ul>
                 </div>

@@ -145,7 +145,7 @@ export default function DashboardPage() {
                       <span className="text-gray-500">Payback:</span>
                       <span className="font-semibold text-[#065D7E]">3.2 months</span>
                     </div>
-                    <p className="text-xs text-gray-400 mt-2">LTV:CAC ratio 3.7x</p>
+                    <p className="text-xs text-gray-400 mt-2">LTV:CAC ratio 5.2x</p>
                   </div>
                 </CardContent>
               </Card>

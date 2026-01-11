@@ -257,18 +257,18 @@ export function HomeDashboard() {
             />
             <MetricCard
               title="LTV:CAC Ratio"
-              value="29.5"
+              value="5.2"
               target=">3:1"
               icon={TrendingUp}
-              description="Exceptional unit economics"
+              description="Healthy unit economics (net LTV)"
             />
             <MetricCard
               title="Expected ROI"
-              value={200}
+              value={180}
               variant="percentage"
-              target="470% (stretch)"
+              target="250% (stretch)"
               icon={BarChart3}
-              description="Conservative projection"
+              description="Conservative projection (6-month)"
             />
           </div>
         </section>
@@ -285,7 +285,7 @@ export function HomeDashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <CardHeader className="pb-3">
-                <CardDescription className="text-gray-500">Monthly Revenue</CardDescription>
+                <CardDescription className="text-gray-500">Monthly Revenue (Gross)</CardDescription>
                 <CardTitle className="text-2xl text-[#065D7E]">$102</CardTitle>
               </CardHeader>
               <CardContent>
@@ -295,31 +295,31 @@ export function HomeDashboard() {
 
             <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <CardHeader className="pb-3">
-                <CardDescription className="text-gray-500">Customer Lifetime</CardDescription>
-                <CardTitle className="text-2xl text-[#065D7E]">20 months</CardTitle>
+                <CardDescription className="text-gray-500">Monthly Contribution</CardDescription>
+                <CardTitle className="text-2xl text-[#065D7E]">$80</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-500">Based on 5% monthly churn</p>
+                <p className="text-sm text-gray-500">After fees, hosting, support (~22% margin)</p>
               </CardContent>
             </Card>
 
             <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <CardHeader className="pb-3">
-                <CardDescription className="text-gray-500">Lifetime Value</CardDescription>
-                <CardTitle className="text-2xl text-[#065D7E]">$2,360</CardTitle>
+                <CardDescription className="text-gray-500">Net Lifetime Value</CardDescription>
+                <CardTitle className="text-2xl text-[#065D7E]">$1,040</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-500">383 SAR × 20 months</p>
+                <p className="text-sm text-gray-500">$80 × 13 months (realistic retention)</p>
               </CardContent>
             </Card>
 
             <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <CardHeader className="pb-3">
                 <CardDescription className="text-gray-500">Payback Period</CardDescription>
-                <CardTitle className="text-2xl text-[#065D7E]">0.78 months</CardTitle>
+                <CardTitle className="text-2xl text-[#065D7E]">2.5 months</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-500">Less than 1 month</p>
+                <p className="text-sm text-gray-500">$200 CAC ÷ $80/month contribution</p>
               </CardContent>
             </Card>
           </div>
@@ -430,7 +430,7 @@ export function HomeDashboard() {
                     <div>
                       <p className="text-sm font-semibold text-[#065D7E] mb-1">Reinvestment Model</p>
                       <p className="text-sm text-gray-600">
-                        Every paying user adds $80 back to acquisition budget, creating a self-funding growth loop.
+                        Every paying user adds $50 back to acquisition budget (first 2.5 months of margin), creating a self-funding growth loop.
                       </p>
                     </div>
                   </div>

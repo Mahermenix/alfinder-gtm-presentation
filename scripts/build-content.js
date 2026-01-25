@@ -3,8 +3,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const GTM_STORIES_PATH = path.resolve(__dirname, '../../_bmad-output/GTM/Stories');
-const RESEARCH_PATH = path.resolve(__dirname, '../../_bmad-output/planning-artifacts');
+const GTM_STORIES_PATH = path.resolve(__dirname, '../../01-Strategy-Planning/GTM-Strategy-Plan/Stories');
+const RESEARCH_PATH = path.resolve(__dirname, '../../02-Market-Intelligence');
+const STRATEGY_PATH = path.resolve(__dirname, '../../01-Strategy-Planning');
 const OUTPUT_PATH = path.resolve(__dirname, '../app/data');
 
 // Ensure output directory exists
@@ -55,7 +56,13 @@ function readMarkdownFiles(dirPath, category = '') {
 function extractTitle(content, fallback) {
   const titleMatch = content.match(/^#\s+(.+)$/m);
   if (titleMatch) {
-    return titleMatch[1].trim();
+    let title = titleMatch[1].trim();
+    // Remove "Story X: ", "Research Story: ", "01 - ", etc.
+    title = title
+      .replace(/^(Research\s+)?Story(\s+\d+)?[:\s-]*/i, '')
+      .replace(/^\d+\s*[-:]\s*/, '')
+      .trim();
+    return title;
   }
 
   const frontmatterMatch = content.match(/^title:\s*(.+)$/m);
@@ -72,12 +79,14 @@ function extractTitle(content, fallback) {
 // Build content
 const gtmStories = readMarkdownFiles(GTM_STORIES_PATH);
 const researchFiles = readMarkdownFiles(RESEARCH_PATH);
+const strategyFiles = readMarkdownFiles(STRATEGY_PATH);
 
 // Only write output if we actually found content (not on Vercel where source doesn't exist)
 if (gtmStories.length > 0 || researchFiles.length > 0) {
   const output = {
     gtm: gtmStories,
     research: researchFiles,
+    strategy: strategyFiles,
     buildDate: new Date().toISOString(),
   };
 

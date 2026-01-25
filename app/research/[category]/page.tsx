@@ -16,44 +16,44 @@ async function getContent() {
 
 // Synthesis story slug for each category
 const synthesisStories: Record<string, string> = {
-  'market-research': 'market-research/14-market-research-synthesis',
-  'competitors': 'competitors/10-competitive-landscape-synthesis',
-  'allaboutalfinder': 'allaboutalfinder/14-alfinder-synthesis',
-  'partnerships': 'partnerships/10-enterprise-software',
+  '01-Alfinder-Audit': '01-Alfinder-Audit/00 - Alfinder Audit Synthesis',
+  '02-Competitor-Deep-Dives': '02-Competitor-Deep-Dives/00 - Competitive Landscape Overview',
+  '03-Global-Market-Trends': '03-Global-Market-Trends/00 - Market Research Synthesis',
+  '04-Partnership-Ecosystem': '04-Partnership-Ecosystem/00 - Partnership Ecosystem Index',
 }
 
 const researchCategories: Record<string, { title: string; description: string; count: number; icon: any }> = {
-  'market-research': {
-    title: 'Market Research',
-    description: 'Comprehensive analysis of the MENA e-commerce market, search technology trends, and merchant needs.',
-    count: 16,
-    icon: TrendingUp,
+  '01-Alfinder-Audit': {
+    title: 'Alfinder Audit',
+    description: 'Comprehensive evaluation of Alfinder\'s current presence, product, and potential.',
+    count: 21,
+    icon: Target,
   },
-  'competitors': {
-    title: 'Competitor Analysis',
+  '02-Competitor-Deep-Dives': {
+    title: 'Competitor Deep Dives',
     description: 'In-depth analysis of key competitors including Algolia, Lableb, and other search solutions.',
     count: 14,
     icon: Users,
   },
-  'allaboutalfinder': {
-    title: 'Alfinder Deep Dive',
-    description: 'Comprehensive studies analyzing Alfinder\'s current position, strengths, and opportunities.',
-    count: 21,
-    icon: Target,
+  '03-Global-Market-Trends': {
+    title: 'Global Market Trends',
+    description: 'Comprehensive analysis of the MENA e-commerce market, search technology trends, and merchant needs.',
+    count: 14,
+    icon: TrendingUp,
   },
-  'partnerships': {
-    title: 'Partnership Opportunities',
+  '04-Partnership-Ecosystem': {
+    title: 'Partnership Ecosystem',
     description: 'Strategic partnership opportunities with Salla, Zid, payment gateways, and digital agencies.',
-    count: 13,
+    count: 11,
     icon: Award,
   },
 }
 
 const categoryColors: Record<string, { from: string; to: string; accent: string }> = {
-  'market-research': { from: 'from-[#065D7E]', to: 'to-[#11D4D8]', accent: 'text-[#065D7E]' },
-  'competitors': { from: 'from-[#0a7aa0]', to: 'to-[#11D4D8]', accent: 'text-[#0a7aa0]' },
-  'allaboutalfinder': { from: 'from-[#065D7E]', to: 'to-[#0a7aa0]', accent: 'text-[#065D7E]' },
-  'partnerships': { from: 'from-[#11D4D8]', to: 'to-[#065D7E]', accent: 'text-[#11D4D8]' },
+  '03-Global-Market-Trends': { from: 'from-[#065D7E]', to: 'to-[#11D4D8]', accent: 'text-[#065D7E]' },
+  '02-Competitor-Deep-Dives': { from: 'from-[#0a7aa0]', to: 'to-[#11D4D8]', accent: 'text-[#0a7aa0]' },
+  '01-Alfinder-Audit': { from: 'from-[#065D7E]', to: 'to-[#0a7aa0]', accent: 'text-[#065D7E]' },
+  '04-Partnership-Ecosystem': { from: 'from-[#11D4D8]', to: 'to-[#065D7E]', accent: 'text-[#11D4D8]' },
 }
 
 // Extract key metrics from synthesis content
@@ -92,15 +92,7 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
 
   const content = await getContent()
 
-  // Filter research files by slug prefix based on category
-  const categoryPrefixes: Record<string, string[]> = {
-    'market-research': ['market-research/', 'research/market'],
-    'competitors': ['competitors/'],
-    'allaboutalfinder': ['allaboutalfinder/'],
-    'partnerships': ['partnerships/', 'research/market-collaboration', 'competitors/12-'],
-  }
-
-  const prefixes = categoryPrefixes[category] || []
+  const prefixes = [category + '/']
   const allResearch = content.research || []
   const researchFiles = allResearch.filter((file: any) =>
     prefixes.some(prefix => file.slug.startsWith(prefix))
@@ -262,11 +254,10 @@ export default async function ResearchPage({ params }: { params: Promise<{ categ
                   <Link
                     key={key}
                     href={`/research/${key}`}
-                    className={`block p-4 rounded-lg border-2 transition-all ${
-                      key === category
-                        ? 'border-[#065D7E] bg-[#065D7E]/5 shadow-md'
-                        : 'border-gray-200 hover:border-[#065D7E]/50 hover:shadow-md bg-white'
-                    }`}
+                    className={`block p-4 rounded-lg border-2 transition-all ${key === category
+                      ? 'border-[#065D7E] bg-[#065D7E]/5 shadow-md'
+                      : 'border-gray-200 hover:border-[#065D7E]/50 hover:shadow-md bg-white'
+                      }`}
                   >
                     <div className={`p-2 rounded-lg bg-gradient-to-br ${catColors.from} ${catColors.to} bg-opacity-10 w-fit mb-3`}>
                       <CatIcon className={`w-5 h-5 ${catColors.accent}`} />

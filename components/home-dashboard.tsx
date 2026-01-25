@@ -218,7 +218,7 @@ export function HomeDashboard() {
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
-                    <span>Currently: 80 active users</span>
+                    <span>Currently: **200+ Stores (Official Claim)**</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
@@ -448,7 +448,7 @@ export function HomeDashboard() {
                     <div>
                       <p className="text-sm font-semibold text-[#065D7E] mb-1">Reinvestment Model</p>
                       <p className="text-sm text-gray-600">
-                        Every paying user adds $50 back to acquisition budget (first 2.5 months of margin), creating a self-funding growth loop.
+                        Every paying user adds $80 back to acquisition budget (first 2.5 months of margin), creating a self-funding growth loop.
                       </p>
                     </div>
                   </div>
@@ -481,29 +481,30 @@ export function HomeDashboard() {
                   ]
                   const color = colors[index % colors.length]
                   return (
-                  <div key={item.month} className="relative pl-10 pb-6 last:pb-0">
-                    {/* Timeline indicator */}
-                    <div className={`absolute left-0 top-1 w-10 h-10 rounded-xl bg-gradient-to-br shadow-lg flex items-center justify-center text-white text-sm font-bold ${color}`}>
-                      {index + 1}
-                    </div>
-
-                    {/* Timeline line */}
-                    <div className="absolute left-5 top-11 bottom-0 w-0.5 bg-gradient-to-b from-[#11D4D8] to-[#065D7E] last:hidden opacity-30" />
-
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                      <div>
-                        <p className="font-bold text-[#065D7E] text-lg">{item.month}</p>
-                        <p className="text-sm text-gray-500">{item.focus}</p>
+                    <div key={item.month} className="relative pl-10 pb-6 last:pb-0">
+                      {/* Timeline indicator */}
+                      <div className={`absolute left-0 top-1 w-10 h-10 rounded-xl bg-gradient-to-br shadow-lg flex items-center justify-center text-white text-sm font-bold ${color}`}>
+                        {index + 1}
                       </div>
-                      <div className="text-right">
-                        <p className="font-bold text-[#11D4D8]">{item.users} users</p>
-                        <Badge variant="outline" className="text-xs border-[#11D4D8]/30 text-[#065D7E]">
-                          {item.milestone}
-                        </Badge>
+
+                      {/* Timeline line */}
+                      <div className="absolute left-5 top-11 bottom-0 w-0.5 bg-gradient-to-b from-[#11D4D8] to-[#065D7E] last:hidden opacity-30" />
+
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                        <div>
+                          <p className="font-bold text-[#065D7E] text-lg">{item.month}</p>
+                          <p className="text-sm text-gray-500">{item.focus}</p>
+                        </div>
+                        <div className="text-right">
+                          <p className="font-bold text-[#11D4D8]">{item.users} users</p>
+                          <Badge variant="outline" className="text-xs border-[#11D4D8]/30 text-[#065D7E]">
+                            {item.milestone}
+                          </Badge>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )})}
+                  )
+                })}
               </div>
             </CardContent>
           </Card>
@@ -635,11 +636,11 @@ export function HomeDashboard() {
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
-                    <span>80 real active users (strong foundation)</span>
+                    <span>200+ Stores (Official Portfolio Claim)</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />
-                    <span>30% churn rate needs attention</span>
+                    <span>41% 90-day retention curve (Benchmark)</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#11D4D8] mt-0.5 flex-shrink-0" />

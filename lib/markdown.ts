@@ -2,8 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
-const GTM_STORIES_PATH = path.join(process.cwd(), '..', '_bmad-output', 'GTM', 'Stories')
-const RESEARCH_PATH = path.join(process.cwd(), '..', '_bmad-output', 'planning-artifacts')
+const GTM_STORIES_PATH = path.join(process.cwd(), '..', '01-Strategy-Planning', 'GTM-Strategy-Plan', 'Stories')
+const RESEARCH_PATH = path.join(process.cwd(), '..', '02-Market-Intelligence')
 
 export interface StoryMetadata {
   title: string
@@ -63,7 +63,7 @@ export function getGTMStoryBySlug(slug: string): StoryContent | null {
 }
 
 export function getResearchFiles(): { category: string; files: StoryMetadata[] }[] {
-  const categories = ['market-research', 'allaboutalfinder', 'competitors', 'partnerships']
+  const categories = ['01-Alfinder-Audit', '02-Competitor-Deep-Dives', '03-Global-Market-Trends', '04-Partnership-Ecosystem']
 
   return categories
     .map(category => {
@@ -98,7 +98,7 @@ export function getResearchFiles(): { category: string; files: StoryMetadata[] }
 
 export function getKeyFacts(): Record<string, any> {
   try {
-    const filePath = path.join(RESEARCH_PATH, '00-KEY-FACTS.md')
+    const filePath = path.join(process.cwd(), '..', '01-Strategy-Planning', 'Key-Facts.md')
     const fileContent = fs.readFileSync(filePath, 'utf-8')
     const { data, content } = matter(fileContent)
 

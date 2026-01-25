@@ -6,31 +6,31 @@ import Link from 'next/link'
 
 const researchCategories = [
   {
-    slug: 'market-research',
-    title: 'Market Research',
-    description: 'MENA e-commerce market analysis and search technology trends',
-    count: 16,
-    icon: FileText,
-  },
-  {
-    slug: 'competitors',
-    title: 'Competitor Analysis',
-    description: 'In-depth analysis of key competitors in the search space',
-    count: 14,
-    icon: Users,
-  },
-  {
-    slug: 'allaboutalfinder',
-    title: 'Alfinder Deep Dive',
-    description: 'Comprehensive studies of Alfinder\'s position and potential',
+    slug: '01-Alfinder-Audit',
+    title: 'Alfinder Audit',
+    description: 'Comprehensive evaluation of Alfinder\'s current presence, product, and potential',
     count: 21,
     icon: Search,
   },
   {
-    slug: 'partnerships',
-    title: 'Partnership Opportunities',
-    description: 'Strategic partnerships with platforms and agencies',
-    count: 13,
+    slug: '02-Competitor-Deep-Dives',
+    title: 'Competitor Deep Dives',
+    description: 'Detailed analysis of global and local search technology competitors',
+    count: 14,
+    icon: Users,
+  },
+  {
+    slug: '03-Global-Market-Trends',
+    title: 'Global Market Trends',
+    description: 'MENA e-commerce market analysis and macro search technology trends',
+    count: 14,
+    icon: FileText,
+  },
+  {
+    slug: '04-Partnership-Ecosystem',
+    title: 'Partnership Ecosystem',
+    description: 'Strategic analysis of platforms, agencies, and regional partners',
+    count: 11,
     icon: Handshake,
   },
 ]
@@ -51,7 +51,7 @@ export default function ResearchPage() {
               Research & Analysis
             </h1>
             <p className="text-xl text-gray-700">
-              Explore 64 research files covering market analysis, competitors, and strategic insights
+              Explore 60 research files covering market analysis, competitors, and strategic insights
             </p>
           </div>
 
@@ -98,19 +98,19 @@ export default function ResearchPage() {
             <CardContent className="p-6">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                 <div>
-                  <p className="text-3xl font-bold text-[#065D7E]">16</p>
-                  <p className="text-sm text-gray-700">Market Studies</p>
+                  <p className="text-3xl font-bold text-[#065D7E]">21</p>
+                  <p className="text-sm text-gray-700">Audit Files</p>
                 </div>
                 <div>
                   <p className="text-3xl font-bold text-[#11D4D8]">14</p>
                   <p className="text-sm text-gray-700">Competitors</p>
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-[#0a7aa0]">21</p>
-                  <p className="text-sm text-gray-700">Alfinder Files</p>
+                  <p className="text-3xl font-bold text-[#0a7aa0]">14</p>
+                  <p className="text-sm text-gray-700">Market Trends</p>
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-[#065D7E]">13</p>
+                  <p className="text-3xl font-bold text-[#065D7E]">11</p>
                   <p className="text-sm text-gray-700">Partnerships</p>
                 </div>
               </div>
